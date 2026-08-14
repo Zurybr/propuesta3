@@ -1,0 +1,11 @@
+{
+  "kind": "critique-panel",
+  "score": 4,
+  "axes": {
+    "clarity":      { "score": 5, "notes": "Slogan como titular único del hero; cada sección tiene un foco claro; mapa de navegación del brief respetado 1:1 con anclas." },
+    "hierarchy":    { "score": 4, "notes": "Ritmo editorial I-VI con marquee separador y slabo oscuro final; Servicios es denso (15 servicios) pero las pillar-rule dan respiración." },
+    "typography":   { "score": 5, "notes": "Sistema atelier-zero conservado: Playfair itálica para énfasis, Inter Tight display, mono para coordenadas; sin tokens nuevos fuera del sistema." },
+    "motion":       { "score": 4, "notes": "Reveal escalonado, marquee dual, dropdowns y burger animados; prefers-reduced-motion respetado; no se añadió motion nuevo innecesario." },
+    "brand":        { "score": 5, "notes": "B&M presente en marca, topbar, rieles, ribbon, footer y mega-word; slogan textual verbatim; crédito 'Propuesta creada por Miranda' en footer." }
+  }
+}

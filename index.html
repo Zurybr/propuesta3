@@ -1,0 +1,3345 @@
+﻿<!DOCTYPE html>
+<html lang='es'>
+<head>
+<meta charset='utf-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+<title>B&amp;M Branding &amp; Marketing - Datos que orientan, estrategias que venden.</title>
+<meta name='description' content='B&amp;M Branding &amp; Marketing: investigación de mercados, desarrollo y optimización web, marketing digital y redes sociales. Datos que orientan, estrategias que venden. Propuesta por Miranda.' />
+<link rel='preconnect' href='https://fonts.googleapis.com' />
+<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+<link href='https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500;1,600;1,700&family=JetBrains+Mono:wght@400;500&display=swap' rel='stylesheet' />
+<style>/*
+ * Atelier Zero - canonical landing-page stylesheet.
+ *
+  * This file is the SINGLE SOURCE OF TRUTH for the B&M landing page's
+ * skill's visual system. It is consumed by:
+ *
+ *   1. `scripts/compose.ts` - inlined into the standalone HTML output.
+ *   2. `apps/landing-page/app/globals.css` - copied verbatim for the
+ *      Astro static deployable counterpart.
+ *   3. `example.html` - the pre-rendered known-good demo.
+ *
+ * If you change tokens, layout, motion, or component styles, edit them
+ * here. The `@import` at top loads the four Google fonts the system
+ * requires (Inter Tight, Inter, Playfair Display, JetBrains Mono).
+ *
+ * Tokens, grid posture, and motion language are defined by
+ * `design-systems/atelier-zero/DESIGN.md`. Do not invent new colors or
+ * typefaces here; either extend the design system first.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500;1,600;1,700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* Dark premium - B&M "black" mode. Same architecture, inverted tokens.
+     Warm off-blacks (never pure #000), bone text, coral as the single accent. */
+  --paper: #0e0d0b;
+  --paper-warm: #131210;
+  --paper-dark: #1a1815;
+  --ink: #f2edde;
+  --ink-soft: #cfc9b8;
+  --ink-mute: #8f8a7c;
+  --ink-faint: #6d685c;
+  --coral: #ff7a5c;
+  --coral-soft: #ff9478;
+  --mustard: #e9b94a;
+  --olive: #8a8f5e;
+  --bone: #1b1916;
+  --line: rgba(242, 237, 222, 0.14);
+  --line-soft: rgba(242, 237, 222, 0.07);
+  --line-faint: rgba(242, 237, 222, 0.045);
+  --shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.7);
+  --serif: 'Playfair Display', 'Times New Roman', serif;
+  --sans: 'Inter Tight', 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --body: 'Inter', -apple-system, system-ui, sans-serif;
+  --mono: 'JetBrains Mono', 'SF Mono', Menlo, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--paper); color: var(--ink); }
+body {
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* paper texture overlay across the whole page - dark: subtle light grain on screen */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(255, 122, 92, 0.05) 0, transparent 28%),
+    radial-gradient(circle at 88% 72%, rgba(233, 185, 74, 0.04) 0, transparent 32%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 0.98  0 0 0 0 0.94  0 0 0 0.05 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size: auto, auto, 240px 240px;
+  mix-blend-mode: screen;
+  opacity: 0.6;
+}
+
+/* 3D canvas backdrop - fixed behind the shell, above the grain */
+#bg3d {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.shell { position: relative; z-index: 2; }
+.container {
+  max-width: 1360px;
+  padding: 0 64px;
+  margin: 0 auto;
+  position: relative;
+}
+.container.wide { max-width: 1480px; }
+
+/* fixed side rails - rotated brand text on the right edge */
+.side-rail {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 36px;
+  z-index: 3;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.side-rail.right { right: 0; border-left: 1px solid var(--line-faint); }
+.side-rail.left { left: 0; border-right: 1px solid var(--line-faint); }
+.side-rail .rail-text {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+}
+.side-rail.right .rail-text { transform: rotate(180deg); }
+.side-rail.left .rail-text { writing-mode: vertical-rl; transform: none; }
+
+/* top metadata strip */
+.topbar {
+  border-bottom: 1px solid var(--line);
+  padding: 10px 0;
+  background: var(--paper);
+  position: relative;
+  z-index: 4;
+}
+.topbar-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.topbar-inner b { color: var(--ink); font-weight: 600; }
+.topbar-inner .coral { color: var(--coral); }
+.topbar-inner > span { white-space: nowrap; }
+.topbar-inner .mid { display: inline-flex; gap: 26px; }
+.topbar-inner .mid > span { white-space: nowrap; }
+.topbar-inner .right { display: inline-flex; gap: 18px; align-items: center; }
+.topbar-inner .right > span,
+.topbar-inner .right > a { white-space: nowrap; }
+.topbar-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+.topbar-link:hover { color: var(--coral); border-bottom-color: var(--coral); }
+.topbar .pulse {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--coral);
+  display: inline-block;
+  margin-right: 6px;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+/* nav */
+/*
+ * Headroom-style sticky header.
+ *
+ * The element is always `position: sticky`, so the browser docks it to the
+ * top of the viewport once the topbar has scrolled away. The
+ * `<Header />` client island then toggles the `is-hidden` modifier based
+ * on scroll direction, which animates the bar in and out via `transform`.
+ *
+ * When the user is at the very top of the page, the topbar is still
+ * visible above the nav and `position: sticky` simply leaves the nav in
+ * its natural flow position - exactly the brief.
+ */
+.nav {
+  padding: 22px 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: transparent;
+  transform: translateY(0);
+  transition: transform 360ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    padding 360ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    background 300ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+  border-bottom: 1px solid transparent;
+  will-change: transform;
+}
+/* Liquid state: once the user scrolls, the nav condenses into a floating
+ * glass pill. Backdrop blur + a soft border give it the "liquid" refraction;
+ * the blob below follows hovered links with an overshooting spring. */
+.nav.is-liquid {
+  padding: 10px 0;
+  background: rgba(14, 13, 11, 0.72);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  border-bottom: 1px solid var(--line-faint);
+  box-shadow: 0 18px 50px -30px rgba(0, 0, 0, 0.8);
+}
+.nav.is-liquid .nav-inner { position: relative; }
+.nav.is-liquid .nav-links { position: relative; z-index: 2; }
+/* the liquid blob - a morphing highlight that slides between links */
+.nav-blob {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  height: 40px;
+  border-radius: 999px;
+  background: radial-gradient(120% 120% at 30% 30%, rgba(255, 122, 92, 0.22), rgba(255, 122, 92, 0.07) 60%, transparent);
+  border: 1px solid rgba(255, 122, 92, 0.28);
+  box-shadow: 0 0 24px -6px rgba(255, 122, 92, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform: translateY(-50%);
+  opacity: 0;
+  transition:
+    left 480ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    width 480ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    opacity 200ms ease;
+  pointer-events: none;
+  will-change: left, width;
+}
+.nav.is-liquid .nav-links:hover ~ .nav-blob,
+.nav-blob.on { opacity: 1; }
+/*
+ * Subtle visual cue once we leave the top of the page. We can't tell from
+ * CSS alone whether the bar is "stuck"; the deadband + class toggle in
+ * <Header /> approximates it well enough for our purpose. We rely on the
+ * `is-hidden` toggle to flicker the border while moving and a steady
+ * border once docked.
+ */
+.nav.is-hidden {
+  transform: translateY(-100%);
+  pointer-events: none;
+  box-shadow: none;
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--sans);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 18px;
+}
+.brand-mark {
+  width: 36px; height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink);
+  background: transparent;
+}
+.brand-meta {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  line-height: 1.3;
+  margin-left: 4px;
+  border-left: 1px solid var(--line);
+  padding-left: 14px;
+}
+.brand-meta b { display: block; color: var(--ink); font-weight: 600; }
+
+.nav-links {
+  display: flex;
+  gap: 38px;
+  list-style: none;
+}
+.nav-links a {
+  color: var(--ink);
+  text-decoration: none;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.18s ease;
+  position: relative;
+}
+.nav-links a:hover { color: var(--coral); }
+.nav-links a .num {
+  font-size: 9px;
+  color: var(--ink-faint);
+  position: absolute;
+  top: -7px;
+  right: -16px;
+  letter-spacing: 0.04em;
+}
+.nav-side {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+}
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.nav-cta [data-github-stars],
+.nav-cta [data-github-version] {
+  font-variant-numeric: tabular-nums;
+}
+.nav-cta::after {
+  content: '★';
+  color: var(--mustard);
+  font-size: 11px;
+}
+.status-dot {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.status-dot::after {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--coral);
+}
+
+/* ---------- typography primitives ---------- */
+.label {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--coral);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.label::before {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: var(--coral);
+  display: inline-block;
+}
+.label .ix {
+  color: var(--ink-faint);
+  font-weight: 500;
+  margin-left: 4px;
+}
+.display {
+  font-family: var(--sans);
+  font-weight: 800;
+  letter-spacing: -0.028em;
+  color: var(--ink);
+  line-height: 1.0;
+}
+.display em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: -0.018em;
+}
+.display .dot { color: var(--coral); }
+.lead {
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 36ch;
+}
+.meta {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.coord {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--ink-faint);
+}
+.roman {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--coral);
+}
+
+/* buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--coral);
+  color: #171310;
+  box-shadow: 0 14px 26px -16px rgba(255, 122, 92, 0.8);
+}
+.btn-primary:hover { transform: translateY(-1px); background: #ff8b6d; }
+.btn-ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: rgba(242, 237, 222, 0.28);
+}
+.btn-ghost:hover { background: rgba(242, 237, 222, 0.07); }
+.btn .arrow {
+  width: 16px; height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn .arrow svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+
+/* helper used inline in headlines */
+.code-inline {
+  font-family: var(--mono);
+  font-size: 14px;
+  background: var(--bone);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  position: relative;
+  padding: 0;
+  min-height: calc(100vh - 140px);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-bottom: 1px solid var(--line);
+}
+.hero > .container { flex: 0 0 auto; }
+.hero > .container.hero-grid { flex: 1 1 auto; }
+.hero::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--line-soft);
+  z-index: 0;
+  display: none;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  gap: 36px;
+  align-items: stretch;
+  width: 100%;
+  position: relative;
+}
+.hero-copy {
+  padding: 4vh 0 4vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.hero-copy .label { margin-bottom: 28px; }
+.hero-copy .lead { margin-bottom: 30px; max-width: 38ch; font-size: 16px; }
+.hero h1 {
+  font-size: clamp(44px, 5vw, 78px);
+  line-height: 1.0;
+  margin-bottom: 28px;
+}
+.hero-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 38px;
+}
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: nowrap;
+  margin-bottom: 28px;
+}
+.hero-stats .stat { display: inline-flex; align-items: center; gap: 9px; white-space: nowrap; }
+.hero-stats .stat .ring {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: 1px dashed var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.hero-stats .stat .ring.solid { border-style: solid; }
+.hero-stats .stat .ring.coral { border-color: var(--coral); color: var(--coral); }
+.hero-stats .stat-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  line-height: 1.25;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.hero-stats .stat-label b { display: block; font-weight: 700; color: var(--ink); font-size: 12px; }
+
+.hero-foot {
+  margin-top: auto;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.hero-foot .meta { line-height: 1.4; }
+
+.hero-art {
+  position: relative;
+  height: calc(100vh - 160px);
+  max-height: 860px;
+  margin-left: auto;
+  margin-right: -12px;
+  width: 100%;
+  overflow: visible;
+}
+.hero-art img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  object-position: right center;
+  display: block;
+}
+/* image annotations */
+.annot {
+  position: absolute;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.annot.has-line::before {
+  content: '';
+  position: absolute;
+  background: var(--ink-faint);
+}
+.annot-tl { top: 14px; left: 14px; }
+.annot-tr { top: 14px; right: 14px; text-align: right; }
+.annot-bl { bottom: 14px; left: 14px; }
+.annot-br { bottom: 14px; right: 14px; text-align: right; }
+.annot.coord { font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em; text-transform: none; }
+
+.hero-art .index {
+  position: absolute;
+  right: 12px;
+  top: 36%;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  background: rgba(14, 13, 11, 0.75);
+  padding: 10px 12px;
+  border: 1px solid var(--line-soft);
+  border-radius: 6px;
+  backdrop-filter: blur(2px);
+}
+.hero-art .index span { display: block; line-height: 1.6; }
+.hero-art .index span .n { color: var(--coral); margin-right: 6px; font-weight: 700; }
+.hero-art .index span.on { color: var(--ink); font-weight: 700; }
+.hero-art .index span.on .n { color: var(--coral); }
+
+.hero-art .corner {
+  position: absolute;
+  width: 22px; height: 22px;
+  border-color: var(--ink-faint);
+  border-style: solid;
+  border-width: 0;
+}
+.hero-art .corner.tl { top: 0; left: 0; border-top-width: 1px; border-left-width: 1px; }
+.hero-art .corner.tr { top: 0; right: 0; border-top-width: 1px; border-right-width: 1px; }
+.hero-art .corner.bl { bottom: 0; left: 0; border-bottom-width: 1px; border-left-width: 1px; }
+.hero-art .corner.br { bottom: 0; right: 0; border-bottom-width: 1px; border-right-width: 1px; }
+
+/* ---------- common section header ---------- */
+section { position: relative; padding: 130px 0; }
+section.tight { padding: 90px 0; }
+.sec-rule {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+  margin-bottom: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.sec-rule .roman {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--coral);
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: none;
+}
+.sec-rule .meta-grp { display: inline-flex; gap: 26px; }
+.sec-rule .dot-mark { color: var(--coral); }
+
+.section-header { margin-bottom: 70px; }
+.section-header .label { margin-bottom: 32px; }
+.section-header h2 {
+  font-size: clamp(40px, 4.6vw, 66px);
+  max-width: 22ch;
+}
+.section-header .lead { margin-top: 22px; }
+
+/* ---------- WIRE / GLOBAL TICKER ----------
+ *
+ * Slim editorial strip between the hero and the About section. Two
+ * counter-scrolling marquees (cities → and contributors ←) signal that
+ * the project is global and community-driven, without disrupting the
+ * existing roman-numeral section count. Pure CSS animation; the track
+ * content is duplicated in markup so the loop wraps seamlessly.
+ */
+.wire {
+  border-bottom: 1px solid var(--line);
+  padding: 26px 0 28px;
+  background: var(--paper);
+  position: relative;
+  overflow: hidden;
+}
+.wire-inner {
+  display: grid;
+  grid-template-columns: minmax(180px, 220px) minmax(0, 1fr);
+  gap: 32px;
+  align-items: center;
+}
+.wire-left {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  border-right: 1px solid var(--line);
+  padding-right: 24px;
+  min-height: 56px;
+}
+.wire-mark {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.wire-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--coral);
+  display: inline-block;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+.wire-title {
+  font-family: var(--sans);
+  font-size: 11px;
+  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.wire-title b {
+  color: var(--ink);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.wire-title span {
+  color: var(--ink-faint);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.wire-rows {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+.wire-row {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
+}
+.marquee-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 36px;
+  width: max-content;
+  white-space: nowrap;
+  animation: marquee-x 52s linear infinite;
+  will-change: transform;
+}
+.wire-row.reverse .marquee-track {
+  animation-direction: reverse;
+  animation-duration: 64s;
+}
+.wire-row:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.wire-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--ink-mute);
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.wire-item .wire-dot {
+  color: var(--coral);
+  font-size: 16px;
+  line-height: 0;
+  position: relative;
+  top: -1px;
+  margin-right: 2px;
+}
+.wire-item .wire-coord {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--ink-faint);
+  letter-spacing: 0;
+}
+.wire-item .wire-name {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink);
+  font-weight: 500;
+}
+.wire-item .wire-handle {
+  font-family: var(--mono);
+  color: var(--ink);
+  font-size: 11.5px;
+  font-weight: 500;
+}
+.wire-item .wire-role {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--coral);
+  font-size: 10px;
+}
+.wire-item.is-link {
+  transition: color 160ms ease;
+}
+.wire-item.is-link:hover .wire-handle {
+  color: var(--coral);
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
+
+/* ---------- ABOUT ---------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.about h2 {
+  font-size: clamp(44px, 5.4vw, 78px);
+  margin: 30px 0 36px;
+}
+.about .label { margin-bottom: 28px; }
+.about .lead { margin-bottom: 36px; max-width: 42ch; font-size: 17px; }
+.about .footer-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 56px;
+  color: var(--ink-faint);
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.about .footer-row .mark {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ink);
+}
+.about .stamp {
+  margin-left: auto;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.4;
+}
+.about .stamp span:first-child { color: var(--coral); }
+.about-art {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  max-width: 620px;
+  margin-left: auto;
+}
+.about-art img { width: 100%; height: 100%; object-fit: contain; }
+.about-side-note {
+  position: absolute;
+  right: -8px;
+  top: 26px;
+  text-align: right;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  line-height: 1.55;
+  color: var(--ink-faint);
+  letter-spacing: 0.04em;
+  max-width: 16ch;
+}
+.about-side-note b {
+  display: block;
+  color: var(--coral);
+  width: 36px;
+  height: 1px;
+  background: var(--coral);
+  margin: 0 0 10px auto;
+}
+.about-caption {
+  position: absolute;
+  right: 18px;
+  bottom: 4px;
+  font-family: var(--sans);
+  font-size: 9.5px;
+  color: var(--ink-faint);
+  text-align: right;
+  letter-spacing: 0.06em;
+  line-height: 1.45;
+}
+.about-caption b { color: var(--ink); display: block; }
+
+/* ---------- CAPABILITIES ---------- */
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+.capabilities-art {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  max-width: 600px;
+}
+.capabilities-art img { width: 100%; height: 100%; object-fit: contain; }
+.capabilities-art .ribbon {
+  position: absolute;
+  right: -42px;
+  top: 50%;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+.capabilities-art .ribbon b { color: var(--coral); }
+.capabilities-art .corner { position: absolute; width: 22px; height: 22px; border-color: var(--ink-faint); border-style: solid; border-width: 0; }
+.capabilities-art .corner.tl { top: 0; left: 0; border-top-width: 1px; border-left-width: 1px; }
+.capabilities-art .corner.br { bottom: 0; right: 0; border-bottom-width: 1px; border-right-width: 1px; }
+.capabilities-copy h2 { font-size: clamp(40px, 4.8vw, 64px); margin: 22px 0 30px; }
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 22px;
+}
+.card {
+  padding: 28px 26px 32px;
+  background: var(--bone);
+  border-radius: 18px;
+  box-shadow: var(--shadow), inset 0 0 0 1px rgba(242, 237, 222, 0.07);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+.card:hover { transform: translateY(-3px); }
+.card .num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--coral);
+  letter-spacing: 0.04em;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.card .num .tag {
+  font-family: var(--sans);
+  font-size: 9.5px;
+  color: var(--ink-faint);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-style: normal;
+  font-weight: 500;
+}
+.card .icon {
+  width: 28px;
+  height: 28px;
+  margin-bottom: 16px;
+  color: var(--ink);
+}
+.card h3 {
+  font-family: var(--sans);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.014em;
+  margin-bottom: 14px;
+}
+.card p {
+  font-family: var(--body);
+  font-size: 13.5px;
+  color: var(--ink-mute);
+  line-height: 1.55;
+  max-width: 24ch;
+}
+.card .arrow-mark {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  width: 28px; height: 28px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  transition: all 0.18s ease;
+}
+.card:hover .arrow-mark { background: var(--coral); border-color: var(--coral); color: #fff; }
+.card .arrow-mark svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+
+/* ---------- LABS ---------- */
+.labs-head {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 60px;
+  align-items: end;
+  margin-bottom: 48px;
+}
+.labs-head h2 { font-size: clamp(40px, 4.8vw, 68px); }
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+.pill {
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink-soft);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.pill:hover { background: rgba(242, 237, 222, 0.06); }
+.pill.active {
+  background: var(--coral);
+  border-color: var(--coral);
+  color: #fff;
+}
+.pill .count {
+  font-size: 10px;
+  color: var(--ink-faint);
+  border-left: 1px solid var(--line);
+  padding-left: 8px;
+}
+.pill.active .count { color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.3); }
+.labs-meta {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 22px;
+  margin-bottom: 30px;
+}
+.labs-meta .ring {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1px dashed var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 700;
+}
+.labs-meta .meta-text {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 1.55;
+  color: var(--ink-faint);
+  max-width: 28ch;
+}
+.labs-meta .meta-text b { display: block; color: var(--ink); }
+.labs-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 22px;
+}
+.lab {
+  display: flex;
+  flex-direction: column;
+}
+.lab-img {
+  aspect-ratio: 4 / 5;
+  background: var(--bone);
+  border-radius: 14px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+.lab-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 14px; }
+.lab-img .badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(14, 13, 11, 0.85);
+  color: var(--ink);
+  padding: 4px 9px;
+  border-radius: 4px;
+  font-family: var(--sans);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.lab .num-row {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  color: var(--ink-faint);
+  letter-spacing: 0.14em;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  text-transform: uppercase;
+}
+.lab h4 {
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.014em;
+  margin-bottom: 8px;
+}
+.lab p {
+  font-family: var(--body);
+  font-size: 13px;
+  color: var(--ink-mute);
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+.lab .arrow-mark {
+  width: 28px; height: 28px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink);
+  margin-top: auto;
+  align-self: flex-start;
+}
+.lab .arrow-mark svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+.labs-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 50px;
+  border-top: 1px dashed var(--line);
+  padding-top: 22px;
+}
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.progress span {
+  width: 26px; height: 2px;
+  background: var(--line);
+  border-radius: 2px;
+}
+.progress span.on { background: var(--coral); }
+
+/* ---------- METHOD ---------- */
+.method-head {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 60px;
+  align-items: start;
+  margin-bottom: 80px;
+}
+.method-head h2 { font-size: clamp(44px, 5.2vw, 76px); }
+.method-head .right {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding-top: 14px;
+}
+.method-head .plus {
+  color: var(--coral);
+  font-size: 24px;
+  line-height: 1;
+  font-family: var(--sans);
+}
+.method-head .right p {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink-soft);
+  max-width: 22ch;
+  line-height: 1.55;
+}
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+  position: relative;
+}
+.method-grid::before {
+  content: '';
+  position: absolute;
+  top: 60px;
+  left: 50px;
+  right: 50px;
+  height: 1px;
+  background: var(--line-soft);
+}
+.method-step { position: relative; }
+.method-step .num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 78px;
+  color: var(--coral);
+  line-height: 0.85;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+  background: var(--paper);
+  display: inline-block;
+  padding-right: 12px;
+  position: relative;
+  z-index: 1;
+}
+.method-step h4 {
+  font-family: var(--sans);
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.022em;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 18px;
+}
+.method-step h4 .arrow-r {
+  color: var(--ink-faint);
+  font-size: 22px;
+  line-height: 1;
+}
+.method-step:last-child h4 .arrow-r { display: none; }
+.method-step p {
+  font-family: var(--body);
+  font-size: 13.5px;
+  color: var(--ink-mute);
+  line-height: 1.55;
+  margin-bottom: 24px;
+  max-width: 24ch;
+}
+.method-step .img {
+  aspect-ratio: 1 / 1;
+  background: var(--bone);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+.method-step .img img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+.method-foot {
+  margin-top: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px dashed var(--line);
+  padding-top: 24px;
+}
+.method-foot .left,
+.method-foot .right {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.method-foot .left {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.method-foot .left .ring {
+  width: 20px; height: 20px;
+  border: 1px dashed var(--ink-faint);
+  border-radius: 50%;
+}
+.method-foot .right b { color: var(--ink); }
+
+/* ---------- WORK ---------- */
+.work {
+  background: var(--paper-warm);
+  color: var(--ink);
+  border-radius: 32px;
+  margin: 0 64px;
+  overflow: hidden;
+  position: relative;
+  padding: 110px 64px;
+  border: 1px solid var(--line-faint);
+}
+.work::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n2'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 0.95  0 0 0 0 0.85  0 0 0 0.05 0'/></filter><rect width='100%' height='100%' filter='url(%23n2)'/></svg>");
+  background-size: 240px 240px;
+  opacity: 0.6;
+  mix-blend-mode: screen;
+}
+.work-rule {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(247, 241, 222, 0.16);
+  padding-top: 16px;
+  margin-bottom: 60px;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(247, 241, 222, 0.55);
+}
+.work-rule .roman { color: var(--coral); font-family: var(--serif); font-style: italic; font-size: 14px; letter-spacing: 0.04em; text-transform: none; }
+.work-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr 0.85fr;
+  gap: 48px;
+  align-items: center;
+  position: relative;
+}
+.work .label { color: var(--coral); }
+.work .label::before { background: var(--coral); }
+.work-copy h2 {
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: clamp(40px, 5vw, 66px);
+  line-height: 1.0;
+  letter-spacing: -0.024em;
+  margin: 28px 0 36px;
+  color: var(--ink);
+}
+.work-copy h2 em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+}
+.work-copy h2 .dot { color: var(--coral); }
+.work-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 14px;
+  text-decoration: none;
+  border-bottom: 2px solid var(--coral);
+  padding-bottom: 12px;
+  width: fit-content;
+}
+.work-link::after { content: '↗'; color: var(--coral); }
+.work-card {
+  background: var(--bone);
+  color: var(--ink);
+  border-radius: 18px;
+  padding: 32px 30px;
+  position: relative;
+  transform: rotate(-1.2deg);
+  text-decoration: none;
+  display: block;
+  border: 1px solid var(--line-soft);
+  transition: transform 280ms ease, box-shadow 280ms ease;
+}
+.work-card:hover {
+  transform: rotate(-1.2deg) translateY(-4px);
+  box-shadow: var(--shadow);
+}
+.work-card.alt {
+  transform: rotate(2.4deg) translateY(20px);
+  padding: 28px 26px;
+}
+.work-card.alt:hover {
+  transform: rotate(2.4deg) translateY(16px);
+  box-shadow: var(--shadow);
+}
+.work-card .label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+.work-card .small-label {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  color: var(--coral);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.work-card .index {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.04em;
+}
+.work-card h3 {
+  font-family: var(--sans);
+  font-size: clamp(26px, 2.4vw, 38px);
+  font-weight: 800;
+  letter-spacing: -0.022em;
+  line-height: 1.05;
+  margin-bottom: 14px;
+}
+.work-card p {
+  font-family: var(--body);
+  font-size: 14px;
+  color: var(--ink-mute);
+  line-height: 1.55;
+  margin-bottom: 22px;
+  max-width: 28ch;
+}
+.work-card .img {
+  aspect-ratio: 4 / 3;
+  background: var(--bone);
+  border-radius: 12px;
+  margin-bottom: 22px;
+}
+.work-card .img img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+.work-card .meta-row {
+  display: flex;
+  justify-content: space-between;
+  color: var(--ink-faint);
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+.work-card .year { color: var(--coral); font-weight: 600; }
+.work-arrows {
+  position: absolute;
+  right: 64px;
+  bottom: 64px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.work-arrows .nav-btn {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(242, 237, 222, 0.2);
+  background: transparent;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.work-arrows .nav-btn.active { background: var(--coral); border-color: var(--coral); }
+
+/* ---------- TESTIMONIAL / COLLABORATORS ---------- */
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.testimonial-copy h2 {
+  font-family: var(--sans);
+  font-size: clamp(36px, 4vw, 54px);
+  font-weight: 700;
+  letter-spacing: -0.022em;
+  line-height: 1.12;
+  margin-bottom: 36px;
+}
+.testimonial-copy h2 em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+}
+.author {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 22px;
+}
+.author .avatar {
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  background: var(--ink);
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--paper);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 24px;
+}
+.author p {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink);
+  font-weight: 600;
+}
+.author p span {
+  display: block;
+  color: var(--ink-mute);
+  font-weight: 400;
+}
+.divider {
+  border-top: 1px solid var(--line);
+  margin: 60px 0 32px;
+}
+.partners-text {
+  font-family: var(--body);
+  font-size: 14px;
+  color: var(--ink-mute);
+  margin-bottom: 26px;
+  max-width: 38ch;
+}
+.partners {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 22px;
+  align-items: end;
+}
+.partner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 220ms ease;
+}
+.partner:hover { transform: translateY(-2px); }
+.partner:hover .glyph { color: var(--coral); }
+.partner:hover span { color: var(--coral); }
+.partner .glyph {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  color: var(--ink);
+  transition: color 220ms ease;
+}
+.partner .glyph svg { height: 100%; width: auto; max-width: 90px; }
+.partner span {
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+  font-weight: 600;
+  transition: color 220ms ease;
+}
+.partner small {
+  font-family: var(--sans);
+  font-size: 10px;
+  color: var(--ink-faint);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.read-more {
+  margin-top: 56px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--coral);
+  padding-bottom: 6px;
+}
+.read-more::after { content: '→'; color: var(--coral); }
+.testimonial-art {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  max-width: 560px;
+}
+.testimonial-art img { width: 100%; height: 100%; object-fit: contain; }
+
+/* ---------- CTA ---------- */
+.cta-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+.cta h2 {
+  font-size: clamp(54px, 6.6vw, 100px);
+  margin: 32px 0 32px;
+}
+.cta .lead { margin-bottom: 36px; max-width: 36ch; font-size: 16px; }
+.cta-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+.email-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px 14px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.email-pill .arrow-circle {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+.cta-foot {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.cta-foot .stamp { color: var(--coral); font-weight: 600; }
+.cta-art {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  max-width: 620px;
+  margin-left: auto;
+}
+.cta-art img { width: 100%; height: 100%; object-fit: contain; }
+.cta-art .index {
+  position: absolute;
+  right: 8px;
+  top: 24px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 28px;
+  color: var(--ink-faint);
+}
+.cta-art .ribbon {
+  position: absolute;
+  left: -32px;
+  top: 50%;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 60px 0 30px;
+  margin-top: 60px;
+}
+.foot-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+.foot-brand .brand { margin-bottom: 18px; }
+.foot-brand p {
+  font-family: var(--body);
+  font-size: 13.5px;
+  color: var(--ink-mute);
+  line-height: 1.55;
+  max-width: 38ch;
+}
+.foot-brand p .inline-link,
+.inline-link {
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+  transition: color 160ms ease, border-color 160ms ease;
+}
+.inline-link:hover {
+  color: var(--coral);
+  border-bottom-color: var(--coral);
+}
+.method-repo-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+.method-repo-link:hover {
+  color: var(--coral);
+  border-bottom-color: var(--coral);
+}
+.library-link {
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 160ms ease;
+}
+.library-link:hover { border-bottom-color: var(--coral); }
+.foot-col h5 {
+  font-family: var(--sans);
+  font-size: 11px;
+  color: var(--ink);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  font-weight: 700;
+}
+.foot-col ul { list-style: none; }
+.foot-col li { margin-bottom: 10px; }
+.foot-col a {
+  font-family: var(--body);
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+.foot-col a:hover { color: var(--coral); }
+.foot-bottom {
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.foot-bottom .right { display: inline-flex; gap: 24px; align-items: center; }
+.foot-bottom .pulse {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--coral);
+  display: inline-block;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.foot-mega {
+  margin-top: 60px;
+  padding-top: 0;
+  padding-bottom: 12px;
+  border-top: 1px solid var(--line);
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+.foot-mega .word {
+  font-family: var(--sans);
+  font-weight: 900;
+  font-size: clamp(70px, 13vw, 200px);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: var(--ink);
+  white-space: nowrap;
+  margin-top: 30px;
+  padding-bottom: 0.18em;
+}
+.foot-mega .word em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--coral);
+}
+
+/* ---------- scroll-reveal motion ----------
+ *
+ * Driven by `app/_components/reveal-root.tsx`. Elements with
+ * `data-reveal` start hidden + offset; the observer sets
+ * `data-revealed='true'` once they enter the viewport, triggering
+ * the transition.
+ *
+ * Uses `translate` / `scale` longhand properties (not `transform`) so
+ * that elements like `.work-card` keep their static `transform: rotate()`
+ * intact while still translating in.
+ */
+[data-reveal] {
+  opacity: 0;
+  translate: 0 28px;
+  transition:
+    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+    translate 900ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+    scale 900ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+  will-change: opacity, translate, scale;
+}
+[data-reveal='left'] { translate: -36px 0; }
+[data-reveal='right'] { translate: 36px 0; }
+[data-reveal='scale'] { translate: 0 0; scale: 0.96; }
+[data-reveal='rise-lg'] { translate: 0 64px; scale: 0.985; }
+[data-reveal][data-revealed='true'] {
+  opacity: 1;
+  translate: 0 0;
+  scale: 1;
+}
+
+/* stagger primitives - set --reveal-delay on grid children so siblings
+ * appear in sequence rather than all at once. */
+.cards > .card[data-reveal]:nth-child(1) { --reveal-delay: 0ms; }
+.cards > .card[data-reveal]:nth-child(2) { --reveal-delay: 90ms; }
+.cards > .card[data-reveal]:nth-child(3) { --reveal-delay: 180ms; }
+.cards > .card[data-reveal]:nth-child(4) { --reveal-delay: 270ms; }
+
+.labs-grid > .lab[data-reveal]:nth-child(1) { --reveal-delay: 0ms; }
+.labs-grid > .lab[data-reveal]:nth-child(2) { --reveal-delay: 90ms; }
+.labs-grid > .lab[data-reveal]:nth-child(3) { --reveal-delay: 180ms; }
+.labs-grid > .lab[data-reveal]:nth-child(4) { --reveal-delay: 270ms; }
+.labs-grid > .lab[data-reveal]:nth-child(5) { --reveal-delay: 360ms; }
+
+.method-grid > .method-step[data-reveal]:nth-child(1) { --reveal-delay: 0ms; }
+.method-grid > .method-step[data-reveal]:nth-child(2) { --reveal-delay: 110ms; }
+.method-grid > .method-step[data-reveal]:nth-child(3) { --reveal-delay: 220ms; }
+.method-grid > .method-step[data-reveal]:nth-child(4) { --reveal-delay: 330ms; }
+
+.partners > .partner[data-reveal]:nth-child(1) { --reveal-delay: 0ms; }
+.partners > .partner[data-reveal]:nth-child(2) { --reveal-delay: 70ms; }
+.partners > .partner[data-reveal]:nth-child(3) { --reveal-delay: 140ms; }
+.partners > .partner[data-reveal]:nth-child(4) { --reveal-delay: 210ms; }
+.partners > .partner[data-reveal]:nth-child(5) { --reveal-delay: 280ms; }
+.partners > .partner[data-reveal]:nth-child(6) { --reveal-delay: 350ms; }
+
+/* hero copy - let label, headline, lead, actions, stats arrive in sequence
+ * so the headline isn't waiting on a single block-level reveal. */
+.hero-copy > [data-reveal]:nth-of-type(1) { --reveal-delay: 0ms; }
+.hero-copy > [data-reveal]:nth-of-type(2) { --reveal-delay: 80ms; }
+.hero-copy > [data-reveal]:nth-of-type(3) { --reveal-delay: 160ms; }
+.hero-copy > [data-reveal]:nth-of-type(4) { --reveal-delay: 240ms; }
+.hero-copy > [data-reveal]:nth-of-type(5) { --reveal-delay: 320ms; }
+.hero-copy > [data-reveal]:nth-of-type(6) { --reveal-delay: 400ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    translate: 0 0 !important;
+    scale: 1 !important;
+    transition: none !important;
+  }
+  /* Skip the slide-in on the sticky header for users who prefer no motion;
+   * the show/hide still toggles, just instantly. */
+  .nav { transition: none !important; }
+}
+
+/* responsive */
+@media (max-width: 1280px) {
+  .container { padding: 0 44px; }
+  .work { margin: 0 44px; padding: 90px 44px; }
+  .side-rail { display: none; }
+}
+/* hide topbar mid text early - between 1200 and 1280 it crowds even with nowrap */
+@media (max-width: 1200px) {
+  .topbar-inner .mid { display: none; }
+}
+/* nav: between 1080 and 1180 the brand tail + 5 nav links + 2 CTAs + dot
+ * crowd the row. Drop the brand sub-meta first, then tighten link spacing,
+ * so the Star CTA never has to compress. */
+@media (max-width: 1180px) {
+  .nav-inner { gap: 18px; }
+  .brand-meta { display: none; }
+  .nav-links { gap: 28px; }
+}
+@media (max-width: 1080px) {
+  .container { padding: 0 32px; }
+  .hero h1 { font-size: clamp(36px, 4.6vw, 54px); }
+  .section-header h2 { font-size: clamp(32px, 4vw, 50px); }
+  .labs-grid { grid-template-columns: repeat(5, 1fr); gap: 14px; }
+  .partners { grid-template-columns: repeat(3, 1fr); gap: 18px; row-gap: 28px; }
+  .foot-grid { grid-template-columns: 2fr 1fr 1fr; }
+  .foot-grid .foot-col:nth-child(4),
+  .foot-grid .foot-col:nth-child(5) { display: none; }
+}
+@media (max-width: 880px) {
+  .container { padding: 0 24px; }
+  .hero-grid, .about-grid, .capabilities-grid, .testimonial-grid, .cta-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .labs-head, .method-head { grid-template-columns: 1fr; }
+  .labs-grid { grid-template-columns: repeat(2, 1fr); }
+  .method-grid { grid-template-columns: repeat(2, 1fr); gap: 36px; }
+  .method-grid::before { display: none; }
+  .work { margin: 0 12px; padding: 60px 24px; }
+  .work-grid { grid-template-columns: 1fr; }
+  .partners { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .nav-links, .brand-meta, .nav-cta { display: none; }
+  /* wire - stack the field label above the marquee rows */
+  .wire-inner { grid-template-columns: 1fr; gap: 14px; }
+  .wire-left {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    padding-right: 0;
+    padding-bottom: 12px;
+    min-height: 0;
+  }
+}
+@media (max-width: 560px) {
+  .container { padding: 0 16px; }
+  .hero h1 { font-size: 38px; }
+  .labs-grid { grid-template-columns: 1fr; }
+  .cards { grid-template-columns: 1fr; }
+  .pills { justify-content: flex-start; }
+  section { padding: 80px 0; }
+  .topbar-inner { font-size: 9px; }
+  .topbar-inner .right { display: none; }
+  .nav-blob { display: none; }
+}
+
+.code-inline {
+  font-family: var(--mono);
+  font-size: 14px;
+  background: var(--bone);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+.code-inline.sm { font-size: 12px; padding: 0 4px; }
+
+/* ============================================
+   B&M DARK + MOTION - blur-sharp images, liquid nav,
+   scroll-driven reveals, 3D canvas backdrop.
+   ============================================ */
+
+/* Blur → sharp image reveal driven by scroll position.
+ * Native CSS scroll-driven animation when supported; the script
+ * adds .blur-done via IntersectionObserver as the fallback. */
+img.blur-reveal {
+  filter: blur(14px);
+  scale: 1.04;
+  transition:
+    filter 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    scale 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: filter, scale;
+}
+img.blur-reveal.blur-done {
+  filter: blur(0);
+  scale: 1;
+}
+@supports (animation-timeline: view()) {
+  img.blur-reveal {
+    animation: blur-sharp linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 55%;
+  }
+  img.blur-reveal.blur-done { animation: none; }
+}
+@keyframes blur-sharp {
+  from { filter: blur(14px); scale: 1.04; }
+  to { filter: blur(0); scale: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  img.blur-reveal { filter: none; scale: 1; transition: none; animation: none; }
+}
+
+/* glass dropdowns in liquid nav */
+.nav.is-liquid .drop {
+  background: rgba(27, 25, 22, 0.92);
+  backdrop-filter: blur(18px) saturate(150%);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+}
+
+/* ---------- B&M ADDITIONS: nav dropdowns, mobile menu,
+[id] { scroll-margin-top: 96px; }
+.nav-cta::after { content: '→'; }
+
+/* nav dropdowns */
+.nav-links li { position: relative; }
+.nav-links a.dd { padding-right: 4px; }
+.nav-links a.dd::after {
+  content: '▾';
+  font-size: 9px;
+  color: var(--ink-faint);
+  margin-left: 5px;
+  vertical-align: 2px;
+  transition: color 0.18s ease;
+}
+.nav-links a.dd:hover::after { color: var(--coral); }
+.drop {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: -16px;
+  min-width: 300px;
+  background: var(--bone);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 8px;
+  opacity: 0;
+  visibility: hidden;
+  translate: 0 8px;
+  transition: opacity 200ms ease, translate 200ms ease, visibility 200ms;
+  z-index: 60;
+}
+.nav-links li:hover .drop,
+.nav-links li:focus-within .drop { opacity: 1; visibility: visible; translate: 0 0; }
+.drop::before { content: ''; position: absolute; top: -12px; left: 0; right: 0; height: 12px; }
+.drop a {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 9px;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--ink-soft);
+  transition: background 140ms ease, color 140ms ease;
+}
+.drop a:hover { background: rgba(242, 237, 222, 0.06); color: var(--ink); }
+.drop a small {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--ink-mute);
+  margin-top: 1px;
+}
+
+/* burger + mobile menu */
+.nav-burger {
+  display: none;
+  width: 42px; height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  flex-shrink: 0;
+}
+.nav-burger span {
+  display: block;
+  width: 16px; height: 1.5px;
+  background: var(--ink);
+  transition: transform 220ms ease, opacity 220ms ease;
+}
+.nav-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  padding: 92px 24px 28px;
+  z-index: 40;
+  box-shadow: var(--shadow);
+  max-height: calc(100vh - 30px);
+  overflow-y: auto;
+}
+.mobile-menu.open { display: block; }
+.mobile-menu a {
+  display: block;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line-faint);
+  color: var(--ink);
+  text-decoration: none;
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 600;
+}
+.mobile-menu a.sub {
+  font-size: 14px;
+  font-weight: 400;
+  padding-left: 16px;
+  color: var(--ink-mute);
+}
+.mobile-menu a.sub::before { content: '-'; color: var(--coral); margin-right: 10px; }
+
+/* founders */
+.founders-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.founder {
+  background: var(--bone);
+  border-radius: 18px;
+  box-shadow: var(--shadow), inset 0 0 0 1px rgba(242, 237, 222, 0.07);
+  padding: 34px 32px;
+  transition: transform 0.2s ease;
+}
+.founder:hover { transform: translateY(-3px); }
+.founder .avatar {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.founder h3 {
+  font-family: var(--sans);
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.018em;
+  margin-bottom: 6px;
+}
+.founder .role {
+  font-family: var(--sans) !important;
+  font-size: 11px !important;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 16px !important;
+  line-height: 1.5;
+}
+.founder p {
+  font-family: var(--body);
+  font-size: 14px;
+  color: var(--ink-mute);
+  line-height: 1.6;
+}
+.founder .trail { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px; }
+.founder .trail span {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 5px 11px;
+}
+
+/* mision / vision / valores */
+.cards.three { grid-template-columns: repeat(3, 1fr); }
+.cards.three .card p { max-width: none; }
+
+/* servicios: pilares */
+.pillar { margin-top: 90px; }
+.pillar-rule {
+  border-top: 1px dashed var(--line);
+  padding-top: 18px;
+  margin-bottom: 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--sans);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.pillar-rule .roman {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--coral);
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: none;
+}
+.pillar-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 50px;
+  align-items: start;
+  margin-bottom: 14px;
+}
+.pillar-head h3 {
+  font-family: var(--sans);
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.022em;
+  line-height: 1.05;
+  margin-top: 14px;
+}
+.pillar-head h3 em { font-family: var(--serif); font-style: italic; font-weight: 500; letter-spacing: -0.01em; }
+.pillar-head > p {
+  font-family: var(--body);
+  font-size: 14.5px;
+  color: var(--ink-mute);
+  line-height: 1.6;
+  padding-top: 26px;
+}
+.svc-list { border-top: 1px solid var(--line-soft); }
+.svc-row {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: 20px;
+  padding: 15px 6px;
+  border-bottom: 1px solid var(--line-soft);
+  align-items: baseline;
+  transition: background 160ms ease;
+}
+.svc-row:hover { background: rgba(242, 237, 222, 0.04); }
+.svc-row .n { font-family: var(--serif); font-style: italic; font-size: 17px; color: var(--coral); }
+.svc-row b {
+  font-family: var(--sans);
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.svc-row p {
+  font-family: var(--body);
+  font-size: 13px;
+  color: var(--ink-mute);
+  line-height: 1.5;
+}
+
+/* blog grid (reuses .labs classes) */
+.labs-grid.blog-grid { grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.blog-grid .lab { cursor: default; }
+
+/* contacto (dark slab) */
+.work-grid.contact { grid-template-columns: 1fr 1.08fr; align-items: start; }
+.contact-channels { display: flex; flex-direction: column; gap: 12px; margin-top: 30px; }
+.channel {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 18px;
+  border: 1px solid rgba(242, 237, 222, 0.22);
+  border-radius: 999px;
+  color: var(--ink);
+  text-decoration: none;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  transition: border-color 160ms ease, background 160ms ease;
+  width: fit-content;
+}
+a.channel:hover { border-color: var(--coral); background: rgba(237, 111, 92, 0.08); }
+.channel .ch-ico {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: rgba(247, 241, 222, 0.1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.channel .ch-ico svg { width: 13px; height: 13px; stroke: var(--coral); fill: none; stroke-width: 1.6; }
+.channel small {
+  display: block;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(247, 241, 222, 0.5);
+  font-weight: 500;
+}
+.channel b { font-weight: 600; font-size: 13.5px; }
+.quote-card {
+  background: var(--bone);
+  color: var(--ink);
+  border-radius: 18px;
+  padding: 34px 32px 30px;
+  border: 1px solid var(--line-soft);
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, 0.8);
+}
+.quote-card h3 { font-family: var(--sans); font-size: 24px; font-weight: 800; letter-spacing: -0.02em; }
+.quote-card .qsub { font-family: var(--body); font-size: 13px; color: var(--ink-mute); margin: 6px 0 22px; }
+.quote-card .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.quote-card .field { margin-bottom: 12px; }
+.quote-card label {
+  display: block;
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 6px;
+}
+.quote-card input,
+.quote-card select,
+.quote-card textarea {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bone);
+  font-family: var(--body);
+  font-size: 14px;
+  color: var(--ink);
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+.quote-card textarea { min-height: 96px; resize: vertical; }
+.quote-card input:focus,
+.quote-card select:focus,
+.quote-card textarea:focus {
+  outline: none;
+  border-color: var(--coral);
+  box-shadow: 0 0 0 3px rgba(237, 111, 92, 0.15);
+}
+.quote-card .err {
+  display: none;
+  font-family: var(--sans);
+  font-size: 11px;
+  color: #c24836;
+  margin-top: 4px;
+}
+.quote-card .field.invalid .err { display: block; }
+.quote-card .field.invalid input,
+.quote-card .field.invalid select,
+.quote-card .field.invalid textarea { border-color: #c24836; }
+.quote-card .send { width: 100%; margin-top: 8px; padding: 14px; justify-content: center; }
+.quote-ok { display: none; text-align: center; padding: 30px 10px; }
+.quote-ok .ok-ring {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  border: 1px solid var(--coral);
+  color: var(--coral);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.quote-ok h4 { font-family: var(--sans); font-size: 20px; font-weight: 800; }
+.quote-ok p { font-family: var(--body); font-size: 13.5px; color: var(--ink-mute); margin-top: 8px; line-height: 1.6; }
+
+/* responsive B&M additions */
+@media (max-width: 1080px) {
+  .pillar-head { grid-template-columns: 1fr; gap: 8px; }
+  .pillar-head > p { padding-top: 0; }
+  .labs-grid.blog-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 880px) {
+  .nav-burger { display: inline-flex; }
+  .founders-grid { grid-template-columns: 1fr; }
+  .cards.three { grid-template-columns: 1fr 1fr; }
+  .svc-row { grid-template-columns: 40px 1fr; }
+  .svc-row p { grid-column: 2; }
+  .work-grid.contact { grid-template-columns: 1fr; }
+  .quote-card .row2 { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .cards.three { grid-template-columns: 1fr; }
+  .labs-grid.blog-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<canvas id='bg3d' aria-hidden='true'></canvas>
+
+<div class='side-rail right' data-od-id='rail-right'>
+  <span class='rail-text'>B&amp;M Branding &amp; Marketing - Vol. 01 · Propuesta de sitio web · 2026</span>
+</div>
+<div class='side-rail left' data-od-id='rail-left'>
+  <span class='rail-text'>Investigación · Desarrollo Web · Redes Sociales · Datos</span>
+</div>
+<div class='shell'>
+
+<div class='topbar' data-od-id='topbar'>
+  <div class='container topbar-inner'>
+    <span><b>B&amp;M / 2026</b> &nbsp;·&nbsp; Vol. 01 / Propuesta web</span>
+    <span class='mid'>
+      <span>Especialidad <b class='coral'>Branding · Marketing</b></span>
+      <span>Datos que orientan · Estrategias que venden</span>
+    </span>
+    <span class='right'>
+      <a class='topbar-link' href='#contacto'><span class='pulse'></span>Recibiendo proyectos</a>
+      <span><b>ES</b> · CDMX, México</span>
+    </span>
+  </div>
+</div>
+
+<header class='nav' data-od-id='nav'>
+  <div class='container nav-inner'>
+    <a href='#top' class='brand' data-od-id='brand'>
+      <span class='brand-mark' style='font-size:12px;'>B&amp;M</span>
+      <span>B&amp;M Branding</span>
+      <span class='brand-meta'><b>Branding &amp; Marketing</b>Datos · Estrategia · Ventas</span>
+    </a>
+    <nav aria-label='Navegación principal'>
+      <ul class='nav-links'>
+        <li><a href='#top'>Inicio</a></li>
+        <li>
+          <a class='dd' href='#quienes-somos'>¿Quiénes Somos?<span class='num'>03</span></a>
+          <div class='drop'>
+            <a href='#historia'>Historia<small>De dónde venimos y qué nos mueve</small></a>
+            <a href='#fundadores'>Fundadores<small>La integración de Braulio &amp; Miranda</small></a>
+            <a href='#filosofia'>Filosofía Institucional<small>Misión · Visión · Valores</small></a>
+          </div>
+        </li>
+        <li>
+          <a class='dd' href='#servicios'>Servicios<span class='num'>15</span></a>
+          <div class='drop'>
+            <a href='#investigacion'>Investigación de Mercados<small>Estudios · NPS · Buyer persona</small></a>
+            <a href='#desarrollo-web'>Desarrollo &amp; Optimización Web<small>Sitios · SEO/SEM · E-commerce</small></a>
+            <a href='#marketing-digital'>Marketing Digital &amp; RRSS<small>Contenido · Parrillas · Reputación</small></a>
+          </div>
+        </li>
+        <li><a href='#blog'>Blog / Recursos<span class='num'>05</span></a></li>
+        <li><a href='#contacto'>Contacto</a></li>
+      </ul>
+    </nav>
+    <span class='nav-blob' aria-hidden='true'></span>
+    <div class='nav-side'>
+      <a class='nav-cta' href='#contacto'>Cotizar tu proyecto</a>
+      <button class='nav-burger' type='button' aria-label='Abrir menú' aria-expanded='false' data-od-id='nav-burger'>
+        <span></span><span></span><span></span>
+      </button>
+      <span class='status-dot' aria-hidden='true'></span>
+    </div>
+  </div>
+</header>
+
+<div class='mobile-menu' data-od-id='mobile-menu'>
+  <a href='#top'>Inicio</a>
+  <a href='#quienes-somos'>¿Quiénes Somos?</a>
+  <a href='#historia' class='sub'>Historia</a>
+  <a href='#fundadores' class='sub'>Fundadores - Braulio &amp; Miranda</a>
+  <a href='#filosofia' class='sub'>Filosofía Institucional</a>
+  <a href='#servicios'>Servicios</a>
+  <a href='#investigacion' class='sub'>Investigación de Mercados</a>
+  <a href='#desarrollo-web' class='sub'>Desarrollo &amp; Optimización Web</a>
+  <a href='#marketing-digital' class='sub'>Marketing Digital &amp; Redes Sociales</a>
+  <a href='#metodo' class='sub'>Nuestro Método</a>
+  <a href='#blog'>Blog / Recursos</a>
+  <a href='#contacto'>Contacto</a>
+</div>
+
+<section class='hero' id='top' data-od-id='hero'>
+  <div class='container'>
+    <div class='sec-rule'>
+      <span class='roman'>I.</span>
+      <span class='meta-grp'>
+        <span>Inicio / Portada</span>
+        <span class='dot-mark'>•</span>
+        <span>B&amp;M / Volumen 01</span>
+      </span>
+      <span>001 / 006</span>
+    </div>
+  </div>
+  <div class='container hero-grid'>
+    <div class='hero-copy'>
+      <span class='label' data-reveal>Agencia de branding &amp; marketing <span class='ix'>· Nº 01</span></span>
+      <h1 class='display' data-reveal>Datos que <em>orientan,</em> estrategias que <em>venden</em><span class='dot'>.</span></h1>
+      <p class='lead' data-reveal>B&amp;M Branding &amp; Marketing integra investigación de mercados, desarrollo web y redes sociales en un solo sistema: entendemos a tu cliente con datos, construimos tu plataforma digital y cuidamos la conversación que convierte cada contacto en una oportunidad de venta.</p>
+      <div class='hero-actions' data-reveal>
+        <a class='btn btn-primary' href='#contacto'>
+          Solicitar cotización
+          <span class='arrow'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
+        </a>
+        <a class='btn btn-ghost' href='#servicios'>
+          Ver servicios
+          <span class='arrow'><svg viewBox='0 0 24 24'><circle cx='12' cy='12' r='9'/><path d='M9 12h6M12 9v6'/></svg></span>
+        </a>
+      </div>
+      <div class='hero-stats' data-reveal>
+          <div class='stat'>
+    <span class='ring solid'>01</span>
+    <span class='stat-label'><b>investigación</b>de mercados</span>
+  </div>
+          <div class='stat'>
+    <span class='ring'>02</span>
+    <span class='stat-label'><b>desarrollo</b>web &amp; SEO</span>
+  </div>
+          <div class='stat'>
+    <span class='ring coral'>03</span>
+    <span class='stat-label'><b>marketing</b>digital &amp; RRSS</span>
+  </div>
+      </div>
+      <div class='hero-foot' data-reveal>
+        <span class='meta'>↳ &nbsp; 3 pilares &nbsp; · &nbsp; 15 servicios &nbsp; · &nbsp; 1 objetivo: vender</span>
+        <span class='coord'>19.4326° N · 99.1332° W</span>
+      </div>
+    </div>
+    <div class='hero-art' data-reveal='scale'>
+      <span class='corner tl'></span>
+      <span class='corner tr'></span>
+      <span class='corner bl'></span>
+      <span class='corner br'></span>
+      <span class='annot annot-tl coord'>FIG. 01 / BM-26</span>
+      <span class='annot annot-tr'>Placa Nº 01</span>
+      <span class='annot annot-bl coord'>CDMX · MX</span>
+      <span class='annot annot-br'>Compuesto por&nbsp;<span style='color:var(--coral);'>B&amp;M</span></span>
+      <img src='./assets/hero.png' alt='Collage editorial B&amp;M: escultura clásica con arcos, datos y elementos de arquitectura' />
+      <div class='index'>
+      <span class='on'><span class='n'>01</span>Escuchar</span>
+      <span><span class='n'>02</span>Analizar</span>
+      <span><span class='n'>03</span>Diseñar</span>
+      <span><span class='n'>04</span>Medir</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class='wire' data-od-id='wire' aria-label='Global wire - cities and contributors'>
+  <div class='container wire-inner'>
+    <div class='wire-left'>
+      <span class='wire-mark' aria-hidden='true'><span class='wire-pulse'></span></span>
+      <span class='wire-title'>
+        <b>Lo que hacemos</b>
+        <span>3 pilares · 15 servicios · 1 sistema</span>
+      </span>
+    </div>
+    <div class='wire-rows'>
+      <div class='wire-row'>
+        <div class='marquee-track' aria-hidden='true'>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Investigación de Mercados</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Estudios Cualitativos y Cuantitativos</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Benchmarking de Mercado</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Estudio de Precios y NPS</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Market Share y Buyer Persona</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Storytelling de Empresa</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Páginas Web y Landing Pages</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Formularios y Conversión de Leads</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>SEO y SEM</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>E-commerce y Catálogos Digitales</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Gestión de Redes Sociales</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Reels y Videos</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Parrillas Semanales</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Reputación Online</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Investigación de Mercados</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Estudios Cualitativos y Cuantitativos</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Benchmarking de Mercado</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Estudio de Precios y NPS</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Market Share y Buyer Persona</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Storytelling de Empresa</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Páginas Web y Landing Pages</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Formularios y Conversión de Leads</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>SEO y SEM</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>E-commerce y Catálogos Digitales</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Gestión de Redes Sociales</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Reels y Videos</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Parrillas Semanales</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Reputación Online</span></span>
+        </div>
+      </div>
+      <div class='wire-row reverse'>
+        <div class='marquee-track'>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Inteligencia de Mercado</span><span class='wire-role'>categoría</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Desarrollo Web</span><span class='wire-role'>categoría</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Estrategia Digital</span><span class='wire-role'>categoría</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Casos de Éxito</span><span class='wire-role'>categoría</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Datos</span><span class='wire-role'>orientan</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Estrategias</span><span class='wire-role'>venden</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Leads</span><span class='wire-role'>convierten</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Marcas</span><span class='wire-role'>posicionan</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Inteligencia de Mercado</span><span class='wire-role'>categoría</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Desarrollo Web</span><span class='wire-role'>categoría</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Estrategia Digital</span><span class='wire-role'>categoría</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Casos de Éxito</span><span class='wire-role'>categoría</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Datos</span><span class='wire-role'>orientan</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Estrategias</span><span class='wire-role'>venden</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Leads</span><span class='wire-role'>convierten</span></span>
+          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Marcas</span><span class='wire-role'>posicionan</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class='about' id='quienes-somos' data-od-id='quienes-somos'>
+  <div class='container'>
+    <div class='sec-rule'>
+    <span class='roman'>II.</span>
+    <span class='meta-grp'>
+      <span>¿Quiénes Somos? / Historia</span>
+      <span class='dot-mark'>•</span>
+      <span>B&amp;M / Volumen 01</span>
+    </span>
+    <span>002 / 006</span>
+  </div>
+    <div class='about-grid'>
+      <div class='about-copy' id='historia' data-reveal>
+        <span class='label'>Nuestra historia <span class='ix'>· Nº 02</span></span>
+        <h2 class='display'>Dos disciplinas, <em>un mismo</em> propósito: que tu marca <em>venda</em><span class='dot'>.</span></h2>
+        <p class='lead'>B&amp;M nació de la integración de Braulio y Miranda: la investigación de mercados y el desarrollo web dejaron de ser servicios aislados para convertirse en un solo sistema. Hoy estudiamos a tus clientes, construimos tu plataforma digital y cuidamos tu conversación en redes - con datos que orientan cada decisión y estrategias pensadas para vender.</p>
+        <a class='btn btn-ghost' href='#fundadores'>
+          Conoce a los fundadores
+          <span class='arrow'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
+        </a>
+        <div class='footer-row'>
+          <span class='mark'>B</span>
+          <span>Investigación · Diseño · Contenido · Medición</span>
+          <span class='stamp'>
+            <span>Filosofía B&amp;M</span>
+            <span style='color: var(--ink);'>Datos + Estrategia</span>
+          </span>
+        </div>
+      </div>
+      <div class='about-art' data-reveal='right'>
+        <img src='./assets/about.png' alt='Vitrina de museo con busto de yeso y arco, estilo editorial B&amp;M' />
+        <div class='about-side-note'>
+          <b></b>
+          Del estudio de mercado<br/>a la conversión digital:<br/>acompañamos toda<br/>la cadena de valor<br/>de tu marca.
+        </div>
+        <div class='about-caption'>
+          <b>Estudios en datos · estrategia · percepción de marca.</b>
+          (B&amp;M Branding &amp; Marketing, MMXXVI)
+        </div>
+      </div>
+    </div>
+
+    <div id='fundadores' data-od-id='fundadores' style='margin-top:100px;'>
+      <div class='pillar-rule'>
+        <span class='roman'>II.a</span>
+        <span>Fundadores · La integración de Braulio &amp; Miranda</span>
+        <span>02.a / 02.c</span>
+      </div>
+      <div class='founders-grid'>
+        <div class='founder' data-reveal>
+          <span class='avatar'>B</span>
+          <h3>Braulio</h3>
+          <p class='role'>Cofundador - Investigación de Mercados</p>
+          <p>Su trayectoria está en la parte analítica de la agencia: estudios cualitativos y cuantitativos, benchmarking, análisis de precios, NPS y perfiles de comprador. Es quien se asegura de que cada recomendación de B&amp;M esté respaldada por evidencia de mercado, no por intuición.</p>
+          <div class='trail'><span>Estudios cuanti &amp; cuali</span><span>Benchmarking</span><span>Precios &amp; NPS</span><span>Buyer persona</span></div>
+        </div>
+        <div class='founder' data-reveal>
+          <span class='avatar'>M</span>
+          <h3>Miranda</h3>
+          <p class='role'>Cofundadora - Desarrollo Web &amp; Marketing Digital</p>
+          <p>Su trayectoria está en la parte creativa y técnica: sitios y landing pages orientados a conversión, estrategia de contenidos, redes sociales y campañas digitales. Es quien convierte los hallazgos de investigación en experiencias de marca que sí venden.</p>
+          <div class='trail'><span>Web &amp; SEO/SEM</span><span>Contenido &amp; RRSS</span><span>Conversión</span><span>E-commerce</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div id='filosofia' data-od-id='filosofia' style='margin-top:80px;'>
+      <div class='pillar-rule'>
+        <span class='roman'>II.b</span>
+        <span>Filosofía institucional · Misión · Visión · Valores</span>
+        <span>02.b / 02.c</span>
+      </div>
+      <div class='cards three'>
+        <div class='card' data-reveal>
+          <div class='num'>01<span class='tag'>Misión</span></div>
+          <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
+            <circle cx='12' cy='12' r='8'/><circle cx='12' cy='12' r='3'/>
+          </svg>
+          <h3>Convertir datos<br/>en decisiones</h3>
+          <p>Ayudar a las marcas a conocer a sus clientes y a su competencia para construir estrategias digitales que generen ventas reales y sostenibles.</p>
+        </div>
+        <div class='card' data-reveal>
+          <div class='num'>02<span class='tag'>Visión</span></div>
+          <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
+            <path d='M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z'/><circle cx='12' cy='12' r='3'/>
+          </svg>
+          <h3>Ser la aliada<br/>estratégica</h3>
+          <p>Que cada pyme y marca que crezca con nosotros tome decisiones comerciales con la misma calidad de información que una gran empresa.</p>
+        </div>
+        <div class='card' data-reveal>
+          <div class='num'>03<span class='tag'>Valores</span></div>
+          <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
+            <path d='M12 5v14M5 12h14'/>
+          </svg>
+          <h3>Rigor, claridad<br/>y resultados</h3>
+          <p>Rigor en los datos, transparencia en los procesos, obsesión por el resultado del cliente y creatividad con propósito.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class='capabilities' id='servicios' data-od-id='servicios'>
+  <div class='container'>
+    <div class='sec-rule'>
+    <span class='roman'>III.</span>
+    <span class='meta-grp'>
+      <span>Servicios · 3 Pilares · 15 Servicios</span>
+      <span class='dot-mark'>•</span>
+      <span>Del dato a la venta</span>
+    </span>
+    <span>003 / 006</span>
+  </div>
+    <div class='capabilities-grid'>
+      <div class='capabilities-art' data-reveal='left'>
+        <span class='corner tl'></span>
+        <span class='corner br'></span>
+        <img src='./assets/capabilities.png' alt='Composición bauhaus con arco coral y columna, matriz de servicios B&amp;M' />
+        <div class='ribbon'><b>B&amp;M</b> &nbsp;·&nbsp; MATRIZ DE SERVICIOS &nbsp;·&nbsp; 3 PILARES</div>
+      </div>
+      <div class='capabilities-copy' data-reveal>
+        <span class='label'>Servicios <span class='ix'>· Nº 03</span></span>
+        <h2 class='display'>Tres pilares que convierten <em>datos</em> en <em>ventas</em><span class='dot'>.</span></h2>
+        <p class='lead'>Cada pilar funciona por separado; juntos forman un sistema completo: entender el mercado, construir la plataforma digital y sostener la conversación que vende.</p>
+        <div class='cards'>
+          <div class='card' data-reveal>
+    <div class='num'>01<span class='tag'>Investigación</span></div>
+    <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
+      <circle cx='9' cy='9' r='5'/><path d='M14 14l5 5'/>
+    </svg>
+    <h3>Investigación<br/>de Mercados</h3>
+    <p>Estudios cuanti y cuali, benchmarking, precios y NPS, market share, buyer persona y storytelling de empresa.</p>
+    <a class='arrow-mark' href='#investigacion' aria-label='Ver Investigación de Mercados'>
+      <svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg>
+    </a>
+  </div>
+          <div class='card' data-reveal>
+    <div class='num'>02<span class='tag'>Web</span></div>
+    <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
+      <rect x='3.5' y='3.5' width='8' height='8'/><rect x='12.5' y='3.5' width='8' height='8'/><rect x='3.5' y='12.5' width='8' height='8'/><rect x='12.5' y='12.5' width='8' height='8'/>
+    </svg>
+    <h3>Desarrollo &amp;<br/>Optimización Web</h3>
+    <p>Sitios y landing pages, formularios que convierten leads, banners, SEO/SEM, e-commerce y catálogos digitales.</p>
+    <a class='arrow-mark' href='#desarrollo-web' aria-label='Ver Desarrollo y Optimización Web'>
+      <svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg>
+    </a>
+  </div>
+          <div class='card' data-reveal>
+    <div class='num'>03<span class='tag'>RRSS</span></div>
+    <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
+      <circle cx='8' cy='12' r='4.5'/><circle cx='16' cy='12' r='4.5'/>
+    </svg>
+    <h3>Marketing Digital<br/>&amp; Redes Sociales</h3>
+    <p>Gestión de redes, contenido (posteos, reels, videos), parrillas semanales, comentarios y estrategias de conversión.</p>
+    <a class='arrow-mark' href='#marketing-digital' aria-label='Ver Marketing Digital y Redes Sociales'>
+      <svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg>
+    </a>
+  </div>
+          <div class='card' data-reveal>
+    <div class='num'>04<span class='tag'>Método</span></div>
+    <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
+      <path d='M5 8h14v8H5z'/><path d='M9 12h6M12 9v6'/>
+    </svg>
+    <h3>Un sistema,<br/>no piezas sueltas</h3>
+    <p>Los tres pilares comparten un método: escuchar, analizar, diseñar y medir. Empieza por el pilar que necesites hoy.</p>
+    <a class='arrow-mark' href='#metodo' aria-label='Ver el método B&amp;M'>
+      <svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg>
+    </a>
+  </div>
+        </div>
+      </div>
+    </div>
+
+    <div class='pillar' id='investigacion' data-od-id='investigacion'>
+      <div class='pillar-rule'>
+        <span class='roman'>III.a</span>
+        <span>Investigación de Mercados · 5 servicios</span>
+        <span>03.a / 03.c</span>
+      </div>
+      <div class='pillar-head'>
+        <div>
+          <span class='label'>Pilar 01 <span class='ix'>· Investigación</span></span>
+          <h3>Conoce a tu <em>mercado</em> antes de invertir un peso</h3>
+        </div>
+        <p>La decisión comercial más costosa es la que se toma sin información. Este pilar pone números y contexto sobre tu cliente, tu competencia y tu precio.</p>
+      </div>
+      <div class='svc-list'>
+        <div class='svc-row'><span class='n'>a.1</span><b>Estudios Cualitativos y Cuantitativos</b><p>Entrevistas, sesiones a profundidad y encuestas que revelan qué piensa, siente y necesita tu cliente.</p></div>
+        <div class='svc-row'><span class='n'>a.2</span><b>Benchmarking &amp; Análisis de Mercado</b><p>Comparamos tu oferta contra la competencia para encontrar huecos, ventajas y oportunidades reales.</p></div>
+        <div class='svc-row'><span class='n'>a.3</span><b>Estudio de Precios &amp; NPS</b><p>Determinamos el precio que el mercado está dispuesto a pagar y medimos la lealtad de tus clientes con Net Promoter Score.</p></div>
+        <div class='svc-row'><span class='n'>a.4</span><b>Market Share &amp; Elaboración de Buyer Persona</b><p>Cuantificamos tu participación de mercado y construimos el perfil del comprador ideal que debe hablar toda tu comunicación.</p></div>
+        <div class='svc-row'><span class='n'>a.5</span><b>Storytelling de Empresa</b><p>Convertimos tu historia, valores y propuesta de valor en un relato que conecta con el cliente y te diferencia.</p></div>
+      </div>
+    </div>
+
+    <div class='pillar' id='desarrollo-web' data-od-id='desarrollo-web'>
+      <div class='pillar-rule'>
+        <span class='roman'>III.b</span>
+        <span>Desarrollo &amp; Optimización Web · 5 servicios</span>
+        <span>03.b / 03.c</span>
+      </div>
+      <div class='pillar-head'>
+        <div>
+          <span class='label'>Pilar 02 <span class='ix'>· Web</span></span>
+          <h3>Tu web, pensada para <em>convertir</em> visitas en clientes</h3>
+        </div>
+        <p>No hacemos sitios de vitrina: cada página, formulario y banner está diseñado para que el visitante avance hasta el contacto o la compra.</p>
+      </div>
+      <div class='svc-list'>
+        <div class='svc-row'><span class='n'>b.1</span><b>Creación de Páginas Web y Landing Pages</b><p>Sitios y páginas de aterrizaje con estructura, contenido y diseño orientados a un objetivo de negocio claro.</p></div>
+        <div class='svc-row'><span class='n'>b.2</span><b>Formularios Estratégicos &amp; Conversión de Leads</b><p>Formularios que capturan la información correcta y convierten visitas en contactos calificados.</p></div>
+        <div class='svc-row'><span class='n'>b.3</span><b>Diseño de Banners &amp; Banners Promocionales</b><p>Piezas digitales para campañas, promociones y temporadas, alineadas a tu identidad de marca.</p></div>
+        <div class='svc-row'><span class='n'>b.4</span><b>Optimización SEO y SEM</b><p>Posicionamiento orgánico y campañas de búsqueda para que te encuentren quienes ya buscan lo que vendes.</p></div>
+        <div class='svc-row'><span class='n'>b.5</span><b>Implementación de E-commerce &amp; Catálogos Digitales</b><p>Tiendas en línea y catálogos listos para vender, con una experiencia de compra clara y medible.</p></div>
+      </div>
+    </div>
+
+    <div class='pillar' id='marketing-digital' data-od-id='marketing-digital'>
+      <div class='pillar-rule'>
+        <span class='roman'>III.c</span>
+        <span>Marketing Digital &amp; Redes Sociales · 5 servicios</span>
+        <span>03.c / 03.c</span>
+      </div>
+      <div class='pillar-head'>
+        <div>
+          <span class='label'>Pilar 03 <span class='ix'>· RRSS</span></span>
+          <h3>Redes que <em>conversan,</em> posicionan y venden</h3>
+        </div>
+        <p>Tu marca no solo publica: escucha. Gestionamos la conversación diaria y las estrategias que llevan tráfico a tu punto de venta.</p>
+      </div>
+      <div class='svc-list'>
+        <div class='svc-row'><span class='n'>c.1</span><b>Gestión y Optimización de Redes Sociales (RRSS)</b><p>Administración profesional de tus perfiles: biografías, formatos, horarios y mejores prácticas de cada red.</p></div>
+        <div class='svc-row'><span class='n'>c.2</span><b>Creación de Contenido (Posteos, Reels, Videos)</b><p>Producción de piezas en los formatos que cada red premia, con guiones enfocados en tu buyer persona.</p></div>
+        <div class='svc-row'><span class='n'>c.3</span><b>Parrillas de Contenido Semanales</b><p>Calendarios semanales planificados: qué publicar, cuándo y con qué objetivo - sin improvisar.</p></div>
+        <div class='svc-row'><span class='n'>c.4</span><b>Atención y Respuesta a Comentarios</b><p>Gestión de mensajes, comentarios y reseñas a tiempo, para convertir la interacción en confianza.</p></div>
+        <div class='svc-row'><span class='n'>c.5</span><b>Estrategias de Conversión</b><p>Tráfico a punto de venta, posicionamiento, reconocimiento de marca y manejo de reputación online.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class='method' id='metodo' data-od-id='metodo'>
+  <div class='container'>
+    <div class='sec-rule'>
+    <span class='roman'>IV.</span>
+    <span class='meta-grp'>
+      <span>Método · De los datos a la venta</span>
+      <span class='dot-mark'>•</span>
+      <span>4 etapas, iterativas</span>
+    </span>
+    <span>004 / 006</span>
+  </div>
+    <div class='method-head'>
+      <div data-reveal>
+        <span class='label'>Nuestro método <span class='ix'>· Nº 04</span></span>
+        <h2 class='display' style='margin-top:30px;'>De la <em>señal</em> a la venta<span class='dot'>.</span></h2>
+      </div>
+      <div class='right' data-reveal='right'>
+        <span class='plus'>+</span>
+        <p>Cada etapa es iterativa y medible: los datos orientan cada decisión y la estrategia se ajusta con lo que el mercado responde.</p>
+      </div>
+    </div>
+    <div class='method-grid'>
+        <div class='method-step' data-reveal>
+    <div class='num'>01</div>
+    <h4>Escuchar <span class='arrow-r'>→</span></h4>
+    <p>Diagnóstico y briefing: entendemos tu negocio, tu cliente y tu competencia antes de proponer cualquier cosa.</p>
+    <div class='img'><img src='./assets/method-1.png' alt='Lupa sobre un plano arquitectónico, metáfora del diagnóstico' /></div>
+  </div>
+        <div class='method-step' data-reveal>
+    <div class='num'>02</div>
+    <h4>Analizar <span class='arrow-r'>→</span></h4>
+    <p>Estudios de mercado, benchmarking, precios y buyer persona: la base factual sobre la que se decide todo lo demás.</p>
+    <div class='img'><img src='./assets/method-2.png' alt='Portapapeles con cuestionario y pluma coral, metáfora del análisis' /></div>
+  </div>
+        <div class='method-step' data-reveal>
+    <div class='num'>03</div>
+    <h4>Diseñar <span class='arrow-r'>→</span></h4>
+    <p>Estrategia y ejecución: web, campañas, contenido y parrillas alineados al perfil de tu comprador ideal.</p>
+    <div class='img'><img src='./assets/method-3.png' alt='Compás, regla y abanico de color, metáfora del diseño estratégico' /></div>
+  </div>
+        <div class='method-step' data-reveal>
+    <div class='num'>04</div>
+    <h4>Medir</h4>
+    <p>NPS, market share, leads y tráfico al punto de venta: medimos lo que importa, aprendemos y ajustamos.</p>
+    <div class='img'><img src='./assets/method-4.png' alt='Charola de imprenta con hojas apiladas, metáfora de la entrega medible' /></div>
+  </div>
+    </div>
+    <div class='method-foot'>
+      <div class='left'>
+        <span class='ring'></span>
+        <span>Los datos informan cada decisión.</span>
+      </div>
+      <div class='right'><b>B&amp;M Branding &amp; Marketing</b> &nbsp;·&nbsp; Datos que orientan, estrategias que venden</div>
+    </div>
+  </div>
+</section>
+
+<section class='labs' id='blog' data-od-id='blog'>
+  <div class='container'>
+    <div class='sec-rule'>
+    <span class='roman'>V.</span>
+    <span class='meta-grp'>
+      <span>Blog / Recursos · Espacio educativo</span>
+      <span class='dot-mark'>•</span>
+      <span>4 categorías de contenido</span>
+    </span>
+    <span>005 / 006</span>
+  </div>
+    <div class='labs-head'>
+      <div data-reveal>
+        <span class='label'>Blog &amp; Recursos <span class='ix'>· Nº 05</span></span>
+        <h2 class='display' style='margin-top:30px;'>Artículos de valor para decidir con <em>datos</em> y vender con <em>estrategia</em><span class='dot'>.</span></h2>
+      </div>
+      <div class='pills' data-reveal='right' data-od-id='blog-filters'>
+          <button class='pill active' data-cat='all' type='button'>Todos<span class='count'>5</span></button>
+          <button class='pill' data-cat='im' type='button'>Inteligencia de Mercado<span class='count'>2</span></button>
+          <button class='pill' data-cat='dw' type='button'>Desarrollo Web<span class='count'>1</span></button>
+          <button class='pill' data-cat='ed' type='button'>Estrategia Digital<span class='count'>1</span></button>
+          <button class='pill' data-cat='ce' type='button'>Casos de Éxito<span class='count'>1</span></button>
+      </div>
+    </div>
+    <div class='labs-meta'>
+      <span class='ring'>04</span>
+      <div class='meta-text'>
+        <b>Categorías de contenido</b>
+        inteligencia de mercado<br/>desarrollo web<br/>estrategia digital<br/>casos de éxito
+      </div>
+    </div>
+    <div class='labs-grid blog-grid' data-od-id='blog-grid'>
+        <div class='lab' data-reveal data-cat='im'>
+    <div class='lab-img'><span class='badge'>Inteligencia de Mercado</span><img src='./assets/lab-1.png' alt='Pila de revistas dobladas, artículo sobre buyer persona' /></div>
+    <div class='num-row'><span>Artículo 01</span><span>8 min</span></div>
+    <h4>Buyer persona: el retrato que vende antes de la primera llamada</h4>
+    <p>Cómo construir el perfil de tu comprador ideal con datos reales de mercado y usarlo en cada pieza de comunicación.</p>
+    <span class='arrow-mark' aria-hidden='true'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
+  </div>
+        <div class='lab' data-reveal data-cat='im'>
+    <div class='lab-img'><span class='badge'>Inteligencia de Mercado</span><img src='./assets/lab-2.png' alt='Ojo sintético y onda de sonido, artículo sobre NPS' /></div>
+    <div class='num-row'><span>Artículo 02</span><span>6 min</span></div>
+    <h4>NPS: la pregunta de dos minutos que mide la lealtad de tus clientes</h4>
+    <p>Qué es el Net Promoter Score, cómo medirlo sin molestar a nadie y qué hacer con el resultado.</p>
+    <span class='arrow-mark' aria-hidden='true'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
+  </div>
+        <div class='lab' data-reveal data-cat='dw'>
+    <div class='lab-img'><span class='badge'>Desarrollo Web</span><img src='./assets/lab-3.png' alt='Máquina de escribir con tarjetas, artículo sobre landing pages' /></div>
+    <div class='num-row'><span>Artículo 03</span><span>7 min</span></div>
+    <h4>Landing pages: anatomía de una página que convierte visitas en leads</h4>
+    <p>Estructura, formularios estratégicos y llamadas a la acción que sí generan contactos calificados.</p>
+    <span class='arrow-mark' aria-hidden='true'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
+  </div>
+        <div class='lab' data-reveal data-cat='ed'>
+    <div class='lab-img'><span class='badge'>Estrategia Digital</span><img src='./assets/lab-4.png' alt='Medidores dispuestos en círculo, artículo sobre parrillas de contenido' /></div>
+    <div class='num-row'><span>Artículo 04</span><span>5 min</span></div>
+    <h4>Parrillas de contenido: el calendario que ordena tus redes</h4>
+    <p>Planear una semana de posteos, reels y respuestas sin improvisar ni quemar la cuenta.</p>
+    <span class='arrow-mark' aria-hidden='true'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
+  </div>
+        <div class='lab' data-reveal data-cat='ce'>
+    <div class='lab-img'><span class='badge'>Casos de Éxito</span><img src='./assets/lab-5.png' alt='Cúpula de cristal sobre una pequeña ciudad, artículo de caso de éxito' /></div>
+    <div class='num-row'><span>Artículo 05</span><span>9 min</span></div>
+    <h4>Del estudio de mercado al punto de venta: anatomía de un caso de éxito</h4>
+    <p>Cómo conectamos investigación, web y redes para llevar tráfico real a un punto de venta.</p>
+    <span class='arrow-mark' aria-hidden='true'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
+  </div>
+    </div>
+    <div class='labs-foot'>
+      <div class='progress'>
+        <span class='on'></span><span class='on'></span><span class='on'></span><span class='on'></span><span class='on'></span><span></span><span></span><span></span>
+      </div>
+      <span class='meta'>05 ARTÍCULOS &nbsp;·&nbsp; <a class='library-link' href='#contacto' style='color:var(--coral);'>SUGIERE UN TEMA →</a></span>
+    </div>
+  </div>
+</section>
+
+<section class='tight' id='contacto' data-od-id='contacto'>
+  <div class='work'>
+    <div class='work-rule'>
+      <span class='roman'>VI.</span>
+      <span style='display:inline-flex;gap:24px;'>
+        <span>Contacto · Cotización</span>
+        <span style='color:var(--coral);'>•</span>
+        <span>Respuesta de B&amp;M</span>
+      </span>
+      <span>006 / 006</span>
+    </div>
+    <div class='work-grid contact'>
+      <div class='work-copy' data-reveal>
+        <span class='label'>Contacto <span class='ix'>· Nº 06</span></span>
+        <h2>Cuéntanos tu objetivo y armemos la <em>estrategia</em> que lo <em>vende</em><span class='dot'>.</span></h2>
+        <p style='font-family:var(--body); font-size:15px; color:rgba(247,241,222,0.75); line-height:1.6; max-width:40ch; margin-top:-8px;'>Cuéntanos qué quieres lograr: entender tu mercado, lanzar tu web, ordenar tus redes - o montar el sistema completo. Completa el formulario o escríbenos directo.</p>
+        <div class='contact-channels' data-od-id='contact-channels'>
+          <a class='channel' href='https://wa.me/5215500000000?text=Hola%20B%26M%2C%20quiero%20cotizar%20un%20proyecto' target='_blank' rel='noreferrer noopener'>
+            <span class='ch-ico'><svg viewBox='0 0 24 24'><path d='M21 12a9 9 0 0 1-13.4 7.9L3 21l1.2-4.5A9 9 0 1 1 21 12z'/></svg></span>
+            <span><small>WhatsApp</small><b>+52 55 0000 0000</b></span>
+          </a>
+          <a class='channel' href='mailto:hola@bymarketing.mx'>
+            <span class='ch-ico'><svg viewBox='0 0 24 24'><path d='M3 6h18v12H3z'/><path d='M3 7l9 6 9-6'/></svg></span>
+            <span><small>Correo</small><b>hola@bymarketing.mx</b></span>
+          </a>
+          <div class='channel' style='cursor:default;'>
+            <span class='ch-ico'><svg viewBox='0 0 24 24'><path d='M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z'/><circle cx='12' cy='10' r='2.5'/></svg></span>
+            <span><small>Ubicación y teléfonos</small><b>Ciudad de México, CDMX · México</b></span>
+          </div>
+        </div>
+      </div>
+      <div class='quote-card' data-reveal='scale' data-od-id='quote-form'>
+        <h3>Solicita tu cotización</h3>
+        <p class='qsub'>Cada propuesta incluye alcance, tiempos e inversión estimados, respaldada por diagnóstico.</p>
+        <form id='quoteForm' novalidate>
+          <div class='row2'>
+            <div class='field'>
+              <label for='q-nombre'>Nombre *</label>
+              <input id='q-nombre' name='nombre' type='text' autocomplete='name' required />
+              <span class='err'>Escribe tu nombre.</span>
+            </div>
+            <div class='field'>
+              <label for='q-empresa'>Empresa</label>
+              <input id='q-empresa' name='empresa' type='text' autocomplete='organization' />
+            </div>
+          </div>
+          <div class='row2'>
+            <div class='field'>
+              <label for='q-email'>Correo *</label>
+              <input id='q-email' name='email' type='email' autocomplete='email' required />
+              <span class='err'>Escribe un correo válido.</span>
+            </div>
+            <div class='field'>
+              <label for='q-tel'>Teléfono / WhatsApp</label>
+              <input id='q-tel' name='tel' type='tel' autocomplete='tel' />
+            </div>
+          </div>
+          <div class='field'>
+            <label for='q-servicio'>Servicio de interés *</label>
+            <select id='q-servicio' name='servicio' required>
+              <option value=''>Selecciona una opción…</option>
+              <option>Investigación de Mercados</option>
+              <option>Desarrollo &amp; Optimización Web</option>
+              <option>Marketing Digital &amp; Redes Sociales</option>
+              <option>Estrategia integral - los tres pilares</option>
+            </select>
+            <span class='err'>Selecciona un servicio.</span>
+          </div>
+          <div class='field'>
+            <label for='q-msg'>Cuéntanos tu proyecto *</label>
+            <textarea id='q-msg' name='mensaje' required></textarea>
+            <span class='err'>Cuéntanos brevemente tu proyecto.</span>
+          </div>
+          <button class='btn btn-primary send' type='submit'>
+            Enviar solicitud
+            <span class='arrow'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
+          </button>
+        </form>
+        <div class='quote-ok' role='status'>
+          <span class='ok-ring'><svg width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8'><path d='M4 12l6 6L20 6'/></svg></span>
+          <h4>Solicitud recibida</h4>
+          <p>Gracias por escribirnos. Te contactaremos para agendar una conversación sobre tu proyecto.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer data-od-id='footer'>
+  <div class='container'>
+    <div class='foot-grid'>
+      <div class='foot-brand'>
+        <a href='#top' class='brand'>
+          <span class='brand-mark' style='font-size:12px;'>B&amp;M</span>
+          <span>B&amp;M Branding &amp; Marketing</span>
+        </a>
+        <p style='margin-top:18px;'>Agencia que integra investigación de mercados, desarrollo web y redes sociales en un solo sistema: datos que orientan, estrategias que venden.</p>
+        <p style='margin-top:14px;'><a class='inline-link' href='https://wa.me/5215500000000' target='_blank' rel='noreferrer noopener'>Escríbenos por WhatsApp</a> &nbsp;·&nbsp; <a class='inline-link' href='mailto:hola@bymarketing.mx'>hola@bymarketing.mx</a></p>
+      </div>
+      <div class='foot-col'>
+    <h5>Nosotros</h5>
+    <ul>
+        <li><a href='#historia'>Historia</a></li>
+        <li><a href='#fundadores'>Fundadores</a></li>
+        <li><a href='#filosofia'>Filosofía Institucional</a></li>
+        <li><a href='#metodo'>Nuestro Método</a></li>
+    </ul>
+  </div>
+      <div class='foot-col'>
+    <h5>Servicios</h5>
+    <ul>
+        <li><a href='#investigacion'>Investigación de Mercados</a></li>
+        <li><a href='#desarrollo-web'>Desarrollo &amp; Optimización Web</a></li>
+        <li><a href='#marketing-digital'>Marketing Digital &amp; RRSS</a></li>
+        <li><a href='#contacto'>Cotización</a></li>
+    </ul>
+  </div>
+      <div class='foot-col'>
+    <h5>Recursos</h5>
+    <ul>
+        <li><a href='#blog'>Inteligencia de Mercado</a></li>
+        <li><a href='#blog'>Desarrollo Web</a></li>
+        <li><a href='#blog'>Estrategia Digital</a></li>
+        <li><a href='#blog'>Casos de Éxito</a></li>
+    </ul>
+  </div>
+      <div class='foot-col'>
+    <h5>Contacto</h5>
+    <ul>
+        <li><a href='https://wa.me/5215500000000' target='_blank' rel='noreferrer noopener'>WhatsApp</a></li>
+        <li><a href='mailto:hola@bymarketing.mx'>Correo</a></li>
+        <li><a href='#contacto'>Formulario de cotización</a></li>
+        <li><a href='#contacto'>CDMX, México</a></li>
+    </ul>
+  </div>
+    </div>
+    <div class='foot-bottom'>
+      <span><span class='pulse'></span>● <b style='color:var(--ink);'>B&amp;M Branding &amp; Marketing</b> · CDMX, México · 2026 / Vol. 01</span>
+      <span class='right'>
+        <span>Propuesta creada por Miranda</span>
+        <span>19.4326° N · 99.1332° W</span>
+        <span style='color:var(--coral);'>♥ MMXXVI</span>
+      </span>
+    </div>
+    <div class='foot-mega'>
+      <div class='word' data-reveal='rise-lg'>Datos que <em>venden</em>.</div>
+    </div>
+  </div>
+</footer>
+</div>
+
+<script>
+  /*
+   * Scroll-reveal observer - mirrors apps/landing-page/app/_components/reveal-root.tsx.
+   * Watches every [data-reveal] element and flips data-revealed='true'
+   * when it first enters the viewport, triggering the CSS transition.
+   */
+  (function () {
+    var elements = document.querySelectorAll('[data-reveal]:not([data-revealed])');
+    if (!elements.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      for (var i = 0; i < elements.length; i++) elements[i].dataset.revealed = 'true';
+      return;
+    }
+    var observer = new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (!entries[i].isIntersecting) continue;
+        entries[i].target.dataset.revealed = 'true';
+        observer.unobserve(entries[i].target);
+      }
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    for (var j = 0; j < elements.length; j++) observer.observe(elements[j]);
+  })();
+
+  /*
+   * Headroom-style sticky header + liquid nav.
+   * Hides the nav on downward scroll, re-pins it on upward scroll, and
+   * always keeps it visible near the top of the page. Once the user has
+   * scrolled, the bar condenses into a glass "liquid" pill (is-liquid) and
+   * a coral blob glides under whichever nav link is hovered.
+   */
+  (function () {
+    var nav = document.querySelector('header.nav');
+    if (!nav) return;
+    var SHOW_TOP = 100;
+    var DELTA = 6;
+    var lastY = window.scrollY || 0;
+    var inner = nav.querySelector('.nav-inner');
+    var blob = nav.querySelector('.nav-blob');
+    var links = nav.querySelectorAll('.nav-links > li > a');
+
+    function placeBlob(link) {
+      if (!blob || !inner || !link) return;
+      var lr = link.getBoundingClientRect();
+      var ir = inner.getBoundingClientRect();
+      blob.style.left = (lr.left - ir.left - 10) + 'px';
+      blob.style.width = (lr.width + 20) + 'px';
+      blob.classList.add('on');
+    }
+    function clearBlob() {
+      if (blob) blob.classList.remove('on');
+    }
+
+    if (blob && links.length) {
+      for (var i = 0; i < links.length; i++) {
+        links[i].addEventListener('mouseenter', function () { placeBlob(this); });
+        links[i].addEventListener('mouseleave', function () { clearBlob(); });
+      }
+      nav.addEventListener('mouseleave', clearBlob);
+    }
+
+    function onScroll() {
+      var y = window.scrollY || 0;
+      var d = y - lastY;
+      nav.classList.toggle('is-liquid', y > 60);
+      if (y <= SHOW_TOP) {
+        nav.classList.remove('is-hidden');
+      } else if (d > DELTA) {
+        nav.classList.add('is-hidden');
+      } else if (d < -DELTA) {
+        nav.classList.remove('is-hidden');
+      }
+      lastY = y;
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+</script>
+
+<script>
+  /*
+   * Blur -> sharp image reveal.
+   * When the browser supports CSS scroll-driven animations
+   * (animation-timeline: view()), the stylesheet handles it natively.
+   * Otherwise this IntersectionObserver adds .blur-done as a fallback.
+   */
+  (function () {
+    var targets = document.querySelectorAll(
+      '.hero-art img, .about-art img, .capabilities-art img, .lab-img img, ' +
+      '.method-step .img img, .work-card .img img, .testimonial-art img, .cta-art img'
+    );
+    for (var t = 0; t < targets.length; t++) targets[t].classList.add('blur-reveal');
+    var imgs = document.querySelectorAll('img.blur-reveal');
+    if (!imgs.length) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var supports = typeof CSS !== 'undefined' && CSS.supports &&
+      CSS.supports('animation-timeline', 'view()');
+    if (supports) return;
+    var observer = new IntersectionObserver(function (entries) {
+      for (var i = 0; i < entries.length; i++) {
+        if (!entries[i].isIntersecting) continue;
+        entries[i].target.classList.add('blur-done');
+        observer.unobserve(entries[i].target);
+      }
+    }, { threshold: 0.15, rootMargin: '0px 0px -5% 0px' });
+    for (var j = 0; j < imgs.length; j++) observer.observe(imgs[j]);
+  })();
+</script>
+
+<script>
+  /*
+   * Menú móvil - abre/cierra el panel y lo cierra al seguir un enlace.
+   */
+  (function () {
+    var burger = document.querySelector('.nav-burger');
+    var menu = document.querySelector('.mobile-menu');
+    if (!burger || !menu) return;
+    function close() {
+      menu.classList.remove('open');
+      burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      burger.setAttribute('aria-label', 'Abrir menú');
+    }
+    burger.addEventListener('click', function () {
+      var open = menu.classList.toggle('open');
+      burger.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    });
+    menu.addEventListener('click', function (e) {
+      if (e.target.closest('a')) close();
+    });
+  })();
+</script>
+
+<script>
+  /*
+   * Filtro del blog - muestra/oculta artículos por categoría (data-cat).
+   */
+  (function () {
+    var pills = document.querySelectorAll('.pills .pill[data-cat]');
+    var cards = document.querySelectorAll('.blog-grid .lab');
+    if (!pills.length || !cards.length) return;
+    for (var i = 0; i < pills.length; i++) {
+      pills[i].addEventListener('click', function () {
+        for (var j = 0; j < pills.length; j++) pills[j].classList.remove('active');
+        this.classList.add('active');
+        var cat = this.getAttribute('data-cat');
+        for (var k = 0; k < cards.length; k++) {
+          var show = cat === 'all' || cards[k].getAttribute('data-cat') === cat;
+          cards[k].style.display = show ? '' : 'none';
+        }
+      });
+    }
+  })();
+</script>
+
+<script>
+  /*
+   * Formulario de cotización - validación en cliente y estado de éxito.
+   */
+  (function () {
+    var form = document.getElementById('quoteForm');
+    if (!form) return;
+    function fieldOf(el) { return el.closest ? el.closest('.field') : null; }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var ok = true;
+      var req = form.querySelectorAll('[required]');
+      for (var i = 0; i < req.length; i++) {
+        var el = req[i];
+        var valid = el.type === 'email'
+          ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value)
+          : el.value.trim() !== '';
+        var f = fieldOf(el);
+        if (f) f.classList.toggle('invalid', !valid);
+        if (!valid) ok = false;
+      }
+      if (!ok) return;
+      form.style.display = 'none';
+      var okBox = form.parentElement.querySelector('.quote-ok');
+      if (okBox) okBox.style.display = 'block';
+    });
+    var els = form.querySelectorAll('input, select, textarea');
+    for (var j = 0; j < els.length; j++) {
+      els[j].addEventListener('input', function () { var f = fieldOf(this); if (f) f.classList.remove('invalid'); });
+      els[j].addEventListener('change', function () { var f = fieldOf(this); if (f) f.classList.remove('invalid'); });
+    }
+  })();
+</script>
+<script>
+  /*
+   * 3D backdrop - a sparse constellation of dust points projected in
+   * perspective, rotating slowly. Pure canvas 2D with manual projection
+   * (no WebGL dependency for a static landing page). Disabled entirely
+   * under prefers-reduced-motion.
+   */
+  (function () {
+    var canvas = document.getElementById('bg3d');
+    if (!canvas) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var ctx = canvas.getContext('2d');
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var W = 0, H = 0;
+    var mouse = { x: 0, y: 0 };
+    var reduceTransparency = window.matchMedia('(prefers-reduced-transparency: reduce)').matches;
+    var COUNT = reduceTransparency ? 0 : 90;
+    var pts = [];
+    var COLORS = ['255,122,92', '233,185,74', '242,237,222'];
+    for (var i = 0; i < COUNT; i++) {
+      pts.push({
+        x: (Math.random() - 0.5) * 2,
+        y: (Math.random() - 0.5) * 2,
+        z: Math.random() * 2 - 1,
+        r: 0.6 + Math.random() * 1.8,
+        c: COLORS[Math.floor(Math.random() * COLORS.length)],
+        a: 0.12 + Math.random() * 0.3
+      });
+    }
+    function resize() {
+      W = window.innerWidth;
+      H = window.innerHeight;
+      canvas.width = W * dpr;
+      canvas.height = H * dpr;
+      canvas.style.width = W + 'px';
+      canvas.style.height = H + 'px';
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    function frame(t) {
+      var time = t * 0.00006;
+      ctx.clearRect(0, 0, W, H);
+      var fov = Math.min(W, H) * 0.9;
+      var cx = W / 2 + mouse.x * 14;
+      var cy = H / 2 + mouse.y * 10;
+      for (var i = 0; i < pts.length; i++) {
+        var p = pts[i];
+        // slow orbit + depth drift
+        var ang = time + p.x * 2.1;
+        var x = p.x * Math.cos(ang) - p.z * Math.sin(ang);
+        var z = p.x * Math.sin(ang) + p.z * Math.cos(ang) + 2.6;
+        var y = p.y + Math.sin(time * 1.7 + p.z * 3) * 0.06;
+        var s = fov / z;
+        var px = cx + x * s;
+        var py = cy + y * s;
+        if (px < -10 || px > W + 10 || py < -10 || py > H + 10) continue;
+        ctx.beginPath();
+        ctx.arc(px, py, p.r * s * 0.35, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(' + p.c + ',' + p.a + ')';
+        ctx.fill();
+      }
+      requestAnimationFrame(frame);
+    }
+    window.addEventListener('resize', resize);
+    window.addEventListener('mousemove', function (e) {
+      mouse.x = (e.clientX / W - 0.5) * 2;
+      mouse.y = (e.clientY / H - 0.5) * 2;
+    }, { passive: true });
+    resize();
+    requestAnimationFrame(frame);
+  })();
+</script>
+</body>
+</html>
