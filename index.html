@@ -88,6 +88,7 @@ body::before {
   inset: 0;
   z-index: 0;
   pointer-events: none;
+  opacity: 0.65;
 }
 
 .shell { position: relative; z-index: 2; }
@@ -3288,15 +3289,19 @@ a.channel:hover { border-color: var(--coral); background: rgba(237, 111, 92, 0.0
     var reduceTransparency = window.matchMedia('(prefers-reduced-transparency: reduce)').matches;
     var COUNT = reduceTransparency ? 0 : 90;
     var pts = [];
-    var COLORS = ['255,122,92', '233,185,74', '242,237,222'];
+    // ponytail: no cream in the palette - light fills washed out body text.
+    // Few large faint glows, many tiny dust points; both clamped at draw.
+    var COLORS = ['255,122,92', '233,185,74', '122,104,78'];
     for (var i = 0; i < COUNT; i++) {
+      var glow = Math.random() < 0.14;
       pts.push({
         x: (Math.random() - 0.5) * 2,
         y: (Math.random() - 0.5) * 2,
         z: Math.random() * 2 - 1,
         r: 0.6 + Math.random() * 1.8,
+        glow: glow,
         c: COLORS[Math.floor(Math.random() * COLORS.length)],
-        a: 0.12 + Math.random() * 0.3
+        a: glow ? 0.05 + Math.random() * 0.04 : 0.08 + Math.random() * 0.1
       });
     }
     function resize() {
@@ -3324,9 +3329,12 @@ a.channel:hover { border-color: var(--coral); background: rgba(237, 111, 92, 0.0
         var s = fov / z;
         var px = cx + x * s;
         var py = cy + y * s;
-        if (px < -10 || px > W + 10 || py < -10 || py > H + 10) continue;
+        if (px < -140 || px > W + 140 || py < -140 || py > H + 140) continue;
+        // ponytail: radius was p.r * s * 0.35 - s reaches ~800, so "dust"
+        // rendered as 600px blobs that washed out the copy. Clamp instead.
+        var rad = Math.min(p.r * (p.glow ? 46 : 2.4) * (2.6 / z), p.glow ? 120 : 4.5);
         ctx.beginPath();
-        ctx.arc(px, py, p.r * s * 0.35, 0, Math.PI * 2);
+        ctx.arc(px, py, rad, 0, Math.PI * 2);
         ctx.fillStyle = 'rgba(' + p.c + ',' + p.a + ')';
         ctx.fill();
       }
