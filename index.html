@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang='es'>
 <head>
 <meta charset='utf-8' />
@@ -529,10 +529,29 @@ body::before {
 }
 .hero-actions {
   display: inline-flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 14px;
-  margin-bottom: 38px;
+  margin-bottom: 34px;
 }
+.hero-note {
+  margin: 0 0 24px;
+  font-size: 13.5px;
+  color: var(--ink-mute);
+}
+.hero-note .warn { color: var(--error); font-weight: 600; margin-right: 6px; }
+.hero-proof {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin: 0 0 28px;
+  padding: 0;
+  font-size: 12.5px;
+  letter-spacing: 0.02em;
+  color: var(--ink-mute);
+}
+.hero-proof li::before { content: '✓\00a0\00a0'; font-weight: 700; }
 .hero-stats {
   display: flex;
   align-items: center;
@@ -2616,16 +2635,26 @@ section { padding: 80px 0; }
       <span class='label' data-reveal>Agencia de branding &amp; marketing <span class='ix'>· Nº 01</span></span>
       <h1 class='display' data-reveal>Datos que <em>orientan,</em> estrategias que <em>venden</em><span class='dot'>.</span></h1>
       <p class='lead' data-reveal>B&amp;M Branding &amp; Marketing integra investigación de mercados, desarrollo web y redes sociales en un solo sistema: entendemos a tu cliente con datos, construimos tu plataforma digital y cuidamos la conversación que convierte cada contacto en una oportunidad de venta.</p>
+      <p class='hero-note' data-reveal><span class='warn'>↳</span> Cada mes sin datos es presupuesto decidido a ciegas: mide primero, luego invierte.</p>
       <div class='hero-actions' data-reveal>
         <a class='btn btn-primary' href='#contacto'>
           Solicitar cotización
           <span class='arrow'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
+        </a>
+        <a class='btn btn-ghost' href='https://wa.me/5215500000000?text=Hola%20B%26M%2C%20quiero%20cotizar%20un%20proyecto' target='_blank' rel='noreferrer noopener'>
+          WhatsApp directo
+          <span class='arrow'><svg viewBox='0 0 24 24'><path d='M12 3a9 9 0 0 0-7.6 13.8L3 21l4.4-1.3A9 9 0 1 0 12 3z'/></svg></span>
         </a>
         <a class='btn btn-ghost' href='#servicios'>
           Ver servicios
           <span class='arrow'><svg viewBox='0 0 24 24'><circle cx='12' cy='12' r='9'/><path d='M9 12h6M12 9v6'/></svg></span>
         </a>
       </div>
+      <ul class='hero-proof' data-reveal>
+        <li>Diagnóstico con datos antes de proponer</li>
+        <li>KPIs medibles desde el arranque</li>
+        <li>Un solo equipo: investigación, web y redes</li>
+      </ul>
       <div class='hero-stats' data-reveal>
           <div class='stat'>
     <span class='ring solid'>01</span>
