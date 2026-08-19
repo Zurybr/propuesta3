@@ -2388,6 +2388,40 @@ a.cat-card:hover p { text-decoration: underline; }
 }
 .soon.live { color: var(--paper); background: var(--coral); border: 1px solid var(--coral); }
 
+/* blog grid (reuses .labs classes) */
+/* blog carousel — scroll-snap row instead of a fixed grid */
+.labs-grid.blog-grid {
+  display: flex;
+  gap: 26px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* firefox */
+  padding-bottom: 10px;
+}
+.labs-grid.blog-grid::-webkit-scrollbar { display: none; }
+.labs-grid.blog-grid .lab {
+  flex: 0 0 min(400px, 82vw);
+  scroll-snap-align: start;
+}
+.blog-nav-row { display: flex; justify-content: flex-end; gap: 10px; margin: 6px 0 20px; }
+.blog-nav {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+.blog-nav:hover { background: var(--coral); color: var(--paper); border-color: var(--coral); }
+.blog-nav svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.blog-grid .lab { cursor: default; }
+.blog-grid a.lab { cursor: pointer; text-decoration: none; }
+
 @media (min-width: 561px) {
   .cat-grid { grid-template-columns: 1fr 1fr; }
   .feature { padding: 44px 40px 48px; }
@@ -3498,6 +3532,20 @@ section { padding: 80px 0; }
         <span class='label'>Blog &amp; Recursos <span class='ix'>· Nº 05</span></span>
         <h2 class='display' style='margin-top:30px;'>Artículos de valor para decidir con <em>datos</em> y vender con <em>estrategia</em><span class='dot'>.</span></h2>
       </div>
+      <div class='pills' data-reveal='right' data-od-id='blog-filters'>
+          <button class='pill active' data-cat='all' type='button'>Todos<span class='count'>11</span></button>
+          <button class='pill' data-cat='im' type='button'>Inteligencia de Mercado<span class='count'>4</span></button>
+          <button class='pill' data-cat='dw' type='button'>Web &amp; Conversión<span class='count'>3</span></button>
+          <button class='pill' data-cat='ed' type='button'>Digital &amp; Marca<span class='count'>3</span></button>
+          <button class='pill' data-cat='ce' type='button'>POP &amp; BTL<span class='count'>1</span></button>
+      </div>
+    </div>
+    <div class='labs-meta'>
+      <span class='ring'>04</span>
+      <div class='meta-text'>
+        <b>Categorías de contenido</b>
+        inteligencia de mercado &amp; datos<br/>estrategia web &amp; conversión<br/>estrategia digital, rrss &amp; marca<br/>punto de venta &amp; publicidad tradicional
+      </div>
     </div>
     <article class='feature' id='articulo-estudio-mercado' data-reveal>
       <span class='label'>Artículo destacado · Inteligencia de Mercado &amp; Datos</span>
@@ -3539,6 +3587,53 @@ section { padding: 80px 0; }
         <p class='cta-note'>En B&amp;M Branding &amp; Marketing, te ayudamos a construir esa hoja de ruta con datos reales para que tu negocio crezca sobre bases sólidas. ¿Listo para dar el primer paso estratégico?</p>
       </div>
     </article>
+    <div class='blog-nav-row' data-od-id='blog-nav'>
+      <button class='blog-nav prev' type='button' aria-label='Artículo anterior'><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M15 5l-7 7 7 7'/></svg></button>
+      <button class='blog-nav next' type='button' aria-label='Artículo siguiente'><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg></button>
+    </div>
+    <div class='labs-grid blog-grid' data-od-id='blog-grid'>
+      <a class='lab' data-reveal data-cat='im' href='#articulo-estudio-mercado'>
+        <div class='lab-img'><span class='badge'>Inteligencia de Mercado</span></div>
+        <div class='num-row'><span>Artículo 01 · <span class='soon live'>Publicado</span></span><span>4 min</span></div>
+        <h4>¿Por qué hacer un estudio de mercado antes de crear tu sitio web y redes sociales?</h4>
+        <p>El diagnóstico que convierte cada peso invertido en internet en retorno real.</p>
+        <span class='arrow-mark' aria-hidden='true'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
+      </a>
+      <div class='lab' data-reveal data-cat='im'>
+        <div class='lab-img'><span class='badge'>Inteligencia de Mercado</span></div>
+        <div class='num-row'><span>Artículo 02</span><span>4 min</span></div>
+        <h4>¿Para qué sirve la Investigación de Mercados en una PyME?</h4>
+        <p>De datos duros a decisiones: qué gana una PyME al investigar antes de invertir.</p>
+        <span class='arrow-mark' aria-hidden='true'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
+      </div>
+      <div class='lab' data-reveal data-cat='dw'>
+        <div class='lab-img'><span class='badge'>Web &amp; Conversión</span></div>
+        <div class='num-row'><span>Artículo 05</span><span>3 min</span></div>
+        <h4>Ventajas de tener una Landing Page enfocada a ventas</h4>
+        <p>Una sola oferta, un solo objetivo: convertir visitantes en prospectos calificados.</p>
+        <span class='arrow-mark' aria-hidden='true'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
+      </div>
+      <div class='lab' data-reveal data-cat='ed'>
+        <div class='lab-img'><span class='badge'>Digital &amp; Marca</span></div>
+        <div class='num-row'><span>Artículo 08</span><span>4 min</span></div>
+        <h4>Más allá de los "Likes": ¿Qué objetivos reales puedes perseguir en tus Redes Sociales?</h4>
+        <p>Tráfico al punto de venta, leads y reputación: objetivos de negocio, no vanidad.</p>
+        <span class='arrow-mark' aria-hidden='true'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
+      </div>
+      <div class='lab' data-reveal data-cat='ce'>
+        <div class='lab-img'><span class='badge'>POP &amp; BTL</span></div>
+        <div class='num-row'><span>Artículo 11</span><span>3 min</span></div>
+        <h4>BTL y Publicidad POP: Cómo atraer clientes desde la calle hasta la caja</h4>
+        <p>Activaciones y material de punto de venta que aceleran la compra inmediata.</p>
+        <span class='arrow-mark' aria-hidden='true'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
+      </div>
+    </div>
+    <div class='labs-foot'>
+      <div class='progress'>
+        <span class='on'></span><span class='on'></span><span class='on'></span><span class='on'></span><span class='on'></span><span></span><span></span><span></span>
+      </div>
+      <span class='meta'>11 ARTÍCULOS · 1 PUBLICADO &nbsp;·&nbsp; <a class='library-link' href='#contacto' style='color:var(--coral);'>SUGIERE UN TEMA →</a></span>
+    </div>
     <div class='blog-cats'>
       <div class='cat-group' data-reveal>
         <h3 class='label'>Inteligencia de Mercado &amp; Datos</h3>
@@ -3571,9 +3666,6 @@ section { padding: 80px 0; }
           <div class='card cat-card'><p>BTL y Publicidad POP: Cómo atraer clientes desde la calle hasta la caja de tu negocio</p><span class='soon'>Próximamente</span></div>
         </div>
       </div>
-    </div>
-    <div class='labs-foot'>
-      <span class='meta'>11 ARTÍCULOS · 1 PUBLICADO &nbsp;·&nbsp; <a class='library-link' href='#contacto' style='color:var(--coral);'>SUGIERE UN TEMA →</a></span>
     </div>
   </div>
 </section>
@@ -4095,6 +4187,64 @@ section { padding: 80px 0; }
     }, { passive: true });
     resize();
     requestAnimationFrame(frame);
+  })();
+</script>
+<script>
+  /*
+   * Filtro del blog - muestra/oculta artículos por categoría (data-cat).
+   */
+  (function () {
+    var pills = document.querySelectorAll('.pills .pill[data-cat]');
+    var cards = document.querySelectorAll('.blog-grid .lab');
+    if (!pills.length || !cards.length) return;
+    for (var i = 0; i < pills.length; i++) {
+      pills[i].addEventListener('click', function () {
+        for (var j = 0; j < pills.length; j++) pills[j].classList.remove('active');
+        this.classList.add('active');
+        var cat = this.getAttribute('data-cat');
+        for (var k = 0; k < cards.length; k++) {
+          var show = cat === 'all' || cards[k].getAttribute('data-cat') === cat;
+          cards[k].style.display = show ? '' : 'none';
+        }
+      });
+    }
+  })();
+</script>
+<script>
+  /*
+   * Carousel del blog - flechas + autoplay cada 4s (pausa al interactuar,
+   * respeta prefers-reduced-motion).
+   */
+  (function () {
+    var row = document.querySelector('.labs-grid.blog-grid');
+    var prev = document.querySelector('.blog-nav.prev');
+    var next = document.querySelector('.blog-nav.next');
+    if (!row || !prev || !next) return;
+    function step(dir) {
+      var card = row.querySelector('.lab');
+      if (!card) return;
+      row.scrollBy({ left: dir * (card.offsetWidth + 26), behavior: 'smooth' });
+    }
+    prev.addEventListener('click', function () { stop(); step(-1); });
+    next.addEventListener('click', function () { stop(); step(1); });
+    // autoplay: avanza solo cada 4s, se detiene al interactuar
+    var timer = null;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function play() {
+      if (reduced || timer) return;
+      timer = setInterval(function () {
+        if (row.scrollLeft + row.clientWidth >= row.scrollWidth - 8) {
+          row.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          step(1);
+        }
+      }, 4000);
+    }
+    function stop() { clearInterval(timer); timer = null; }
+    row.addEventListener('pointerenter', stop);
+    row.addEventListener('touchstart', stop, { passive: true });
+    row.addEventListener('pointerleave', play);
+    play();
   })();
 </script>
 <script>document.addEventListener('error', function (e) { if (e.target && e.target.tagName === 'IMG') e.target.style.display = 'none'; }, true); document.addEventListener('DOMContentLoaded', function () { document.querySelectorAll('img').forEach(function (i) { if (i.complete && i.naturalWidth === 0) i.style.display = 'none'; }); });</script>
