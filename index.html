@@ -1326,13 +1326,26 @@ section.tight { padding: 90px 0; }
   margin-bottom: 24px;
   max-width: 24ch;
 }
-.method-step .img {
-  aspect-ratio: 1 / 1;
-  background: var(--bone);
-  border-radius: 12px;
-  box-shadow: var(--shadow);
+.method-art {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 34px;
+  align-items: center;
+  margin-top: 60px;
 }
-.method-step .img img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+.method-esquema svg { width: 100%; height: auto; display: block; }
+.method-art .method-viz { max-width: none; margin: 0; }
+.method-esquema .flow { stroke-dasharray: 4 7; animation: esquemaFlow 1.6s linear infinite; }
+@keyframes esquemaFlow { to { stroke-dashoffset: -22; } }
+.method-esquema .pulse-ring { animation: esquemaPulse 2.4s ease-in-out infinite; }
+@keyframes esquemaPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.85; } }
+@media (prefers-reduced-motion: reduce) {
+  .method-esquema .flow,
+  .method-esquema .pulse-ring { animation: none; }
+}
+@media (min-width: 1081px) {
+  .method-art { grid-template-columns: 1.05fr 0.95fr; gap: 50px; }
+}
 .method-foot {
   margin-top: 80px;
   display: flex;
@@ -1354,10 +1367,27 @@ section.tight { padding: 90px 0; }
   align-items: center;
   gap: 12px;
 }
-.method-foot .left .ring {
-  width: 20px; height: 20px;
-  border: 1px dashed var(--ink-faint);
-  border-radius: 50%;
+.method-foot .left { color: var(--ink-mute); }
+.foot-decides { width: 88px; height: 24px; flex: 0 0 auto; }
+.foot-decides .fd { fill: var(--ink-faint); animation: fdDot 1.8s ease-in-out infinite; }
+.foot-decides .fd2 { animation-delay: 0.3s; }
+.foot-decides .fd3 { animation-delay: 0.6s; }
+@keyframes fdDot { 0%, 100% { opacity: 0.2; } 35% { opacity: 1; } }
+.foot-decides .fd-check {
+  stroke: var(--coral);
+  stroke-width: 2;
+  stroke-dasharray: 14;
+  animation: fdCheck 1.8s ease-in-out infinite;
+}
+@keyframes fdCheck {
+  0%, 55% { stroke-dashoffset: 14; opacity: 1; }
+  80%, 92% { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .foot-decides .fd,
+  .foot-decides .fd-check { animation: none; stroke-dashoffset: 0; }
+  .foot-decides .fd { opacity: 0.7; }
 }
 .method-foot .right b { color: var(--ink); }
 
@@ -3129,28 +3159,65 @@ section { padding: 80px 0; }
     <div class='num'>01</div>
     <h4>Escuchar <span class='arrow-r'>→</span></h4>
     <p>Diagnóstico y briefing: entendemos tu negocio, tu cliente y tu competencia antes de proponer cualquier cosa.</p>
-    <div class='img'><img src='./assets/method-1.png' alt='Lupa sobre un plano arquitectónico, metáfora del diagnóstico' /></div>
   </div>
         <div class='method-step' data-reveal>
     <div class='num'>02</div>
     <h4>Analizar <span class='arrow-r'>→</span></h4>
     <p>Estudios de mercado, benchmarking, precios y buyer persona: la base factual sobre la que se decide todo lo demás.</p>
-    <div class='img'><img src='./assets/method-2.png' alt='Portapapeles con cuestionario y pluma coral, metáfora del análisis' /></div>
   </div>
         <div class='method-step' data-reveal>
     <div class='num'>03</div>
     <h4>Diseñar <span class='arrow-r'>→</span></h4>
     <p>Estrategia y ejecución: web, campañas, contenido y parrillas alineados al perfil de tu comprador ideal.</p>
-    <div class='img'><img src='./assets/method-3.png' alt='Compás, regla y abanico de color, metáfora del diseño estratégico' /></div>
   </div>
         <div class='method-step' data-reveal>
     <div class='num'>04</div>
     <h4>Medir</h4>
     <p>NPS, market share, leads y tráfico al punto de venta: medimos lo que importa, aprendemos y ajustamos.</p>
-    <div class='img'><img src='./assets/method-4.png' alt='Charola de imprenta con hojas apiladas, metáfora de la entrega medible' /></div>
   </div>
     </div>
-    <div class='method-viz' data-reveal='scale'>
+    <div class='method-art'>
+      <div class='method-esquema' data-reveal='scale'>
+        <svg viewBox='0 0 560 560' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Esquema: los datos del mercado se analizan y se convierten en decisiones'>
+          <text x='30' y='46' fill='#F8FAFC' font-family='Inter Tight, sans-serif' font-size='14' font-weight='800' letter-spacing='3'>DEL DATO A LA DECISIÓN</text>
+          <line x1='30' y1='58' x2='66' y2='58' stroke='rgba(248, 250, 252, 0.85)' stroke-width='2'/>
+          <text x='30' y='80' fill='rgba(248, 250, 252, 0.55)' font-family='Inter, sans-serif' font-size='10'>Las señales del mercado se convierten</text>
+          <text x='30' y='94' fill='rgba(248, 250, 252, 0.55)' font-family='Inter, sans-serif' font-size='10'>en decisiones con evidencia.</text>
+          <!-- fuentes de datos -->
+          <g fill='rgba(9, 57, 80, 0.55)' stroke='rgba(248, 250, 252, 0.5)'>
+            <rect x='30' y='120' width='170' height='54' rx='27'/>
+            <rect x='30' y='220' width='170' height='54' rx='27'/>
+            <rect x='30' y='320' width='170' height='54' rx='27'/>
+            <rect x='30' y='420' width='170' height='54' rx='27'/>
+          </g>
+          <g fill='#F8FAFC' font-family='Inter Tight, sans-serif' font-size='11' font-weight='700' letter-spacing='1.5' text-anchor='middle'>
+            <text x='115' y='152'>ENCUESTAS · NPS</text>
+            <text x='115' y='252'>WEB · ANALYTICS</text>
+            <text x='115' y='352'>VENTAS · POS</text>
+            <text x='115' y='452'>REDES SOCIALES</text>
+          </g>
+          <!-- flujos hacia el análisis -->
+          <g fill='none' stroke='rgba(248, 250, 252, 0.7)' stroke-width='2'>
+            <path class='flow' d='M200 147 Q282 147 283 248'/>
+            <path class='flow' d='M200 247 Q268 247 280 274'/>
+            <path class='flow' d='M200 347 Q268 347 280 321'/>
+            <path class='flow' d='M200 447 Q282 447 283 347'/>
+          </g>
+          <!-- nodo de análisis -->
+          <circle class='pulse-ring' cx='355' cy='297' r='86' fill='none' stroke='rgba(248, 250, 252, 0.35)' stroke-dasharray='4 7'/>
+          <circle cx='355' cy='297' r='74' fill='rgba(9, 57, 80, 0.55)' stroke='rgba(248, 250, 252, 0.5)' stroke-width='2'/>
+          <text x='355' y='294' text-anchor='middle' fill='#F8FAFC' font-family='Inter Tight, sans-serif' font-size='15' font-weight='800' letter-spacing='2'>ANALIZAR</text>
+          <text x='355' y='312' text-anchor='middle' fill='rgba(248, 250, 252, 0.55)' font-family='Inter, sans-serif' font-size='9.5'>señal → evidencia</text>
+          <!-- decisión -->
+          <line x1='355' y1='383' x2='355' y2='424' stroke='rgba(248, 250, 252, 0.7)' stroke-width='2'/>
+          <path d='M349 418 l6 10 l6 -10' fill='none' stroke='rgba(248, 250, 252, 0.7)' stroke-width='2'/>
+          <rect x='245' y='436' width='220' height='58' rx='29' fill='#F8FAFC'/>
+          <text x='355' y='462' text-anchor='middle' fill='#093950' font-family='Inter Tight, sans-serif' font-size='14' font-weight='800' letter-spacing='2'>DECISIÓN ✓</text>
+          <text x='355' y='479' text-anchor='middle' fill='rgba(9, 57, 80, 0.6)' font-family='Inter, sans-serif' font-size='9'>con la mejor evidencia disponible</text>
+          <text x='355' y='528' text-anchor='middle' fill='rgba(248, 250, 252, 0.45)' font-family='Inter Tight, sans-serif' font-size='9.5' letter-spacing='2'>MENOS INTUICIÓN · MÁS EVIDENCIA</text>
+        </svg>
+      </div>
+      <div class='method-viz' data-reveal='scale'>
       <svg class='about-viz' viewBox='0 0 620 620' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Esquema: de la señal a la venta — escuchar, analizar, diseñar, medir'>
           <text x='30' y='46' fill='#F8FAFC' font-family='Inter Tight, sans-serif' font-size='14' font-weight='800' letter-spacing='3'>DE LA SEÑAL A LA VENTA</text>
           <line x1='30' y1='58' x2='66' y2='58' stroke='rgba(248, 250, 252, 0.85)' stroke-width='2'/>
@@ -3197,10 +3264,19 @@ section { padding: 80px 0; }
           <path d='M57 176 l8 -6 l0 12' fill='none' stroke='rgba(248, 250, 252, 0.35)'/>
           <text x='16' y='342' text-anchor='middle' fill='rgba(248, 250, 252, 0.45)' font-family='Inter Tight, sans-serif' font-size='9' letter-spacing='2' transform='rotate(-90 16 342)'>EL MERCADO RESPONDE</text>
         </svg>
+      </div>
     </div>
     <div class='method-foot'>
       <div class='left'>
-        <span class='ring'></span>
+        <svg class='foot-decides' viewBox='0 0 88 24' aria-hidden='true'>
+          <circle class='fd' cx='7' cy='12' r='3'/>
+          <circle class='fd fd2' cx='22' cy='12' r='3'/>
+          <circle class='fd fd3' cx='37' cy='12' r='3'/>
+          <line x1='46' y1='12' x2='60' y2='12' stroke='currentColor' stroke-width='1.5'/>
+          <path d='M56 7l6 5-6 5' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/>
+          <circle cx='76' cy='12' r='9' fill='none' stroke='currentColor' stroke-width='1.5'/>
+          <path class='fd-check' d='M71.5 12l3 3 5.5-6' fill='none' stroke-linecap='round' stroke-linejoin='round'/>
+        </svg>
         <span>Los datos informan cada decisión.</span>
       </div>
       <div class='right'><b>B&amp;M Branding &amp; Marketing</b> &nbsp;·&nbsp; Datos que orientan, estrategias que venden</div>
@@ -3706,8 +3782,26 @@ section { padding: 80px 0; }
     if (!card) return;
     row.scrollBy({ left: dir * (card.offsetWidth + 26), behavior: 'smooth' });
   }
-  prev.addEventListener('click', function () { step(-1); });
-  next.addEventListener('click', function () { step(1); });
+  prev.addEventListener('click', function () { stop(); step(-1); });
+  next.addEventListener('click', function () { stop(); step(1); });
+  // autoplay: avanza solo cada 4s, se detiene al interactuar
+  var timer = null;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function play() {
+    if (reduced || timer) return;
+    timer = setInterval(function () {
+      if (row.scrollLeft + row.clientWidth >= row.scrollWidth - 8) {
+        row.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        step(1);
+      }
+    }, 4000);
+  }
+  function stop() { clearInterval(timer); timer = null; }
+  row.addEventListener('pointerenter', stop);
+  row.addEventListener('touchstart', stop, { passive: true });
+  row.addEventListener('pointerleave', play);
+  play();
 })();</script>
 <script>document.addEventListener('error', function (e) { if (e.target && e.target.tagName === 'IMG') e.target.style.display = 'none'; }, true); document.addEventListener('DOMContentLoaded', function () { document.querySelectorAll('img').forEach(function (i) { if (i.complete && i.naturalWidth === 0) i.style.display = 'none'; }); });</script>
 </body>
