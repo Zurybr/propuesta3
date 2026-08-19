@@ -1989,12 +1989,6 @@ footer {
 .cards > .card[data-reveal]:nth-child(3) { --reveal-delay: 180ms; }
 .cards > .card[data-reveal]:nth-child(4) { --reveal-delay: 270ms; }
 
-.labs-grid > .lab[data-reveal]:nth-child(1) { --reveal-delay: 0ms; }
-.labs-grid > .lab[data-reveal]:nth-child(2) { --reveal-delay: 90ms; }
-.labs-grid > .lab[data-reveal]:nth-child(3) { --reveal-delay: 180ms; }
-.labs-grid > .lab[data-reveal]:nth-child(4) { --reveal-delay: 270ms; }
-.labs-grid > .lab[data-reveal]:nth-child(5) { --reveal-delay: 360ms; }
-
 .method-grid > .method-step[data-reveal]:nth-child(1) { --reveal-delay: 0ms; }
 .method-grid > .method-step[data-reveal]:nth-child(2) { --reveal-delay: 110ms; }
 .method-grid > .method-step[data-reveal]:nth-child(3) { --reveal-delay: 220ms; }
@@ -2217,6 +2211,7 @@ img.blur-reveal.blur-done {
 .mobile-menu a.sub::before { content: '-'; color: var(--coral); margin-right: 10px; }
 
 /* founders */
+.about-copy p:not(.lead):not(.role) { font-family: var(--body); font-size: 14.5px; color: var(--ink-mute); line-height: 1.7; margin-bottom: 14px; }
 .founders-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
 .founder {
   background: var(--bone);
@@ -2347,38 +2342,60 @@ img.blur-reveal.blur-done {
   line-height: 1.5;
 }
 
-/* blog grid (reuses .labs classes) */
-/* blog carousel — scroll-snap row instead of a fixed grid */
-.labs-grid.blog-grid {
-  display: flex;
-  gap: 26px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  scrollbar-width: none; /* firefox */
-  padding-bottom: 10px;
+/* blog — artículo destacado + categorías (reusa .label, .card) */
+.feature {
+  background: var(--bone);
+  border-radius: 18px;
+  box-shadow: var(--shadow), inset 0 0 0 1px rgba(248, 250, 252, 0.07);
+  padding: 32px 24px 40px;
+  margin-top: 40px;
 }
-.labs-grid.blog-grid::-webkit-scrollbar { display: none; }
-.labs-grid.blog-grid .lab {
-  flex: 0 0 min(400px, 82vw);
-  scroll-snap-align: start;
+.feature h3 {
+  font-family: var(--sans);
+  font-size: clamp(26px, 3.2vw, 40px);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 18px 0 22px;
+  max-width: 24ch;
 }
-.blog-nav-row { display: flex; justify-content: flex-end; gap: 10px; margin: 6px 0 20px; }
-.blog-nav {
-  width: 42px; height: 42px;
-  border-radius: 50%;
-  border: 1px solid var(--line);
-  background: transparent;
-  color: var(--ink);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+.feature-body { max-width: 68ch; }
+.feature-body p { font-family: var(--body); font-size: 15px; line-height: 1.7; color: var(--ink-mute); margin-bottom: 16px; }
+.feature h4 { font-family: var(--sans); font-size: 22px; font-weight: 700; letter-spacing: -0.014em; margin: 34px 0 12px; }
+.feature .cta-note { color: var(--ink); font-weight: 500; }
+.pt { display: grid; grid-template-columns: 40px 1fr; gap: 14px; margin: 26px 0; border-top: 1px dashed var(--line); padding-top: 24px; }
+.pt-n { font-family: var(--serif); font-style: italic; font-size: 24px; color: var(--coral); }
+.pt strong { display: block; font-family: var(--sans); font-size: 17px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 8px; color: var(--ink); }
+.pt p { margin-bottom: 0; }
+.blog-cats { margin-top: 56px; display: grid; gap: 44px; }
+.cat-grid { display: grid; gap: 14px; margin-top: 18px; }
+.cat-card { display: flex; flex-direction: column; gap: 14px; padding: 20px 22px 22px; }
+.cat-card p { max-width: none; font-family: var(--sans); font-size: 14.5px; font-weight: 600; line-height: 1.4; color: var(--ink); margin: 0; }
+a.cat-card { text-decoration: none; cursor: pointer; }
+a.cat-card:hover { border-color: var(--line); }
+a.cat-card:hover p { text-decoration: underline; }
+.soon {
+  align-self: flex-start;
+  font-family: var(--sans);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  border: 1px dashed var(--line);
+  border-radius: 999px;
+  padding: 4px 10px;
 }
-.blog-nav:hover { background: var(--coral); color: var(--paper); border-color: var(--coral); }
-.blog-nav svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.blog-grid .lab { cursor: default; }
+.soon.live { color: var(--paper); background: var(--coral); border: 1px solid var(--coral); }
+
+@media (min-width: 561px) {
+  .cat-grid { grid-template-columns: 1fr 1fr; }
+  .feature { padding: 44px 40px 48px; }
+}
+
+@media (min-width: 1081px) {
+  .cat-grid { grid-template-columns: repeat(3, 1fr); }
+}
 
 /* contacto (dark slab) */
 .work-grid.contact { grid-template-columns: 1fr 1.08fr; align-items: start; }
@@ -2417,6 +2434,35 @@ a.channel:hover { border-color: var(--coral); background: rgba(255, 255, 255, 0.
   font-weight: 500;
 }
 .channel b { font-weight: 600; font-size: 13.5px; }
+
+/* glosario / faq / aviso (compact closers) */
+.gloss-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 28px; }
+.gloss-item {
+  background: var(--bone);
+  border-radius: 14px;
+  padding: 16px 18px;
+  box-shadow: inset 0 0 0 1px rgba(248, 250, 252, 0.07);
+}
+.gloss-item strong { font-family: var(--sans); font-size: 13.5px; display: block; margin-bottom: 6px; }
+.gloss-item p { font-family: var(--body); font-size: 13px; line-height: 1.55; color: rgba(247, 241, 222, 0.72); }
+.faq-list { margin-top: 28px; border-top: 1px solid var(--line); }
+.faq-list details { border-bottom: 1px solid var(--line); }
+.faq-list summary {
+  cursor: pointer;
+  padding: 18px 0;
+  font-family: var(--sans);
+  font-size: 14.5px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 18px;
+}
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after { content: '+'; color: var(--coral); font-size: 18px; font-weight: 400; flex-shrink: 0; }
+.faq-list details[open] summary::after { content: '−'; }
+.faq-list details p { padding: 0 0 18px; font-family: var(--body); font-size: 13.5px; line-height: 1.6; color: rgba(247, 241, 222, 0.72); max-width: 68ch; }
+.aviso-legal { font-size: 12.5px !important; line-height: 1.7 !important; color: rgba(247, 241, 222, 0.72) !important; }
 .quote-card {
   background: var(--bone);
   color: var(--ink);
@@ -2546,6 +2592,7 @@ section { padding: 80px 0; }
   .hero h1 { font-size: clamp(36px, 4.6vw, 54px); }
   .labs-grid { grid-template-columns: repeat(2, 1fr); }
   .cards { grid-template-columns: 1fr 1fr; }
+  .gloss-grid { grid-template-columns: 1fr 1fr; }
   .cards.three { grid-template-columns: 1fr 1fr; }
   .pills { justify-content: flex-end; }  section { padding: 130px 0; }
   .topbar-inner { font-size: 10.5px; }
@@ -2595,6 +2642,7 @@ section { padding: 80px 0; }
   .hero h1 { font-size: clamp(44px, 5vw, 78px); }
   .section-header h2 { font-size: clamp(40px, 4.6vw, 66px); }
   .labs-grid { gap: 22px; }
+  .gloss-grid { grid-template-columns: repeat(3, 1fr); }
   .partners { grid-template-columns: repeat(6, 1fr); gap: 22px; }
   .foot-grid { grid-template-columns: 2fr 1fr 1fr 1fr 1fr; }
   .foot-grid .foot-col:nth-child(4),
@@ -2708,9 +2756,10 @@ section { padding: 80px 0; }
         <li>
           <a class='dd' href='#servicios'><span class='num'>03</span><span class='lbl'><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M12 4l8 4.5-8 4.5-8-4.5L12 4zM4 13l8 4.5 8-4.5'/></svg>Servicios</span></a>
           <div class='drop'>
-            <a href='#investigacion'>Investigación de Mercados<small>Estudios · NPS · Buyer persona</small></a>
-            <a href='#desarrollo-web'>Desarrollo &amp; Optimización Web<small>Sitios · SEO/SEM · E-commerce</small></a>
-            <a href='#marketing-digital'>Marketing Digital &amp; RRSS<small>Contenido · Parrillas · Reputación</small></a>
+            <a href='#srv-investigacion'>Investigación de Mercados &amp; BI<small>Estudios · NPS · Buyer persona</small></a>
+            <a href='#srv-web'>Creación, Desarrollo y Optimización Web<small>Sitios · SEO/SEM · E-commerce</small></a>
+            <a href='#srv-marketing'>Marketing Digital &amp; RRSS<small>Contenido · Parrillas · Reputación</small></a>
+            <a href='#srv-tradicional'>Publicidad Tradicional, POP &amp; BTL<small>Impresos · Punto de venta</small></a>
           </div>
         </li>
         <li><a href='#blog'><span class='num'>04</span><span class='lbl'><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M6 4h10a2 2 0 0 1 2 2v14H8a2 2 0 0 1-2-2V4z'/><path d='M6 16h12'/></svg>Blog / Recursos</span></a></li>
@@ -2735,9 +2784,10 @@ section { padding: 80px 0; }
   <a href='#fundadores' class='sub'>Fundadores - Braulio &amp; Miranda</a>
   <a href='#filosofia' class='sub'>Filosofía Institucional</a>
   <a href='#servicios'>Servicios</a>
-  <a href='#investigacion' class='sub'>Investigación de Mercados</a>
-  <a href='#desarrollo-web' class='sub'>Desarrollo &amp; Optimización Web</a>
-  <a href='#marketing-digital' class='sub'>Marketing Digital &amp; Redes Sociales</a>
+  <a href='#srv-investigacion' class='sub'>Investigación de Mercados &amp; BI</a>
+  <a href='#srv-web' class='sub'>Creación, Desarrollo y Optimización Web</a>
+  <a href='#srv-marketing' class='sub'>Marketing Digital &amp; RRSS</a>
+  <a href='#srv-tradicional' class='sub'>Publicidad Tradicional, POP &amp; BTL</a>
   <a href='#metodo' class='sub'>Nuestro Método</a>
   <a href='#blog'>Blog / Recursos</a>
   <a href='#contacto'>Contacto</a>
@@ -2920,8 +2970,11 @@ section { padding: 80px 0; }
     <div class='about-grid'>
       <div class='about-copy' id='historia' data-reveal>
         <span class='label'>Nuestra historia <span class='ix'>· Nº 02</span></span>
-        <h2 class='display'>Dos disciplinas, <em>un mismo</em> propósito: que tu marca <em>venda</em><span class='dot'>.</span></h2>
-        <p class='lead'>B&amp;M nació de la integración de Braulio y Miranda: la investigación de mercados y el desarrollo web dejaron de ser servicios aislados para convertirse en un solo sistema. Hoy estudiamos a tus clientes, construimos tu plataforma digital y cuidamos tu conversación en redes - con datos que orientan cada decisión y estrategias pensadas para vender.</p>
+        <h2 class='display'>De la experiencia corporativa al <em>impulso de las</em> PyMEs<span class='dot'>.</span></h2>
+        <p class='lead'>B&amp;M Branding &amp; Marketing nació de un punto de inflexión y de una visión compartida entre sus fundadores, Braulio y Miranda. Tras años de colaborar en entornos corporativos de alta exigencia, nos dimos cuenta de una constante en el mercado: las herramientas más avanzadas de inteligencia de negocios, investigación de mercado y estrategia digital solían estar reservadas únicamente para las grandes empresas.</p>
+        <p>Por otro lado, observamos que las micro, pequeñas y medianas empresas (PyMEs) frecuentemente veían el marketing no como una inversión rentabilizable, sino como un gasto innecesario. ¿La razón? Solían recibir soluciones genéricas, publicaciones sin estrategia y sitios web que no generaban ventas.</p>
+        <p>Decidimos cambiar esa realidad. Decidimos cerrar ciclos pasados y unir nuestras fortalezas para construir una agencia diferente.</p>
+        <p>Así nació B&amp;M: una firma creada por dos profesionales apasionados que decidieron democratizar la inteligencia de negocios. Unimos el rigor analítico del marketing corporativo con la agilidad digital para diseñar trajes a la medida que ayudan a cada negocio a saber exactamente dónde está parado, hacia dónde ir y cómo lograr un crecimiento real y medible.</p>
         <a class='btn btn-ghost' href='#fundadores'>
           Conoce a los fundadores
           <span class='arrow'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
@@ -3004,16 +3057,16 @@ section { padding: 80px 0; }
         <div class='founder' data-reveal>
           <img class='avatar' src='assets/braulio.jpeg' alt='Braulio Islas Cruz' loading='lazy'>
           <h3>Braulio</h3>
-          <p class='role'>Cofundador - Investigación de Mercados</p>
-          <p>Su trayectoria está en la parte analítica de la agencia: estudios cualitativos y cuantitativos, benchmarking, análisis de precios, NPS y perfiles de comprador. Es quien se asegura de que cada recomendación de B&amp;M esté respaldada por evidencia de mercado, no por intuición.</p>
-          <div class='trail'><span>Estudios cuanti &amp; cuali</span><span>Benchmarking</span><span>Precios &amp; NPS</span><span>Buyer persona</span></div>
+          <p class='role'>Dirección Estratégica &amp; Marketing Digital</p>
+          <p>Cuenta con Licenciatura en Mercadotecnia, MBA en Administración de Empresas y Maestría en Marketing Digital. Su trayectoria inició en 2007 desde las bases de la investigación de mercados, evolucionando hasta dirigir las Gerencias de Mercadotecnia y Business Intelligence (BI) en marcas e industrias líderes como Helvex, Proteak, Masisa y el sector salud (Hospital ABC). Combina el rigor del marketing tradicional con el dominio del entorno digital, ejecutando campañas pagadas y orgánicas respaldadas por estrategias avanzadas de SEO, SEM, implementación de píxeles y Google Tag Manager. Su enfoque integral garantiza que cada decisión comercial esté fundamentada en datos reales y orientada al retorno de inversión.</p>
+          <div class='trail'><span>Lic. Mercadotecnia</span><span>MBA</span><span>Business Intelligence</span><span>SEO · SEM · GTM</span></div>
         </div>
         <div class='founder' data-reveal>
           <img class='avatar' src='assets/miranda.jpeg' alt='Miranda Nolasco' loading='lazy'>
           <h3>Miranda</h3>
-          <p class='role'>Cofundadora - Desarrollo Web &amp; Marketing Digital</p>
-          <p>Su trayectoria está en la parte creativa y técnica: sitios y landing pages orientados a conversión, estrategia de contenidos, redes sociales y campañas digitales. Es quien convierte los hallazgos de investigación en experiencias de marca que sí venden.</p>
-          <div class='trail'><span>Web &amp; SEO/SEM</span><span>Contenido &amp; RRSS</span><span>Conversión</span><span>E-commerce</span></div>
+          <p class='role'>Arquitectura Digital &amp; Contenido</p>
+          <p>Con más de 10 años de especialización en administración y entornos web, me encargo de liderar la creación y optimización de tus plataformas digitales. Mi enfoque abarca desde la estructura de tu sitio web hasta la gestión estratégica de redes sociales y la creación de contenidos visuales de alto impacto (artes, reels y videos). Me aseguro de que la presencia de tu marca no solo sea visible, sino relevante y atractiva para tus clientes.</p>
+          <div class='trail'><span>Administración web</span><span>Redes sociales</span><span>Contenido visual</span><span>Reels &amp; video</span></div>
         </div>
       </div>
     </div>
@@ -3030,24 +3083,51 @@ section { padding: 80px 0; }
           <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
             <circle cx='12' cy='12' r='8'/><circle cx='12' cy='12' r='3'/>
           </svg>
-          <h3>Convertir datos<br/>en decisiones</h3>
-          <p>Ayudar a las marcas a conocer a sus clientes y a su competencia para construir estrategias digitales que generen ventas reales y sostenibles.</p>
+          <h3>Crecimiento PyME<br/>con datos</h3>
+          <p>Impulsar el crecimiento sostenible de las micro, pequeñas y medianas empresas transformando datos e investigación de mercado en soluciones digitales efectivas. Diseñamos estrategias a la medida —desde la inteligencia de negocios hasta el desarrollo web y la gestión de redes sociales— para garantizar que cada inversión publicitaria de nuestros clientes se traduzca en claridad, posicionamiento y ventas reales.</p>
         </div>
         <div class='card' data-reveal>
           <div class='num'>02<span class='tag'>Visión</span></div>
           <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
             <path d='M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z'/><circle cx='12' cy='12' r='3'/>
           </svg>
-          <h3>Ser la aliada<br/>estratégica</h3>
-          <p>Que cada pyme y marca que crezca con nosotros tome decisiones comerciales con la misma calidad de información que una gran empresa.</p>
+          <h3>La agencia consultora<br/>de referencia</h3>
+          <p>Ser la agencia consultora de referencia para las PyMEs en México, reconocida por revolucionar la forma en que los negocios ven la investigación de mercado: no como un gasto innecesario, sino como el motor estratégico indispensable para construir una presencia digital rentable, sólida y escalable.</p>
         </div>
         <div class='card' data-reveal>
           <div class='num'>03<span class='tag'>Valores</span></div>
           <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
             <path d='M12 5v14M5 12h14'/>
           </svg>
-          <h3>Rigor, claridad<br/>y resultados</h3>
-          <p>Rigor en los datos, transparencia en los procesos, obsesión por el resultado del cliente y creatividad con propósito.</p>
+          <h3>Cinco principios<br/>que nos rigen</h3>
+          <p>Los valores que ordenan cada decisión, propuesta y campaña de B&amp;M — detallados a continuación.</p>
+        </div>
+      </div>
+      <div class='cards'>
+        <div class='card' data-reveal>
+          <div class='num'>01<span class='tag'>Valor</span></div>
+          <h3>Decisiones Basadas en Datos</h3>
+          <p>No adivinamos; fundamentamos cada propuesta, diseño y campaña en información real del mercado para maximizar el retorno de inversión.</p>
+        </div>
+        <div class='card' data-reveal>
+          <div class='num'>02<span class='tag'>Valor</span></div>
+          <h3>Transparencia y Honestidad</h3>
+          <p>Explicamos con claridad el porqué de cada estrategia, asegurando que entiendas exactamente cómo trabaja tu dinero.</p>
+        </div>
+        <div class='card' data-reveal>
+          <div class='num'>03<span class='tag'>Valor</span></div>
+          <h3>Enfoque "A la Medida"</h3>
+          <p>Rechazamos las soluciones genéricas. Estudiamos a fondo tu empresa para crear trajes estratégicos personalizados.</p>
+        </div>
+        <div class='card' data-reveal>
+          <div class='num'>04<span class='tag'>Valor</span></div>
+          <h3>Compromiso con el Crecimiento</h3>
+          <p>Tu éxito comercial es nuestro único indicador de rendimiento. Nos involucramos como socios estratégicos.</p>
+        </div>
+        <div class='card' data-reveal>
+          <div class='num'>05<span class='tag'>Valor</span></div>
+          <h3>Sinergia Estratégica y Operativa</h3>
+          <p>Combinamos la alta dirección corporativa con la agilidad y precisión técnica necesaria para ejecutar resultados de primer nivel.</p>
         </div>
       </div>
     </div>
@@ -3105,12 +3185,12 @@ section { padding: 80px 0; }
             <text x='556' y='345' transform='rotate(90 556 345)' text-anchor='middle' font-size='8.5' letter-spacing='2' fill='var(--ink-faint)'>MEDIR · OPTIMIZAR</text>
           </g>
         </svg>
-        <div class='ribbon'><b>B&amp;M</b> &nbsp;·&nbsp; MATRIZ DE SERVICIOS &nbsp;·&nbsp; 3 PILARES</div>
+        <div class='ribbon'><b>B&amp;M</b> &nbsp;·&nbsp; MATRIZ DE SERVICIOS &nbsp;·&nbsp; 4 LÍNEAS</div>
       </div>
       <div class='capabilities-copy' data-reveal>
         <span class='label'>Servicios <span class='ix'>· Nº 03</span></span>
-        <h2 class='display'>Tres pilares que convierten <em>datos</em> en <em>ventas</em><span class='dot'>.</span></h2>
-        <p class='lead'>Cada pilar funciona por separado; juntos forman un sistema completo: entender el mercado, construir la plataforma digital y sostener la conversación que vende.</p>
+        <h2 class='display'>Cuatro líneas que convierten <em>datos</em> en <em>ventas</em><span class='dot'>.</span></h2>
+        <p class='lead'>Cada línea funciona por separado; juntas forman un sistema completo: entender el mercado, construir la plataforma digital, sostener la conversación que vende y conquistar el punto de venta.</p>
         <div class='cards'>
           <div class='card' data-reveal>
     <div class='num'>01<span class='tag'>Investigación</span></div>
@@ -3151,7 +3231,7 @@ section { padding: 80px 0; }
       <path d='M5 8h14v8H5z'/><path d='M9 12h6M12 9v6'/>
     </svg>
     <h3>Un sistema,<br/>no piezas sueltas</h3>
-    <p>Los tres pilares comparten un método: escuchar, analizar, diseñar y medir. Empieza por el pilar que necesites hoy.</p>
+    <p>Las cuatro líneas comparten un método: escuchar, analizar, diseñar y medir. Empieza por la línea que necesites hoy.</p>
     <a class='arrow-mark' href='#metodo' aria-label='Ver el método B&amp;M'>
       <svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg>
     </a>
@@ -3160,69 +3240,92 @@ section { padding: 80px 0; }
       </div>
     </div>
 
-    <div class='pillar' id='investigacion' data-od-id='investigacion'>
+    <div class='pillar' id='srv-investigacion' data-od-id='srv-investigacion'>
+      <span id='investigacion' aria-hidden='true'></span>
       <div class='pillar-rule'>
         <span class='roman'>III.a</span>
-        <span>Investigación de Mercados · 5 servicios</span>
+        <span>3.1 Investigación de Mercados &amp; Business Intelligence · 5 servicios</span>
         <span>03.a / 03.c</span>
       </div>
       <div class='pillar-head'>
         <div>
-          <span class='label'>Pilar 01 <span class='ix'>· Investigación</span></span>
+          <span class='label'>Línea 01 <span class='ix'>· Investigación</span></span>
           <h3>Conoce a tu <em>mercado</em> antes de invertir un peso</h3>
         </div>
-        <p>La decisión comercial más costosa es la que se toma sin información. Este pilar pone números y contexto sobre tu cliente, tu competencia y tu precio.</p>
+        <p>Transformamos la incertidumbre en decisiones rentables. Antes de invertir en pauta o diseño, analizamos la posición real de tu empresa para fundamentar tu estrategia comercial.</p>
       </div>
       <div class='svc-list'>
-        <div class='svc-row'><span class='n'>a.1</span><b>Estudios Cualitativos y Cuantitativos</b><p>Entrevistas, sesiones a profundidad y encuestas que revelan qué piensa, siente y necesita tu cliente.</p></div>
-        <div class='svc-row'><span class='n'>a.2</span><b>Benchmarking &amp; Análisis de Mercado</b><p>Comparamos tu oferta contra la competencia para encontrar huecos, ventajas y oportunidades reales.</p></div>
-        <div class='svc-row'><span class='n'>a.3</span><b>Estudio de Precios &amp; NPS</b><p>Determinamos el precio que el mercado está dispuesto a pagar y medimos la lealtad de tus clientes con Net Promoter Score.</p></div>
-        <div class='svc-row'><span class='n'>a.4</span><b>Market Share &amp; Elaboración de Buyer Persona</b><p>Cuantificamos tu participación de mercado y construimos el perfil del comprador ideal que debe hablar toda tu comunicación.</p></div>
-        <div class='svc-row'><span class='n'>a.5</span><b>Storytelling de Empresa</b><p>Convertimos tu historia, valores y propuesta de valor en un relato que conecta con el cliente y te diferencia.</p></div>
+        <div class='svc-row'><span class='n'>a.1</span><b>Estudios Cualitativos y Cuantitativos</b><p>Investigaciones a fondo para entender percepciones, conductas y datos duros de tu mercado objetivo.</p></div>
+        <div class='svc-row'><span class='n'>a.2</span><b>Benchmarking y Análisis de Mercado</b><p>Evaluación de tu competencia directa para identificar oportunidades y ventajas competitivas.</p></div>
+        <div class='svc-row'><span class='n'>a.3</span><b>Estudio de Precios y NPS (Net Promoter Score)</b><p>Análisis de viabilidad comercial y medición del nivel de satisfacción y lealtad de tus clientes.</p></div>
+        <div class='svc-row'><span class='n'>a.4</span><b>Market Share y Buyer Persona</b><p>Cálculo de tu participación en el mercado y diseño detallado del perfil de tu cliente ideal.</p></div>
+        <div class='svc-row'><span class='n'>a.5</span><b>Storytelling de Empresa</b><p>Definición de la narrativa comercial y la voz de tu marca para conectar emocionalmente con tu audiencia.</p></div>
       </div>
     </div>
 
-    <div class='pillar' id='desarrollo-web' data-od-id='desarrollo-web'>
+    <div class='pillar' id='srv-web' data-od-id='srv-web'>
+      <span id='desarrollo-web' aria-hidden='true'></span>
       <div class='pillar-rule'>
         <span class='roman'>III.b</span>
-        <span>Desarrollo &amp; Optimización Web · 5 servicios</span>
+        <span>3.2 Creación, Desarrollo y Optimización Web · 5 servicios</span>
         <span>03.b / 03.c</span>
       </div>
       <div class='pillar-head'>
         <div>
-          <span class='label'>Pilar 02 <span class='ix'>· Web</span></span>
+          <span class='label'>Línea 02 <span class='ix'>· Web</span></span>
           <h3>Tu web, pensada para <em>convertir</em> visitas en clientes</h3>
         </div>
-        <p>No hacemos sitios de vitrina: cada página, formulario y banner está diseñado para que el visitante avance hasta el contacto o la compra.</p>
+        <p>Diseñamos y optimizamos plataformas digitales orientadas 100% a la conversión de clientes, alimentadas por la data estratégica de tu negocio.</p>
       </div>
       <div class='svc-list'>
-        <div class='svc-row'><span class='n'>b.1</span><b>Creación de Páginas Web y Landing Pages</b><p>Sitios y páginas de aterrizaje con estructura, contenido y diseño orientados a un objetivo de negocio claro.</p></div>
-        <div class='svc-row'><span class='n'>b.2</span><b>Formularios Estratégicos &amp; Conversión de Leads</b><p>Formularios que capturan la información correcta y convierten visitas en contactos calificados.</p></div>
-        <div class='svc-row'><span class='n'>b.3</span><b>Diseño de Banners &amp; Banners Promocionales</b><p>Piezas digitales para campañas, promociones y temporadas, alineadas a tu identidad de marca.</p></div>
-        <div class='svc-row'><span class='n'>b.4</span><b>Optimización SEO y SEM</b><p>Posicionamiento orgánico y campañas de búsqueda para que te encuentren quienes ya buscan lo que vendes.</p></div>
-        <div class='svc-row'><span class='n'>b.5</span><b>Implementación de E-commerce &amp; Catálogos Digitales</b><p>Tiendas en línea y catálogos listos para vender, con una experiencia de compra clara y medible.</p></div>
+        <div class='svc-row'><span class='n'>b.1</span><b>Páginas Web y Landing Pages</b><p>Sitios funcionales, adaptables a móviles y enfocados en captar la atención de tu audiencia.</p></div>
+        <div class='svc-row'><span class='n'>b.2</span><b>Formularios y Captura de Leads</b><p>Integración de herramientas estratégicas para convertir visitantes en prospectos calificados.</p></div>
+        <div class='svc-row'><span class='n'>b.3</span><b>Diseño de Banners Promocionales</b><p>Gráficos visuales de alto impacto alineados a tus campañas de ventas.</p></div>
+        <div class='svc-row'><span class='n'>b.4</span><b>Optimización SEO y SEM</b><p>Posicionamiento en buscadores (Google) de forma orgánica y mediante anuncios pagados para atraer tráfico de calidad.</p></div>
+        <div class='svc-row'><span class='n'>b.5</span><b>E-commerce y Catálogos Digitales</b><p>Implementación de tiendas en línea para exhibir y vender tus productos de manera automatizada.</p></div>
       </div>
     </div>
 
-    <div class='pillar' id='marketing-digital' data-od-id='marketing-digital'>
+    <div class='pillar' id='srv-marketing' data-od-id='srv-marketing'>
+      <span id='marketing-digital' aria-hidden='true'></span>
       <div class='pillar-rule'>
         <span class='roman'>III.c</span>
-        <span>Marketing Digital &amp; Redes Sociales · 5 servicios</span>
+        <span>3.3 Marketing Digital &amp; Redes Sociales · 4 servicios</span>
         <span>03.c / 03.c</span>
       </div>
       <div class='pillar-head'>
         <div>
-          <span class='label'>Pilar 03 <span class='ix'>· RRSS</span></span>
+          <span class='label'>Línea 03 <span class='ix'>· RRSS</span></span>
           <h3>Redes que <em>conversan,</em> posicionan y venden</h3>
         </div>
-        <p>Tu marca no solo publica: escucha. Gestionamos la conversación diaria y las estrategias que llevan tráfico a tu punto de venta.</p>
+        <p>Gestionamos tu presencia en canales digitales con una estrategia enfocada en cumplir objetivos de negocio reales, no solo en acumular "likes".</p>
       </div>
       <div class='svc-list'>
-        <div class='svc-row'><span class='n'>c.1</span><b>Gestión y Optimización de Redes Sociales (RRSS)</b><p>Administración profesional de tus perfiles: biografías, formatos, horarios y mejores prácticas de cada red.</p></div>
-        <div class='svc-row'><span class='n'>c.2</span><b>Creación de Contenido (Posteos, Reels, Videos)</b><p>Producción de piezas en los formatos que cada red premia, con guiones enfocados en tu buyer persona.</p></div>
-        <div class='svc-row'><span class='n'>c.3</span><b>Parrillas de Contenido Semanales</b><p>Calendarios semanales planificados: qué publicar, cuándo y con qué objetivo - sin improvisar.</p></div>
-        <div class='svc-row'><span class='n'>c.4</span><b>Atención y Respuesta a Comentarios</b><p>Gestión de mensajes, comentarios y reseñas a tiempo, para convertir la interacción en confianza.</p></div>
-        <div class='svc-row'><span class='n'>c.5</span><b>Estrategias de Conversión</b><p>Tráfico a punto de venta, posicionamiento, reconocimiento de marca y manejo de reputación online.</p></div>
+        <div class='svc-row'><span class='n'>c.1</span><b>Gestión y Optimización de RRSS</b><p>Creación y administración profesional de tus perfiles en redes sociales.</p></div>
+        <div class='svc-row'><span class='n'>c.2</span><b>Creación de Contenido Multiformato</b><p>Producción de posteos, reels, videos y artes gráficos diseñados para destacar.</p></div>
+        <div class='svc-row'><span class='n'>c.3</span><b>Parrillas Semanales y Moderación</b><p>Planificación de contenidos y respuesta oportuna a comentarios para mantener activa a tu comunidad.</p></div>
+        <div class='svc-row'><span class='n'>c.4</span><b>Estrategia Orientada a Resultados</b><p>Campañas diseñadas para incrementar el tráfico a tu punto de venta, elevar el reconocimiento de marca y proteger/gestionar la reputación online de tu empresa.</p></div>
+      </div>
+    </div>
+
+    <div class='pillar' id='srv-tradicional' data-od-id='srv-tradicional'>
+      <div class='pillar-rule'>
+        <span class='roman'>III.d</span>
+        <span>3.4 Publicidad Tradicional, POP &amp; BTL · 4 servicios</span>
+        <span>03.d / 03.d</span>
+      </div>
+      <div class='pillar-head'>
+        <div>
+          <span class='label'>Línea 04 <span class='ix'>· POP &amp; BTL</span></span>
+          <h3>Tu marca, presente en el <em>mundo físico</em></h3>
+        </div>
+        <p>Conectamos tu marca con tus clientes en el mundo físico. Diseñamos e implementamos herramientas publicitarias de alto impacto directo para atraer tráfico y acelerar la venta en tu establecimiento.</p>
+      </div>
+      <div class='svc-list'>
+        <div class='svc-row'><span class='n'>d.1</span><b>Impresión Publicitaria &amp; Material POP</b><p>Diseño y producción de impresos de alta calidad, desde flyers, volantes y folletos, hasta banners, stoppers y material de exhibición para punto de venta.</p></div>
+        <div class='svc-row'><span class='n'>d.2</span><b>Activaciones en Punto de Venta (BTL)</b><p>Planeación y ejecución de dinámicas en tienda para generar experiencias memorables, captar prospectos e incentivar la compra inmediata.</p></div>
+        <div class='svc-row'><span class='n'>d.3</span><b>Estrategias de Volanteo y Perifoneo</b><p>Distribución geográfica enfocada y perifoneo estratégico para dar a conocer tu negocio, ofertas o aperturas en zonas clave de influencia.</p></div>
+        <div class='svc-row'><span class='n'>d.4</span><b>Material de Marca &amp; Branding Físico</b><p>Adaptación de tu identidad visual en empaques, papelería corporativa y señalética para proyectar una imagen sólida y profesional.</p></div>
       </div>
     </div>
   </div>
@@ -3395,67 +3498,82 @@ section { padding: 80px 0; }
         <span class='label'>Blog &amp; Recursos <span class='ix'>· Nº 05</span></span>
         <h2 class='display' style='margin-top:30px;'>Artículos de valor para decidir con <em>datos</em> y vender con <em>estrategia</em><span class='dot'>.</span></h2>
       </div>
-      <div class='pills' data-reveal='right' data-od-id='blog-filters'>
-          <button class='pill active' data-cat='all' type='button'>Todos<span class='count'>5</span></button>
-          <button class='pill' data-cat='im' type='button'>Inteligencia de Mercado<span class='count'>2</span></button>
-          <button class='pill' data-cat='dw' type='button'>Desarrollo Web<span class='count'>1</span></button>
-          <button class='pill' data-cat='ed' type='button'>Estrategia Digital<span class='count'>1</span></button>
-          <button class='pill' data-cat='ce' type='button'>Casos de Éxito<span class='count'>1</span></button>
+    </div>
+    <article class='feature' id='articulo-estudio-mercado' data-reveal>
+      <span class='label'>Artículo destacado · Inteligencia de Mercado &amp; Datos</span>
+      <h3>¿Por qué hacer un estudio de mercado antes de crear tu sitio web y redes sociales?</h3>
+      <div class='feature-body'>
+        <p>Muchos dueños de pequeñas y medianas empresas cometen el mismo error al lanzarse al mundo digital: contratan el diseño de un sitio web o empiezan a publicar contenidos en redes sociales sin haber analizado previamente a su mercado.</p>
+        <p>El resultado suele ser frustrante: páginas web estéticamente bonitas pero que nadie visita, campañas de publicidad que no generan ventas y una sensación constante de que "el marketing digital no funciona para mi negocio".</p>
+        <p>La realidad es que el marketing no falla; falla la falta de información antes de ejecutar. Hacer un estudio de mercado o análisis de Business Intelligence previo es el cimiento indispensable para que cada peso invertido en internet genere un retorno real.</p>
+        <div class='pt'>
+          <span class='pt-n'>1</span>
+          <div>
+            <strong>Conoces exactamente a quién le estás hablando (Buyer Persona)</strong>
+            <p>Sin investigación, el diseño de tu web y tus publicaciones se basan en suposiciones. Un estudio previo te revela quién es realmente tu cliente ideal, qué problemas busca resolver, qué lenguaje utiliza y qué canal prefiere. Esto permite redactar mensajes, diseñar páginas y crear anuncios que conecten de inmediato con sus necesidades.</p>
+          </div>
+        </div>
+        <div class='pt'>
+          <span class='pt-n'>2</span>
+          <div>
+            <strong>Evitas tirar dinero copiando a la competencia</strong>
+            <p>Hacer un benchmarking o análisis competitivo no se trata de imitar lo que hacen otros, sino de identificar qué les está funcionando y, sobre todo, qué oportunidades están dejando vacantes. De esta forma, tu sitio web y tus redes sociales destacarán por una propuesta de valor única en lugar de ser "uno más del montón".</p>
+          </div>
+        </div>
+        <div class='pt'>
+          <span class='pt-n'>3</span>
+          <div>
+            <strong>Diseñas una web orientada a vender, no solo a adornar</strong>
+            <p>Una página web construida con datos iniciales sabe exactamente qué estructura necesita: qué oferta poner en la portada, qué tipo de formularios utilizar para captar prospectos calificados y cómo guiar al visitante para que tome una decisión de compra. La data define la arquitectura digital de tu negocio.</p>
+          </div>
+        </div>
+        <div class='pt'>
+          <span class='pt-n'>4</span>
+          <div>
+            <strong>Tus campañas en redes sociales van directo al blanco</strong>
+            <p>En lugar de publicar por publicar o pagar pauta publicitaria a ciegas, los datos te dicen qué formatos (video, reels, artículos) funcionan mejor para tu audiencia y qué objetivos perseguir: atraer gente a tu local, generar leads o mejorar la reputación de tu marca.</p>
+          </div>
+        </div>
+        <h4>El diagnóstico es una inversión, no un gasto</h4>
+        <p>Construir tu presencia digital sin una investigación previa es como intentar edificar una casa sin planos. Dedicar el tiempo inicial a entender tu posicionamiento, tus precios y a tu consumidor garantiza que los esfuerzos digitales posteriores sean precisos, rentables y escalables.</p>
+        <p class='cta-note'>En B&amp;M Branding &amp; Marketing, te ayudamos a construir esa hoja de ruta con datos reales para que tu negocio crezca sobre bases sólidas. ¿Listo para dar el primer paso estratégico?</p>
       </div>
-    </div>
-    <div class='labs-meta'>
-      <span class='ring'>04</span>
-      <div class='meta-text'>
-        <b>Categorías de contenido</b>
-        inteligencia de mercado<br/>desarrollo web<br/>estrategia digital<br/>casos de éxito
+    </article>
+    <div class='blog-cats'>
+      <div class='cat-group' data-reveal>
+        <h3 class='label'>Inteligencia de Mercado &amp; Datos</h3>
+        <div class='cat-grid'>
+          <div class='card cat-card'><p>¿Para qué sirve la Investigación de Mercados en una PyME?</p><span class='soon'>Próximamente</span></div>
+          <div class='card cat-card'><p>Investigación Cualitativa vs. Cuantitativa: ¿Cuál necesita tu negocio?</p><span class='soon'>Próximamente</span></div>
+          <div class='card cat-card'><p>¿Qué es el NPS y cómo mide la lealtad de tus clientes?</p><span class='soon'>Próximamente</span></div>
+          <a class='card cat-card' href='#articulo-estudio-mercado'><p>¿Por qué hacer un estudio de mercado antes de crear tu sitio web y redes sociales?</p><span class='soon live'>Publicado</span></a>
+        </div>
       </div>
-    </div>
-    <div class='blog-nav-row' data-od-id='blog-nav'>
-      <button class='blog-nav prev' type='button' aria-label='Artículo anterior'><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M15 5l-7 7 7 7'/></svg></button>
-      <button class='blog-nav next' type='button' aria-label='Artículo siguiente'><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M9 5l7 7-7 7'/></svg></button>
-    </div>
-    <div class='labs-grid blog-grid' data-od-id='blog-grid'>
-        <div class='lab' data-reveal data-cat='im'>
-    <div class='lab-img'><span class='badge'>Inteligencia de Mercado</span><img src='./assets/lab-1.png' alt='Pila de revistas dobladas, artículo sobre buyer persona' /></div>
-    <div class='num-row'><span>Artículo 01</span><span>8 min</span></div>
-    <h4>Buyer persona: el retrato que vende antes de la primera llamada</h4>
-    <p>Cómo construir el perfil de tu comprador ideal con datos reales de mercado y usarlo en cada pieza de comunicación.</p>
-    <span class='arrow-mark' aria-hidden='true'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
-  </div>
-        <div class='lab' data-reveal data-cat='im'>
-    <div class='lab-img'><span class='badge'>Inteligencia de Mercado</span><img src='./assets/lab-2.png' alt='Ojo sintético y onda de sonido, artículo sobre NPS' /></div>
-    <div class='num-row'><span>Artículo 02</span><span>6 min</span></div>
-    <h4>NPS: la pregunta de dos minutos que mide la lealtad de tus clientes</h4>
-    <p>Qué es el Net Promoter Score, cómo medirlo sin molestar a nadie y qué hacer con el resultado.</p>
-    <span class='arrow-mark' aria-hidden='true'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
-  </div>
-        <div class='lab' data-reveal data-cat='dw'>
-    <div class='lab-img'><span class='badge'>Desarrollo Web</span><img src='./assets/lab-3.png' alt='Máquina de escribir con tarjetas, artículo sobre landing pages' /></div>
-    <div class='num-row'><span>Artículo 03</span><span>7 min</span></div>
-    <h4>Landing pages: anatomía de una página que convierte visitas en leads</h4>
-    <p>Estructura, formularios estratégicos y llamadas a la acción que sí generan contactos calificados.</p>
-    <span class='arrow-mark' aria-hidden='true'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
-  </div>
-        <div class='lab' data-reveal data-cat='ed'>
-    <div class='lab-img'><span class='badge'>Estrategia Digital</span><img src='./assets/lab-4.png' alt='Medidores dispuestos en círculo, artículo sobre parrillas de contenido' /></div>
-    <div class='num-row'><span>Artículo 04</span><span>5 min</span></div>
-    <h4>Parrillas de contenido: el calendario que ordena tus redes</h4>
-    <p>Planear una semana de posteos, reels y respuestas sin improvisar ni quemar la cuenta.</p>
-    <span class='arrow-mark' aria-hidden='true'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
-  </div>
-        <div class='lab' data-reveal data-cat='ce'>
-    <div class='lab-img'><span class='badge'>Casos de Éxito</span><img src='./assets/lab-5.png' alt='Cúpula de cristal sobre una pequeña ciudad, artículo de caso de éxito' /></div>
-    <div class='num-row'><span>Artículo 05</span><span>9 min</span></div>
-    <h4>Del estudio de mercado al punto de venta: anatomía de un caso de éxito</h4>
-    <p>Cómo conectamos investigación, web y redes para llevar tráfico real a un punto de venta.</p>
-    <span class='arrow-mark' aria-hidden='true'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
-  </div>
+      <div class='cat-group' data-reveal>
+        <h3 class='label'>Estrategia Web &amp; Conversión</h3>
+        <div class='cat-grid'>
+          <div class='card cat-card'><p>Ventajas de tener una Landing Page enfocada a ventas</p><span class='soon'>Próximamente</span></div>
+          <div class='card cat-card'><p>¿Por qué es vital incluir formularios estratégicos en tu página?</p><span class='soon'>Próximamente</span></div>
+          <div class='card cat-card'><p>Ventajas de integrar un Blog dentro del sitio web de tu empresa</p><span class='soon'>Próximamente</span></div>
+        </div>
+      </div>
+      <div class='cat-group' data-reveal>
+        <h3 class='label'>Estrategia Digital, RRSS &amp; Marca</h3>
+        <div class='cat-grid'>
+          <div class='card cat-card'><p>¿Qué es el Storytelling y cómo conecta a tu marca con tus clientes?</p><span class='soon'>Próximamente</span></div>
+          <div class='card cat-card'><p>Más allá de los "Likes": ¿Qué objetivos reales puedes perseguir en tus Redes Sociales?</p><span class='soon'>Próximamente</span></div>
+          <div class='card cat-card'><p>Marketing Tradicional vs. Marketing 5.0: La evolución del comportamiento del consumidor</p><span class='soon'>Próximamente</span></div>
+        </div>
+      </div>
+      <div class='cat-group' data-reveal>
+        <h3 class='label'>Punto de Venta &amp; Publicidad Tradicional</h3>
+        <div class='cat-grid'>
+          <div class='card cat-card'><p>BTL y Publicidad POP: Cómo atraer clientes desde la calle hasta la caja de tu negocio</p><span class='soon'>Próximamente</span></div>
+        </div>
+      </div>
     </div>
     <div class='labs-foot'>
-      <div class='progress'>
-        <span class='on'></span><span class='on'></span><span class='on'></span><span class='on'></span><span class='on'></span><span></span><span></span><span></span>
-      </div>
-      <span class='meta'>05 ARTÍCULOS &nbsp;·&nbsp; <a class='library-link' href='#contacto' style='color:var(--coral);'>SUGIERE UN TEMA →</a></span>
+      <span class='meta'>11 ARTÍCULOS · 1 PUBLICADO &nbsp;·&nbsp; <a class='library-link' href='#contacto' style='color:var(--coral);'>SUGIERE UN TEMA →</a></span>
     </div>
   </div>
 </section>
@@ -3481,14 +3599,21 @@ section { padding: 80px 0; }
             <span class='ch-ico'><svg viewBox='0 0 24 24'><path d='M21 12a9 9 0 0 1-13.4 7.9L3 21l1.2-4.5A9 9 0 1 1 21 12z'/></svg></span>
             <span><small>WhatsApp</small><b>+52 55 0000 0000</b></span>
           </a>
-          <a class='channel' href='mailto:hola@bymarketing.mx'>
+          <!-- TODO cliente: dato real -->
+          <a class='channel' href='mailto:hola@bym.mx'>
             <span class='ch-ico'><svg viewBox='0 0 24 24'><path d='M3 6h18v12H3z'/><path d='M3 7l9 6 9-6'/></svg></span>
-            <span><small>Correo</small><b>hola@bymarketing.mx</b></span>
+            <span><small>Correo</small><b>hola@bym.mx</b></span>
           </a>
+          <!-- TODO cliente: dato real -->
           <div class='channel' style='cursor:default;'>
             <span class='ch-ico'><svg viewBox='0 0 24 24'><path d='M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z'/><circle cx='12' cy='10' r='2.5'/></svg></span>
-            <span><small>Ubicación y teléfonos</small><b>Ciudad de México, CDMX · México</b></span>
+            <span><small>Ubicación</small><b>Ciudad de México</b></span>
           </div>
+          <!-- TODO cliente: dato real -->
+          <a class='channel' href='tel:5500000000'>
+            <span class='ch-ico'><svg viewBox='0 0 24 24'><path d='M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z'/></svg></span>
+            <span><small>Teléfono</small><b>55 0000 0000</b></span>
+          </a>
         </div>
       </div>
       <div class='quote-card' data-reveal='scale' data-od-id='quote-form'>
@@ -3523,6 +3648,124 @@ section { padding: 80px 0; }
           <p>Gracias por escribirnos. Te contactaremos para agendar una conversación sobre tu proyecto.</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class='tight' id='glosario' data-od-id='glosario'>
+  <div class='container'>
+    <div class='sec-rule'>
+      <span class='roman'>VII.</span>
+      <span class='meta-grp'>
+        <span>Glosario · Términos de mercado</span>
+        <span class='dot-mark'>•</span>
+        <span>10 términos</span>
+      </span>
+      <span>ANEXO I</span>
+    </div>
+    <div data-reveal style='margin-top:44px;'>
+      <span class='label'>Glosario <span class='ix'>· Nº 07</span></span>
+      <h2 class='display' style='margin-top:26px; font-size:clamp(30px, 3.6vw, 52px);'>El lenguaje del <em>mercado</em>, en claro<span class='dot'>.</span></h2>
+    </div>
+    <div class='gloss-grid' data-od-id='glosario-grid'>
+      <div class='gloss-item'>
+        <strong>NPS (Net Promoter Score)</strong>
+        <p>métrica que mide la lealtad y satisfacción de tus clientes con una sola pregunta: ¿qué tan probable es que nos recomiendes?</p>
+      </div>
+      <div class='gloss-item'>
+        <strong>Buyer Persona</strong>
+        <p>perfil semi-ficticio de tu cliente ideal, construido con datos reales de mercado.</p>
+      </div>
+      <div class='gloss-item'>
+        <strong>Market Share</strong>
+        <p>porcentaje de las ventas totales de un sector que controla tu empresa.</p>
+      </div>
+      <div class='gloss-item'>
+        <strong>Benchmarking</strong>
+        <p>análisis comparativo de tu competencia para identificar mejores prácticas y oportunidades.</p>
+      </div>
+      <div class='gloss-item'>
+        <strong>BTL (Below The Line)</strong>
+        <p>publicidad de impacto directo y medible fuera de medios masivos: activaciones, volanteo y dinámicas en punto de venta.</p>
+      </div>
+      <div class='gloss-item'>
+        <strong>POP (Punto de Venta)</strong>
+        <p>material publicitario colocado donde ocurre la compra: stoppers, exhibidores y banners.</p>
+      </div>
+      <div class='gloss-item'>
+        <strong>SEO</strong>
+        <p>optimización para aparecer de forma orgánica en los resultados de buscadores como Google.</p>
+      </div>
+      <div class='gloss-item'>
+        <strong>SEM</strong>
+        <p>publicidad pagada en buscadores para atraer tráfico calificado de inmediato.</p>
+      </div>
+      <div class='gloss-item'>
+        <strong>Storytelling</strong>
+        <p>narrativa comercial que conecta emocionalmente a tu marca con su audiencia.</p>
+      </div>
+      <div class='gloss-item'>
+        <strong>Landing Page</strong>
+        <p>página independiente enfocada en una sola oferta, diseñada para convertir visitantes en prospectos o clientes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class='tight' id='faq' data-od-id='faq'>
+  <div class='container'>
+    <div class='sec-rule'>
+      <span class='roman'>VIII.</span>
+      <span class='meta-grp'>
+        <span>Preguntas frecuentes · Antes de cotizar</span>
+        <span class='dot-mark'>•</span>
+        <span>5 respuestas</span>
+      </span>
+      <span>ANEXO II</span>
+    </div>
+    <div data-reveal style='margin-top:44px;'>
+      <span class='label'>Preguntas frecuentes <span class='ix'>· Nº 08</span></span>
+      <h2 class='display' style='margin-top:26px; font-size:clamp(30px, 3.6vw, 52px);'>Lo que nos preguntan antes de <em>empezar</em><span class='dot'>.</span></h2>
+    </div>
+    <div class='faq-list' data-od-id='faq-list'>
+      <details>
+        <summary><strong>¿Trabajan solo con empresas grandes?</strong></summary>
+        <p>No. Nuestra especialidad son las micro, pequeñas y medianas empresas. Democratizamos las herramientas de inteligencia de mercado que antes solo usaban las grandes corporaciones.</p>
+      </details>
+      <details>
+        <summary><strong>¿Por qué empezar con un estudio de mercado?</strong></summary>
+        <p>Porque fundamenta cada decisión posterior: a quién hablarle, qué ofrecer y dónde invertir. Sin datos, el marketing es adivinanza; con datos, es inversión rentable.</p>
+      </details>
+      <details>
+        <summary><strong>¿Cuánto tarda un proyecto?</strong></summary>
+        <p>Depende del alcance: un estudio de mercado típico toma de 2 a 4 semanas; un sitio web, de 3 a 6 semanas. Al cotizar recibes un cronograma exacto.</p>
+      </details>
+      <details>
+        <summary><strong>¿Qué necesito para cotizar?</strong></summary>
+        <p>Solo tu nombre, tu WhatsApp y una descripción breve de tu proyecto. Nosotros hacemos el resto del diagnóstico.</p>
+      </details>
+      <details>
+        <summary><strong>¿Cómo protegen mis datos?</strong></summary>
+        <p>Usamos tu información únicamente para atender tu solicitud de cotización. Los detalles están en nuestro Aviso de Privacidad.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class='tight' id='aviso-privacidad' data-od-id='aviso-privacidad'>
+  <div class='container'>
+    <div class='sec-rule'>
+      <span class='roman'>IX.</span>
+      <span class='meta-grp'>
+        <span>Aviso de Privacidad · Legal</span>
+        <span class='dot-mark'>•</span>
+        <span>Datos personales</span>
+      </span>
+      <span>ANEXO III</span>
+    </div>
+    <div class='card' data-reveal style='margin-top:44px;'>
+      <span class='label'>Aviso de Privacidad <span class='ix'>· Nº 09</span></span>
+      <p class='aviso-legal' style='margin-top:18px;'>B&amp;M Branding &amp; Marketing es responsable del tratamiento de tus datos personales. Recabamos únicamente tu nombre, tu número de WhatsApp y el mensaje que decidas compartirnos, con la finalidad exclusiva de atender tu solicitud de cotización y dar seguimiento comercial. No compartimos tu información con terceros. Puedes ejercer tus derechos de acceso, rectificación, cancelación u oposición (ARCO) escribiendo a hola@bym.mx. <!-- TODO cliente: correo/fecha/datos reales del aviso --> Cualquier cambio a este aviso se publicará en esta misma página. Última actualización: agosto de 2026.</p>
     </div>
   </div>
 </section>
@@ -3563,6 +3806,9 @@ section { padding: 80px 0; }
         <li><a href='#blog'>Desarrollo Web</a></li>
         <li><a href='#blog'>Estrategia Digital</a></li>
         <li><a href='#blog'>Casos de Éxito</a></li>
+        <li><a href='#glosario'>Glosario</a></li>
+        <li><a href='#faq'>Preguntas frecuentes</a></li>
+        <li><a href='#aviso-privacidad'>Aviso de Privacidad</a></li>
     </ul>
   </div>
       <div class='foot-col'>
@@ -3742,28 +3988,6 @@ section { padding: 80px 0; }
 
 <script>
   /*
-   * Filtro del blog - muestra/oculta artículos por categoría (data-cat).
-   */
-  (function () {
-    var pills = document.querySelectorAll('.pills .pill[data-cat]');
-    var cards = document.querySelectorAll('.blog-grid .lab');
-    if (!pills.length || !cards.length) return;
-    for (var i = 0; i < pills.length; i++) {
-      pills[i].addEventListener('click', function () {
-        for (var j = 0; j < pills.length; j++) pills[j].classList.remove('active');
-        this.classList.add('active');
-        var cat = this.getAttribute('data-cat');
-        for (var k = 0; k < cards.length; k++) {
-          var show = cat === 'all' || cards[k].getAttribute('data-cat') === cat;
-          cards[k].style.display = show ? '' : 'none';
-        }
-      });
-    }
-  })();
-</script>
-
-<script>
-  /*
    * Formulario de cotización - validación en cliente y estado de éxito.
    */
   (function () {
@@ -3873,38 +4097,6 @@ section { padding: 80px 0; }
     requestAnimationFrame(frame);
   })();
 </script>
-<!-- ponytail: hide broken imgs until the new asset set lands with the same names -->
-<script>(function () {
-  var row = document.querySelector('.labs-grid.blog-grid');
-  var prev = document.querySelector('.blog-nav.prev');
-  var next = document.querySelector('.blog-nav.next');
-  if (!row || !prev || !next) return;
-  function step(dir) {
-    var card = row.querySelector('.lab');
-    if (!card) return;
-    row.scrollBy({ left: dir * (card.offsetWidth + 26), behavior: 'smooth' });
-  }
-  prev.addEventListener('click', function () { stop(); step(-1); });
-  next.addEventListener('click', function () { stop(); step(1); });
-  // autoplay: avanza solo cada 4s, se detiene al interactuar
-  var timer = null;
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function play() {
-    if (reduced || timer) return;
-    timer = setInterval(function () {
-      if (row.scrollLeft + row.clientWidth >= row.scrollWidth - 8) {
-        row.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        step(1);
-      }
-    }, 4000);
-  }
-  function stop() { clearInterval(timer); timer = null; }
-  row.addEventListener('pointerenter', stop);
-  row.addEventListener('touchstart', stop, { passive: true });
-  row.addEventListener('pointerleave', play);
-  play();
-})();</script>
 <script>document.addEventListener('error', function (e) { if (e.target && e.target.tagName === 'IMG') e.target.style.display = 'none'; }, true); document.addEventListener('DOMContentLoaded', function () { document.querySelectorAll('img').forEach(function (i) { if (i.complete && i.naturalWidth === 0) i.style.display = 'none'; }); });</script>
 </body>
 </html>
