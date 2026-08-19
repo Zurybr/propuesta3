@@ -1422,15 +1422,11 @@ section.tight { padding: 90px 0; }
 }
 .float-btn:hover { transform: translateY(-3px); }
 .float-btn svg { width: 24px; height: 24px; }
-.float-wa { right: 22px; background: var(--error); color: #F8FAFC; animation: floatPulse 2.6s ease-in-out infinite; }
+.float-wa { right: 22px; background: var(--coral); color: #323F48; box-shadow: 0 14px 26px -16px rgba(9, 57, 80, 0.9); transition: transform .18s ease, background .18s ease; }
+.float-wa:hover { transform: translateY(-3px); background: #DDE4E8; }
 .float-wa svg path { fill: currentColor; }
 .float-msg { left: 22px; background: var(--paper-dark); color: var(--ink-soft); border: 1px solid var(--line); }
-@keyframes floatPulse {
-  0%, 100% { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35); }
-  50% { box-shadow: 0 8px 28px rgba(194, 72, 54, 0.5); }
-}
 @media (prefers-reduced-motion: reduce) {
-  .float-wa { animation: none; }
   .float-btn { transition: none; }
 }
 
