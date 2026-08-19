@@ -39,6 +39,7 @@
   --ink-mute: #BCC7CD;
   --ink-faint: #93A2AB;
   --coral: #FFFFFF;
+  --error: #C24836;
   --coral-soft: #DDE4E8;
   --mustard: #DDE4E8;
   --olive: #93A2AB;
@@ -1389,7 +1390,49 @@ section.tight { padding: 90px 0; }
   .foot-decides .fd-check { animation: none; stroke-dashoffset: 0; }
   .foot-decides .fd { opacity: 0.7; }
 }
-.method-foot .right b { color: var(--ink); }
+.method-foot { flex-wrap: wrap; gap: 14px; }
+.method-foot .foot-cta {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 10px 18px;
+  transition: color .25s, border-color .25s;
+}
+.method-foot .foot-cta span { color: var(--error); }
+.method-foot .foot-cta:hover { color: var(--ink); border-color: var(--error); }
+
+/* ---------- FLOATING ACTIONS ---------- */
+.float-btn {
+  position: fixed;
+  bottom: 22px;
+  z-index: 40;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: transform .25s ease;
+}
+.float-btn:hover { transform: translateY(-3px); }
+.float-btn svg { width: 24px; height: 24px; }
+.float-wa { right: 22px; background: var(--error); color: #F8FAFC; animation: floatPulse 2.6s ease-in-out infinite; }
+.float-wa svg path { fill: currentColor; }
+.float-msg { left: 22px; background: var(--paper-dark); color: var(--ink-soft); border: 1px solid var(--line); }
+@keyframes floatPulse {
+  0%, 100% { box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35); }
+  50% { box-shadow: 0 8px 28px rgba(194, 72, 54, 0.5); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .float-wa { animation: none; }
+  .float-btn { transition: none; }
+}
 
 /* ---------- WORK ---------- */
 .work {
@@ -3279,7 +3322,7 @@ section { padding: 80px 0; }
         </svg>
         <span>Los datos informan cada decisión.</span>
       </div>
-      <div class='right'><b>B&amp;M Branding &amp; Marketing</b> &nbsp;·&nbsp; Datos que orientan, estrategias que venden</div>
+      <a class='foot-cta' href='https://wa.me/5215500000000?text=Hola%20B%26M%2C%20quiero%20cotizar%20un%20proyecto' target='_blank' rel='noreferrer noopener'>¿Listo para decidir con datos? Platicanos tu proyecto <span aria-hidden='true'>→</span></a>
     </div>
   </div>
 </section>
@@ -3494,6 +3537,13 @@ section { padding: 80px 0; }
   </div>
 </footer>
 </div>
+
+<a class='float-btn float-wa' href='https://wa.me/5215500000000?text=Hola%20B%26M%2C%20quiero%20cotizar%20un%20proyecto' target='_blank' rel='noreferrer noopener' aria-label='Chatear por WhatsApp'>
+  <svg viewBox='0 0 24 24' aria-hidden='true'><path d='M12 3a9 9 0 0 0-7.6 13.8L3 21l4.4-1.3A9 9 0 1 0 12 3z'/></svg>
+</a>
+<a class='float-btn float-msg' href='#contacto' aria-label='Ir al formulario de mensaje'>
+  <svg viewBox='0 0 24 24' aria-hidden='true'><path d='M4 5h16v11H8l-4 4z' fill='none' stroke='currentColor' stroke-width='1.8' stroke-linejoin='round'/></svg>
+</a>
 
 <script>
   /*
