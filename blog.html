@@ -458,12 +458,14 @@ body::before {
 .btn-primary {
   background: var(--coral);
   color: #323F48;
+  text-decoration: none;
   box-shadow: 0 14px 26px -16px rgba(9, 57, 80, 0.9);
 }
 .btn-primary:hover { transform: translateY(-1px); background: #DDE4E8; }
 .btn-ghost {
   background: transparent;
   color: var(--ink);
+  text-decoration: none;
   border-color: rgba(248, 250, 252, 0.28);
 }
 .btn-ghost:hover { background: rgba(248, 250, 252, 0.07); }
@@ -2895,23 +2897,31 @@ section { padding: 80px 0; }
 /* ---------- blog page: índice TOC ---------- */
 .blog-intro { padding-top: 84px; }
 .blog-intro .lead { max-width: 56ch; }
-.blog-toc { margin-top: 44px; border-top: 1px solid var(--line); }
-.toc-row {
-  display: flex; align-items: baseline; gap: 22px;
-  padding: 16px 4px; border-bottom: 1px solid var(--line);
-  text-decoration: none; color: var(--ink-soft);
-  transition: color 200ms ease, padding-left 200ms ease;
+.toc-pills {
+  margin-top: 44px;
+  border-top: 1px solid var(--line);
+  padding-top: 26px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
-.toc-row .toc-n { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); letter-spacing: 0.06em; }
-.toc-row .toc-t { flex: 1; font-family: var(--sans); font-size: 16px; letter-spacing: 0.01em; }
-.toc-row .toc-c { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); }
-.toc-row .toc-arrow { font-family: var(--mono); color: transparent; transition: color 200ms ease; }
-.toc-row:hover { color: var(--ink); padding-left: 16px; }
-.toc-row:hover .toc-n, .toc-row:hover .toc-c { color: var(--ink); }
-.toc-row:hover .toc-arrow { color: var(--coral); }
+.toc-pill {
+  padding: 9px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: all 0.18s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.toc-pill:hover { background: rgba(248, 250, 252, 0.06); color: var(--ink); border-color: var(--coral); }
+.toc-pill .count { font-size: 10px; color: var(--ink-faint); border-left: 1px solid var(--line); padding-left: 8px; }
 .nav-links a[aria-current='page'] { color: var(--ink); }
 .nav-links a[aria-current='page'] .num { color: var(--coral); }
-@media (max-width: 640px) { .toc-row { gap: 14px; } .toc-row .toc-t { font-size: 14px; } }
 
 </style>
 </head>
@@ -3042,25 +3052,26 @@ section { padding: 80px 0; }
     <div class='sec-rule'>
       <span class='roman'>I.</span>
       <span class='meta-grp'>
-        <span>Blog / Recursos · Portada del índice</span>
+        <span>Blog / Recursos · Espacio educativo</span>
         <span class='dot-mark'>•</span>
-        <span>4 categorías · 11 artículos</span>
+        <span>4 categorías de contenido</span>
       </span>
-      <span>001 / 001</span>
+      <span>005 / 006</span>
     </div>
     <div class='labs-head'>
       <div data-reveal>
-        <span class='label'>Blog &amp; Recursos <span class='ix'>· Índice</span></span>
+        <span class='label'>Blog &amp; Recursos <span class='ix'>· Nº 05</span></span>
         <h2 class='display' style='margin-top:30px;'>Artículos de valor para decidir con <em>datos</em> y vender con <em>estrategia</em><span class='dot'>.</span></h2>
         <p class='lead blog-lead' style='margin-top:24px;'>El índice educativo de B&amp;M: inteligencia de mercado, web, estrategia digital y punto de venta.</p>
       </div>
     </div>
-    <div class='blog-toc' data-od-id='blog-toc'>
-      <a class='toc-row' data-reveal href='#cat-1'><span class='toc-n'>01</span><span class='toc-t'>Inteligencia de Mercado &amp; Datos</span><span class='toc-c'>4 arts.</span><span class='toc-arrow'>→</span></a>
-      <a class='toc-row' data-reveal href='#cat-2'><span class='toc-n'>02</span><span class='toc-t'>Estrategia Web &amp; Conversión</span><span class='toc-c'>3 arts.</span><span class='toc-arrow'>→</span></a>
-      <a class='toc-row' data-reveal href='#cat-3'><span class='toc-n'>03</span><span class='toc-t'>Estrategia Digital, RRSS &amp; Marca</span><span class='toc-c'>3 arts.</span><span class='toc-arrow'>→</span></a>
-      <a class='toc-row' data-reveal href='#cat-4'><span class='toc-n'>04</span><span class='toc-t'>Punto de Venta &amp; Publicidad Tradicional</span><span class='toc-c'>1 art.</span><span class='toc-arrow'>→</span></a>
-    </div>
+    <nav class='toc-pills' aria-label='Índice de categorías del blog' data-reveal>
+      <a class='toc-pill' href='#cat-1'>Todos<span class='count'>11</span></a>
+      <a class='toc-pill' href='#cat-1'>Inteligencia de Mercado<span class='count'>4</span></a>
+      <a class='toc-pill' href='#cat-2'>Web &amp; Conversión<span class='count'>3</span></a>
+      <a class='toc-pill' href='#cat-3'>Digital &amp; Marca<span class='count'>3</span></a>
+      <a class='toc-pill' href='#cat-4'>POP &amp; BTL<span class='count'>1</span></a>
+    </nav>
   </div>
 </section>
 <section class='labs' id='blog' data-od-id='blog'>

@@ -458,12 +458,14 @@ body::before {
 .btn-primary {
   background: var(--coral);
   color: #323F48;
+  text-decoration: none;
   box-shadow: 0 14px 26px -16px rgba(9, 57, 80, 0.9);
 }
 .btn-primary:hover { transform: translateY(-1px); background: #DDE4E8; }
 .btn-ghost {
   background: transparent;
   color: var(--ink);
+  text-decoration: none;
   border-color: rgba(248, 250, 252, 0.28);
 }
 .btn-ghost:hover { background: rgba(248, 250, 252, 0.07); }
@@ -612,6 +614,29 @@ body::before {
   display: block;
 }
 .hero-art svg.hero-viz { width: 100%; height: 100%; display: block; }
+/* hero chart: entrada — línea se dibuja, área aparece, puntos entran al final */
+.hero-viz .viz-line {
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: viz-draw 1.7s cubic-bezier(0.25, 1, 0.5, 1) 0.3s forwards;
+}
+.hero-viz .viz-area { opacity: 0; animation: viz-fade 1s ease-out 0.7s forwards; }
+.hero-viz .viz-dot { opacity: 0; animation: viz-fade 0.45s ease-out forwards; }
+.hero-viz .viz-dot-start { animation-delay: 1.5s; }
+.hero-viz .viz-dot-end {
+  animation: viz-fade 0.45s ease-out 1.75s forwards, viz-pulse 2.6s ease-in-out 2.4s infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@keyframes viz-draw { to { stroke-dashoffset: 0; } }
+@keyframes viz-fade { to { opacity: 1; } }
+@keyframes viz-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.5); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-viz .viz-line, .hero-viz .viz-area, .hero-viz .viz-dot { animation: none; opacity: 1; stroke-dashoffset: 0; }
+}
 /* image annotations */
 .annot {
   position: absolute;
@@ -2929,7 +2954,7 @@ section { padding: 80px 0; }
   -webkit-mask-image: linear-gradient(180deg, #000 30%, transparent 88%);
   mask-image: linear-gradient(180deg, #000 30%, transparent 88%);
 }
-.teaser-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 36px; }
+.teaser-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: flex-end; margin-top: 36px; }
 
 </style>
 </head>
@@ -3131,10 +3156,10 @@ section { padding: 80px 0; }
         <line x1='70' y1='588' x2='600' y2='588' stroke='var(--ink-faint)' stroke-width='1'/>
         <path d='M70,548 C220,540 420,554 600,544' fill='none' stroke='var(--ink-faint)' stroke-width='1.5' stroke-dasharray='5 6'/>
         <text x='600' y='530' text-anchor='end' font-family='var(--sans)' font-size='10' letter-spacing='2' fill='var(--ink-faint)'>SIN ESTRATEGIA</text>
-        <path d='M70,572 C210,562 320,492 400,396 C480,300 540,196 600,150 L600,588 L70,588 Z' fill='rgba(9,57,80,0.55)'/>
-        <path d='M70,572 C210,562 320,492 400,396 C480,300 540,196 600,150' fill='none' stroke='#FFFFFF' stroke-width='3'/>
-        <circle cx='600' cy='150' r='5' fill='#FFFFFF'/>
-        <circle cx='70' cy='572' r='3' fill='#FFFFFF'/>
+        <path class='viz-area' d='M70,572 C210,562 320,492 400,396 C480,300 540,196 600,150 L600,588 L70,588 Z' fill='rgba(9,57,80,0.55)'/>
+        <path class='viz-line' d='M70,572 C210,562 320,492 400,396 C480,300 540,196 600,150' fill='none' stroke='#FFFFFF' stroke-width='3'/>
+        <circle class='viz-dot viz-dot-end' cx='600' cy='150' r='5' fill='#FFFFFF'/>
+        <circle class='viz-dot viz-dot-start' cx='70' cy='572' r='3' fill='#FFFFFF'/>
         <text x='96' y='118' font-family='var(--sans)' font-size='10' letter-spacing='2' fill='var(--ink-mute)'>GOOGLE · SEO → TRÁFICO → CONVERSIÓN</text>
         <text x='600' y='126' text-anchor='end' font-family='var(--sans)' font-size='11' font-weight='700' letter-spacing='2' fill='#FFFFFF'>+ VENTAS</text>
         <g font-family='var(--sans)' font-size='9.5' letter-spacing='1.5' fill='var(--ink-mute)'>
