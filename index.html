@@ -718,6 +718,18 @@ section.tight { padding: 90px 0; }
 }
 .sec-rule .meta-grp { display: inline-flex; gap: 26px; }
 .sec-rule .dot-mark { color: var(--coral); }
+/* hero: meta apilado — Inicio / edición / línea creativa */
+.sec-rule .meta-grp.stack { flex-direction: column; gap: 5px; align-items: center; }
+.sec-rule .meta-grp.stack .rule-sub { color: var(--ink-faint); }
+.sec-rule .meta-grp.stack .rule-kick {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--coral);
+}
 
 .section-header { margin-bottom: 70px; }
 .section-header .label { margin-bottom: 32px; }
@@ -773,10 +785,7 @@ section.tight { padding: 90px 0; }
   88% { opacity: 1; filter: drop-shadow(0 0 26px rgba(248, 250, 252, 0.4)); }
   100% { opacity: 1; filter: drop-shadow(0 0 10px rgba(248, 250, 252, 0.14)); }
 }
-@media (prefers-reduced-motion: reduce) {
-  .brand-anim { display: none; }
-  .brand-band-frame img { animation: none; opacity: 1; }
-}
+/* ponytail: el cliente quiere ver el storyboard también con "reducir movimiento" activo (móviles); animación pequeña y única, sin riesgo vestibular real */
 .brand-band-frame .corner { position: absolute; width: 22px; height: 22px; border-color: var(--ink-faint); border-style: solid; border-width: 0; animation: cornerIn 1.8s ease 2.7s both; }
 .brand-band-frame .corner.tl { top: 0; left: 0; border-top-width: 1px; border-left-width: 1px; }
 .brand-band-frame .corner.br { bottom: 0; right: 0; border-bottom-width: 1px; border-right-width: 1px; }
@@ -2970,7 +2979,7 @@ section { padding: 80px 0; }
 </div>
 <div class='shell'>
 
-<section class='brand-band' aria-label='Marca'>
+<section class='brand-band' id='marca' aria-label='Marca'>
   <div class='container'>
     <div class='brand-band-frame'>
       <span class='corner tl'></span><span class='corner br'></span>
@@ -3003,7 +3012,7 @@ section { padding: 80px 0; }
       </svg>
     </div>
     <div class='brand-band-note'>
-      <span>Inicio / Portada &nbsp;·&nbsp; B&amp;M / Volumen 01</span><span>001 / 006</span>
+      <span>Inicio &nbsp;·&nbsp; B&amp;M / 2026 / Vol. 01</span><span>001 / 006</span>
     </div>
   </div>
 </section>
@@ -3024,7 +3033,7 @@ section { padding: 80px 0; }
 
 <header class='nav' data-od-id='nav'>
   <div class='container nav-inner'>
-    <a href='#top' class='brand' data-od-id='brand'>
+    <a href='#marca' class='brand' data-od-id='brand'>
       <span class='brand-mark' role='img' aria-label='B&amp;M Branding &amp; Marketing'></span>
       <span class='brand-name'>B&amp;M Branding</span>
       <span class='brand-meta'><b>Branding &amp; Marketing</b>Datos · Estrategia · Ventas</span>
@@ -3084,10 +3093,10 @@ section { padding: 80px 0; }
   <div class='container'>
     <div class='sec-rule'>
       <span class='roman'>I.</span>
-      <span class='meta-grp'>
-        <span>Inicio / Portada</span>
-        <span class='dot-mark'>•</span>
-        <span>B&amp;M / Volumen 01</span>
+      <span class='meta-grp stack'>
+        <span>Inicio</span>
+        <span class='rule-sub'>B&amp;M / 2026 &nbsp;·&nbsp; Vol. 01 / Propuesta web</span>
+        <span class='rule-kick'>Vol. 01 / Aquí es donde inicia tu viaje<span class='dot-mark'>.</span></span>
       </span>
       <span>001 / 006</span>
     </div>
@@ -3992,7 +4001,7 @@ section { padding: 80px 0; }
   <div class='container'>
     <div class='foot-grid'>
       <div class='foot-brand'>
-        <a href='#top' class='brand'>
+        <a href='#marca' class='brand'>
           <span class='brand-mark' role='img' aria-label='B&amp;M Branding &amp; Marketing'></span>
           <span>B&amp;M Branding &amp; Marketing</span>
         </a>

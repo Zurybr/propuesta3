@@ -750,10 +750,7 @@ section.tight { padding: 90px 0; }
   88% { opacity: 1; filter: drop-shadow(0 0 26px rgba(248, 250, 252, 0.4)); }
   100% { opacity: 1; filter: drop-shadow(0 0 10px rgba(248, 250, 252, 0.14)); }
 }
-@media (prefers-reduced-motion: reduce) {
-  .brand-anim { display: none; }
-  .brand-band-frame img { animation: none; opacity: 1; }
-}
+/* ponytail: storyboard visible tambien con reduccion de movimiento (moviles) */
 .brand-band-frame .corner { position: absolute; width: 22px; height: 22px; border-color: var(--ink-faint); border-style: solid; border-width: 0; animation: cornerIn 1.8s ease 2.7s both; }
 .brand-band-frame .corner.tl { top: 0; left: 0; border-top-width: 1px; border-left-width: 1px; }
 .brand-band-frame .corner.br { bottom: 0; right: 0; border-bottom-width: 1px; border-right-width: 1px; }

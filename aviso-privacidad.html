@@ -750,10 +750,7 @@ section.tight { padding: 90px 0; }
   88% { opacity: 1; filter: drop-shadow(0 0 26px rgba(248, 250, 252, 0.4)); }
   100% { opacity: 1; filter: drop-shadow(0 0 10px rgba(248, 250, 252, 0.14)); }
 }
-@media (prefers-reduced-motion: reduce) {
-  .brand-anim { display: none; }
-  .brand-band-frame img { animation: none; opacity: 1; }
-}
+/* ponytail: storyboard visible tambien con reduccion de movimiento (moviles) */
 .brand-band-frame .corner { position: absolute; width: 22px; height: 22px; border-color: var(--ink-faint); border-style: solid; border-width: 0; animation: cornerIn 1.8s ease 2.7s both; }
 .brand-band-frame .corner.tl { top: 0; left: 0; border-top-width: 1px; border-left-width: 1px; }
 .brand-band-frame .corner.br { bottom: 0; right: 0; border-bottom-width: 1px; border-right-width: 1px; }
@@ -2915,6 +2912,46 @@ section { padding: 80px 0; }
 .nav-links a[aria-current='page'] .num { color: var(--coral); }
 @media (max-width: 640px) { .toc-row { gap: 14px; } .toc-row .toc-t { font-size: 14px; } }
 
+/* ---------- AVISO DE PRIVACIDAD · layout editorial legal ---------- */
+.legal-head { max-width: 760px; margin: 64px 0 0; }
+.legal-head h2 { font-size: clamp(38px, 4.6vw, 62px); line-height: 1.02; margin: 26px 0 22px; }
+.legal-head .lead { max-width: 54ch; }
+.legal-meta {
+  display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
+  margin-top: 30px; padding-top: 18px; border-top: 1px dashed var(--line);
+  font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-faint);
+}
+.legal-meta .dot-mark { color: var(--coral); }
+.legal-facts { display: grid; grid-template-columns: 1fr; gap: 14px; margin: 56px 0 10px; }
+.legal-facts .fact {
+  display: flex; align-items: center; gap: 18px;
+  padding: 20px 24px; background: var(--bone);
+  border: 1px solid var(--line-faint); border-radius: 16px;
+}
+.legal-facts .fact b {
+  font-family: var(--serif); font-style: italic; font-weight: 500;
+  font-size: 44px; line-height: 1; color: var(--coral); min-width: 40px; text-align: center;
+}
+.legal-facts .fact span { font-family: var(--body); font-size: 13.5px; color: var(--ink-mute); line-height: 1.5; }
+.legal-list { margin-top: 46px; border-top: 1px solid var(--line); }
+.legal-item { display: grid; grid-template-columns: 1fr; gap: 6px; padding: 28px 0; border-bottom: 1px solid var(--line-faint); }
+.legal-item .ln { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: 20px; color: var(--coral); }
+.legal-item h3 { font-family: var(--sans); font-size: 19px; font-weight: 700; letter-spacing: -0.014em; margin-bottom: 10px; }
+.legal-item p, .legal-item li { font-family: var(--body); font-size: 14.5px; color: var(--ink-mute); line-height: 1.65; max-width: 68ch; }
+.legal-item b { color: var(--ink); font-weight: 600; }
+.legal-item ul { margin: 8px 0 0; padding-left: 20px; }
+.legal-item li { margin-bottom: 6px; }
+.legal-item li::marker { color: var(--coral); }
+.legal-item .inline-link { color: var(--ink); }
+@media (min-width: 641px) {
+  .legal-facts { grid-template-columns: repeat(3, 1fr); }
+  .legal-facts .fact { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+@media (min-width: 881px) {
+  .legal-item { grid-template-columns: 88px 1fr; gap: 32px; padding: 36px 0; }
+}
+
 </style>
 </head>
 <body>
@@ -2962,7 +2999,7 @@ section { padding: 80px 0; }
       </svg>
     </div>
     <div class='brand-band-note'>
-      <span>Blog / Recursos &nbsp;·&nbsp; B&amp;M / Volumen 01</span><span>005 / 006</span>
+      <span>Aviso de Privacidad &nbsp;·&nbsp; B&amp;M / Vol. 01</span><span>001 / 001</span>
     </div>
   </div>
 </section>
@@ -3046,13 +3083,83 @@ section { padding: 80px 0; }
       <span class='meta-grp'>
         <span>Aviso de Privacidad · Legal</span>
         <span class='dot-mark'>•</span>
-        <span>Datos personales</span>
+        <span>B&amp;M / 2026 / Vol. 01</span>
       </span>
       <span>001 / 001</span>
     </div>
-    <div class='card' data-reveal style='margin-top:44px;'>
-      <span class='label'>Aviso de Privacidad <span class='ix'>· Legal</span></span>
-      <p class='aviso-legal' style='margin-top:18px;'>B&amp;M Branding &amp; Marketing es responsable del tratamiento de tus datos personales. Recabamos únicamente tu nombre, tu número de WhatsApp y el mensaje que decidas compartirnos, con la finalidad exclusiva de atender tu solicitud de cotización y dar seguimiento comercial. No compartimos tu información con terceros. Puedes ejercer tus derechos de acceso, rectificación, cancelación u oposición (ARCO) escribiendo a hola@bym.mx. <!-- TODO cliente: correo/fecha/datos reales del aviso --> Cualquier cambio a este aviso se publicará en esta misma página. Última actualización: agosto de 2026.</p>
+
+    <div class='legal-head' data-reveal>
+      <span class='label'>Aviso de Privacidad <span class='ix'>· Legal / AP-01</span></span>
+      <h2 class='display'>Tus datos, cuidados como <em>tu marca</em><span class='dot'>.</span></h2>
+      <p class='lead'>Te lo decimos en lenguaje claro: qué datos pedimos, para qué los usamos y cómo puedes ejercer tus derechos. Sin letra chica, sin sorpresas.</p>
+      <div class='legal-meta'>
+        <span>Última actualización: agosto de 2026</span>
+        <span class='dot-mark'>•</span>
+        <span>Vigencia: permanente</span>
+        <span class='dot-mark'>•</span>
+        <span>hola@bymarketing.mx</span>
+      </div>
+    </div>
+
+    <div class='legal-facts' data-reveal>
+      <div class='fact'><b>3</b><span>datos recabados: nombre, WhatsApp y tu mensaje</span></div>
+      <div class='fact'><b>0</b><span>terceros: no vendemos ni compartimos tu información</span></div>
+      <div class='fact'><b>1</b><span>canal para tus derechos ARCO: hola@bymarketing.mx</span></div>
+    </div>
+
+    <div class='legal-list'>
+      <article class='legal-item' data-reveal>
+        <span class='ln'>I.</span>
+        <div>
+          <h3>Responsable del tratamiento</h3>
+          <p><b>B&amp;M Branding &amp; Marketing</b>, agencia con domicilio en CDMX, México, es responsable del tratamiento de tus datos personales recabados a través de este sitio, del formulario de cotización, de WhatsApp y del correo electrónico. <!-- TODO cliente: razón social, domicilio y datos reales del aviso --></p>
+        </div>
+      </article>
+      <article class='legal-item' data-reveal>
+        <span class='ln'>II.</span>
+        <div>
+          <h3>Datos que recabamos</h3>
+          <p>Únicamente los necesarios para atenderte:</p>
+          <ul>
+            <li><b>Nombre</b>, para dirigirnos a ti.</li>
+            <li><b>Número de WhatsApp</b>, para responder tu solicitud.</li>
+            <li><b>Mensaje</b>, con el objetivo o proyecto que nos compartas.</li>
+          </ul>
+        </div>
+      </article>
+      <article class='legal-item' data-reveal>
+        <span class='ln'>III.</span>
+        <div>
+          <h3>Finalidades</h3>
+          <p>Usamos tus datos exclusivamente para:</p>
+          <ul>
+            <li>Atender tu solicitud de cotización o información.</li>
+            <li>Dar seguimiento comercial a tu proyecto.</li>
+            <li>Mejorar nuestro servicio con métricas internas de atención.</li>
+          </ul>
+        </div>
+      </article>
+      <article class='legal-item' data-reveal>
+        <span class='ln'>IV.</span>
+        <div>
+          <h3>Lo que nunca hacemos</h3>
+          <p>No vendemos, rentamos ni compartimos tu información con terceros; no la usamos para fines publicitarios ajenos y no la transferimos sin tu consentimiento.</p>
+        </div>
+      </article>
+      <article class='legal-item' data-reveal>
+        <span class='ln'>V.</span>
+        <div>
+          <h3>Tus derechos (ARCO)</h3>
+          <p>Puedes ejercer tus derechos de <b>acceso, rectificación, cancelación u oposición</b>, así como revocar el consentimiento o limitar el uso de tus datos, escribiendo a <a class='inline-link' href='mailto:hola@bymarketing.mx'>hola@bymarketing.mx</a>. Atendemos toda solicitud y confirmamos por el mismo canal.</p>
+        </div>
+      </article>
+      <article class='legal-item' data-reveal>
+        <span class='ln'>VI.</span>
+        <div>
+          <h3>Cambios a este aviso</h3>
+          <p>Cualquier modificación se publicará en esta misma página. Te sugerimos revisarla periódicamente. La versión vigente corresponde a agosto de 2026.</p>
+        </div>
+      </article>
     </div>
   </div>
 </section>
