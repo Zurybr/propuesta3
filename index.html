@@ -1148,55 +1148,37 @@ section.tight { padding: 90px 0; }
 .card:hover .arrow-mark { background: var(--coral); border-color: var(--coral); color: #fff; }
 .card .arrow-mark svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 1.6; }
 
-/* ---------- FILOSOFÍA · tmux pane (valores) ---------- */
+/* ---------- FILOSOFÍA · mision / vision / valores ---------- */
 .cards.philo { grid-template-columns: 1fr; }
-.cards.philo .card p { max-width: none; }
-.card.tmux {
-  padding: 0;
-  background: var(--paper-dark);
-  display: flex;
-  flex-direction: column;
+.cards.philo .card p { max-width: 46ch; }
+.card.tmux { display: flex; flex-direction: column; }
+.tmux-wins {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 26px 34px;
 }
-.card.tmux::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(0deg, rgba(248, 250, 252, 0.025) 0 1px, transparent 1px 3px);
-  pointer-events: none;
+.tmux-win .num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--coral);
+  letter-spacing: 0.02em;
+  margin-bottom: 8px;
 }
-.tmux-top, .tmux-status {
+.tmux-win h3 { font-size: 17px; margin-bottom: 8px; }
+.tmux-status {
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  padding: 12px 18px;
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--ink-mute);
-}
-.tmux-top { border-bottom: 1px solid var(--line); }
-.tmux-top b, .tmux-status b { color: var(--ink); font-weight: 600; }
-.tmux-status {
-  margin-top: auto;
+  margin-top: 34px;
+  padding-top: 14px;
   border-top: 1px solid var(--line);
-  background: var(--bone);
+  font-family: var(--mono);
   font-size: 10.5px;
   color: var(--ink-faint);
 }
-.tmux-body { padding: 14px 22px 10px; }
-.tmux-win { padding: 14px 0; border-bottom: 1px solid var(--line-soft); }
-.tmux-win:last-child { border-bottom: none; }
-.tmux-win .num {
-  font-family: var(--mono);
-  font-style: normal;
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--ink-faint);
-  letter-spacing: 0.06em;
-  margin-bottom: 8px;
-}
-.tmux-win .num .tag { font-family: var(--mono); color: var(--ink-mute); }
-.tmux-win h3 { font-size: 17px; margin-bottom: 8px; }
-.tmux-win p { max-width: 48ch; }
+.tmux-status b { color: var(--ink); font-weight: 600; }
 
 /* ---------- LABS ---------- */
 .labs-head {
@@ -2448,22 +2430,37 @@ img.blur-reveal.blur-done {
 .founders-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
 .founder {
   background: var(--bone);
-  border-radius: 18px;
+  border-radius: 20px;
   box-shadow: var(--shadow), inset 0 0 0 1px rgba(248, 250, 252, 0.07);
-  padding: 34px 32px;
-  transition: transform 0.2s ease;
+  padding: 26px 30px 34px;
+  overflow: hidden;
+  transition: transform 0.45s cubic-bezier(0.22,1,0.36,1), box-shadow 0.45s ease;
 }
-.founder:hover { transform: translateY(-3px); }
-.founder .avatar {
-  display: block;
-  width: 104px; height: 104px;
-  border-radius: 50%;
+.founder:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 26px 48px -18px rgba(9, 57, 80, 0.38), inset 0 0 0 1px rgba(248, 250, 252, 0.12);
+}
+.founder .avatar-wrap { position: relative; margin: 4px 0 26px; }
+.founder .avatar-blur {
+  position: absolute; left: -12%; top: -12%;
+  width: 124%; height: 124%;
+  border-radius: 26px;
   object-fit: cover;
-  border: 2px solid var(--line);
-  margin-bottom: 22px;
-  transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease;
+  filter: blur(26px) saturate(1.6) brightness(0.92);
+  opacity: 0.5;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
-.founder:hover .avatar { transform: scale(1.12) rotate(2deg); box-shadow: 0 10px 24px -10px rgba(9, 57, 80, 0.9); }
+.founder .avatar {
+  position: relative; z-index: 1;
+  display: block;
+  width: 100%; height: 300px;
+  border-radius: 22px;
+  object-fit: cover;
+  object-position: 50% 28%;
+  transition: transform 0.6s cubic-bezier(0.22,1,0.36,1);
+}
+.founder:hover .avatar { transform: scale(1.03); }
+.founder:hover .avatar-blur { opacity: 0.9; transform: scale(1.05); }
 .founder h3 {
   font-family: var(--sans);
   font-size: 24px;
@@ -2956,7 +2953,7 @@ section { padding: 80px 0; }
   .nav-links { gap: 28px; }
   .brand-name { display: inline; }
   .cards.philo { grid-template-columns: 1fr 1fr; }
-  .cards.philo .card.tmux { grid-column: 2; grid-row: 1 / span 2; }
+  .cards.philo .card.tmux { grid-column: 1 / -1; }
 }
 
 @media (min-width: 1181px) {
@@ -3371,7 +3368,10 @@ section { padding: 80px 0; }
       <p class='lead'>Conoce un poco de sus fundadores</p>
       <div class='founders-grid'>
         <div class='founder' data-reveal>
-          <img class='avatar' src='assets/braulio.jpeg' alt='Braulio Islas Cruz' loading='lazy'>
+          <div class='avatar-wrap'>
+            <img class='avatar-blur' src='assets/braulio.jpeg' alt='' aria-hidden='true' loading='lazy'>
+            <img class='avatar' src='assets/braulio.jpeg' alt='Braulio Islas Cruz' loading='lazy'>
+          </div>
           <h3>Braulio</h3>
           <p class='role'>Dirección Estratégica &amp; Marketing Digital</p>
           <p>Cuenta con Licenciatura en Mercadotecnia, MBA en Administración de Empresas y Maestría en Marketing Digital. Su trayectoria inició en 2007 desde las bases de la investigación de mercados, evolucionando hasta dirigir las Gerencias de Mercadotecnia y Business Intelligence (BI) en marcas e industrias líderes como Helvex, Proteak, Masisa y el sector salud (Hospital ABC). Combina el rigor del marketing tradicional con el dominio del entorno digital, ejecutando campañas pagadas y orgánicas respaldadas por estrategias avanzadas de SEO, SEM, implementación de píxeles y Google Tag Manager. Su enfoque integral garantiza que cada decisión comercial esté fundamentada en datos reales y orientada al retorno de inversión.</p>
@@ -3383,7 +3383,10 @@ section { padding: 80px 0; }
           </div>
         </div>
         <div class='founder' data-reveal>
-          <img class='avatar' src='assets/miranda.jpeg' alt='Miranda Nolasco' loading='lazy'>
+          <div class='avatar-wrap'>
+            <img class='avatar-blur' src='assets/miranda.jpeg' alt='' aria-hidden='true' loading='lazy'>
+            <img class='avatar' src='assets/miranda.jpeg' alt='Miranda Nolasco' loading='lazy'>
+          </div>
           <h3>Miranda</h3>
           <p class='role'>Arquitectura Digital &amp; Contenido</p>
           <p>Con más de 10 años de especialización en administración y entornos web, me encargo de liderar la creación y optimización de tus plataformas digitales. Mi enfoque abarca desde la estructura de tu sitio web hasta la gestión estratégica de redes sociales y la creación de contenidos visuales de alto impacto (artes, reels y videos). Me aseguro de que la presencia de tu marca no solo sea visible, sino relevante y atractiva para tus clientes.</p>
@@ -3416,30 +3419,33 @@ section { padding: 80px 0; }
           <p>Ser la agencia consultora de referencia para las PyMEs en México, reconocida por revolucionar la forma en que los negocios ven la investigación de mercado: no como un gasto innecesario, sino como el motor estratégico indispensable para construir una presencia digital rentable, sólida y escalable.</p>
         </div>
         <div class='card tmux' data-reveal>
-          <div class='tmux-top'><span><b>[b&amp;m]</b> 0:filosofia*</span><span>"@bym · 5 ventanas"</span></div>
-          <div class='tmux-body'>
+          <div class='num'>03<span class='tag'>Valores</span></div>
+          <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
+            <path d='M12 3l8 4.5-8 4.5-8-4.5L12 3z'/><path d='M4 12l8 4.5 8-4.5'/><path d='M4 16.5l8 4.5 8-4.5'/>
+          </svg>
+          <div class='tmux-wins'>
             <div class='tmux-win'>
-              <div class='num'>01<span class='tag'>Valor</span></div>
+              <div class='num'>01</div>
               <h3>Decisiones Basadas en Datos</h3>
               <p>No adivinamos; fundamentamos cada propuesta, diseño y campaña en información real del mercado para maximizar el retorno de inversión.</p>
             </div>
             <div class='tmux-win'>
-              <div class='num'>02<span class='tag'>Valor</span></div>
+              <div class='num'>02</div>
               <h3>Transparencia y Honestidad</h3>
               <p>Explicamos con claridad el porqué de cada estrategia, asegurando que entiendas exactamente cómo trabaja tu dinero.</p>
             </div>
             <div class='tmux-win'>
-              <div class='num'>03<span class='tag'>Valor</span></div>
+              <div class='num'>03</div>
               <h3>Enfoque "A la Medida"</h3>
               <p>Rechazamos las soluciones genéricas. Estudiamos a fondo tu empresa para crear trajes estratégicos personalizados.</p>
             </div>
             <div class='tmux-win'>
-              <div class='num'>04<span class='tag'>Valor</span></div>
+              <div class='num'>04</div>
               <h3>Compromiso con el Crecimiento</h3>
               <p>Tu éxito comercial es nuestro único indicador de rendimiento. Nos involucramos como socios estratégicos.</p>
             </div>
             <div class='tmux-win'>
-              <div class='num'>05<span class='tag'>Valor</span></div>
+              <div class='num'>05</div>
               <h3>Sinergia Estratégica y Operativa</h3>
               <p>Combinamos la alta dirección corporativa con la agilidad y precisión técnica necesaria para ejecutar resultados de primer nivel.</p>
             </div>

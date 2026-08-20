@@ -1112,55 +1112,37 @@ section.tight { padding: 90px 0; }
 .card:hover .arrow-mark { background: var(--coral); border-color: var(--coral); color: #fff; }
 .card .arrow-mark svg { width: 11px; height: 11px; stroke: currentColor; fill: none; stroke-width: 1.6; }
 
-/* ---------- FILOSOFÍA · tmux pane (valores) ---------- */
+/* ---------- FILOSOFÍA · mision / vision / valores ---------- */
 .cards.philo { grid-template-columns: 1fr; }
-.cards.philo .card p { max-width: none; }
-.card.tmux {
-  padding: 0;
-  background: var(--paper-dark);
-  display: flex;
-  flex-direction: column;
+.cards.philo .card p { max-width: 46ch; }
+.card.tmux { display: flex; flex-direction: column; }
+.tmux-wins {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 26px 34px;
 }
-.card.tmux::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(0deg, rgba(248, 250, 252, 0.025) 0 1px, transparent 1px 3px);
-  pointer-events: none;
+.tmux-win .num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--coral);
+  letter-spacing: 0.02em;
+  margin-bottom: 8px;
 }
-.tmux-top, .tmux-status {
+.tmux-win h3 { font-size: 17px; margin-bottom: 8px; }
+.tmux-status {
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  padding: 12px 18px;
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--ink-mute);
-}
-.tmux-top { border-bottom: 1px solid var(--line); }
-.tmux-top b, .tmux-status b { color: var(--ink); font-weight: 600; }
-.tmux-status {
-  margin-top: auto;
+  margin-top: 34px;
+  padding-top: 14px;
   border-top: 1px solid var(--line);
-  background: var(--bone);
+  font-family: var(--mono);
   font-size: 10.5px;
   color: var(--ink-faint);
 }
-.tmux-body { padding: 14px 22px 10px; }
-.tmux-win { padding: 14px 0; border-bottom: 1px solid var(--line-soft); }
-.tmux-win:last-child { border-bottom: none; }
-.tmux-win .num {
-  font-family: var(--mono);
-  font-style: normal;
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--ink-faint);
-  letter-spacing: 0.06em;
-  margin-bottom: 8px;
-}
-.tmux-win .num .tag { font-family: var(--mono); color: var(--ink-mute); }
-.tmux-win h3 { font-size: 17px; margin-bottom: 8px; }
-.tmux-win p { max-width: 48ch; }
+.tmux-status b { color: var(--ink); font-weight: 600; }
 
 /* ---------- LABS ---------- */
 .labs-head {
@@ -2888,7 +2870,7 @@ section { padding: 80px 0; }
   .nav-links { gap: 28px; }
   .brand-name { display: inline; }
   .cards.philo { grid-template-columns: 1fr 1fr; }
-  .cards.philo .card.tmux { grid-column: 2; grid-row: 1 / span 2; }
+  .cards.philo .card.tmux { grid-column: 1 / -1; }
 }
 
 @media (min-width: 1181px) {
