@@ -1678,6 +1678,16 @@ section.tight { padding: 90px 0; }
 .chat-foot { font-family: var(--mono); font-size: 10.5px; color: var(--ink-mute); text-decoration: none; padding-top: 4px; }
 .chat-foot:hover { color: #FFFFFF; }
 
+/* Floating actions on mobile: smaller footprint */
+@media (max-width: 640px) {
+  .float-btn { width: 44px; height: 44px; bottom: 14px; }
+  .float-btn svg { width: 20px; height: 20px; }
+  .float-wa { right: 14px; }
+  .float-msg { left: 14px; }
+  .wa-pop { right: 14px; bottom: 66px; width: min(250px, calc(100vw - 28px)); }
+  .mini-chat { left: 14px; bottom: 66px; width: min(300px, calc(100vw - 28px)); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .float-btn, .float-wa::after, .float-msg::after, .wa-pop, .mini-chat,
   .wa-pop-item, .qr-chip { transition: none; }
@@ -4015,7 +4025,7 @@ section { padding: 80px 0; }
           <span>B&amp;M Branding &amp; Marketing</span>
         </a>
         <p style='margin-top:18px;'>Agencia que integra investigación de mercados, desarrollo web y redes sociales en un solo sistema: datos que orientan, estrategias que venden.</p>
-        <p style='margin-top:14px;'><a class='inline-link' href='https://wa.me/5215500000000' target='_blank' rel='noreferrer noopener'>Escríbenos por WhatsApp</a> &nbsp;·&nbsp; <a class='inline-link' href='mailto:hola@bymarketing.mx'>hola@bymarketing.mx</a></p>
+        <p style='margin-top:14px;'><a class='inline-link' href='https://wa.me/5215500000000' target='_blank' rel='noreferrer noopener'>Escríbenos por WhatsApp</a> &nbsp;·&nbsp; <a class='inline-link' href='mailto:hola@bym.mx'>hola@bym.mx</a></p>
       </div>
       <div class='foot-col'>
     <h5>Nosotros</h5>
@@ -4051,7 +4061,7 @@ section { padding: 80px 0; }
     <h5>Contacto</h5>
     <ul>
         <li><a href='https://wa.me/5215500000000' target='_blank' rel='noreferrer noopener'>WhatsApp</a></li>
-        <li><a href='mailto:hola@bymarketing.mx'>Correo</a></li>
+        <li><a href='mailto:hola@bym.mx'>Correo</a></li>
         <li><a href='#contacto'>Formulario de cotización</a></li>
         <li><a href='#contacto'>CDMX, México</a></li>
     </ul>
