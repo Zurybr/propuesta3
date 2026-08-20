@@ -3,8 +3,8 @@
 <head>
 <meta charset='utf-8' />
 <meta name='viewport' content='width=device-width, initial-scale=1' />
-<title>B&amp;M Branding &amp; Marketing - Datos que orientan, estrategias que venden.</title>
-<meta name='description' content='B&amp;M Branding &amp; Marketing: investigación de mercados, desarrollo y optimización web, marketing digital y redes sociales. Datos que orientan, estrategias que venden. Propuesta por Miranda.' />
+<title>Aviso de Privacidad · B&amp;M Branding &amp; Marketing</title>
+<meta name='description' content='Aviso de Privacidad de B&amp;M Branding &amp; Marketing: responsable del tratamiento, datos recabados, finalidades y derechos ARCO.' />
 <link rel='preconnect' href='https://fonts.googleapis.com' />
 <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
 <link href='https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,400;1,500;1,600;1,700&family=JetBrains+Mono:wght@400;500&display=swap' rel='stylesheet' />
@@ -2453,21 +2453,6 @@ img.blur-reveal.blur-done {
   border-radius: 999px;
   padding: 5px 11px;
 }
-.founder-badges { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px; }
-.badge-ico {
-  font-family: var(--sans);
-  font-size: 10.5px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--ink-mute);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 5px 11px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-.badge-ico svg { width: 13px; height: 13px; flex: none; color: var(--ink-soft); }
 
 /* mision / vision / valores */
 .cards.three { grid-template-columns: repeat(3, 1fr); }
@@ -2673,34 +2658,15 @@ a.channel:hover { border-color: var(--coral); background: rgba(255, 255, 255, 0.
 .channel b { font-weight: 600; font-size: 13.5px; }
 
 /* glosario / faq / aviso (compact closers) */
-.gloss-list { margin-top: 28px; border-top: 1px solid var(--line); }
-.gloss-row {
-  display: grid;
-  grid-template-columns: 52px 1fr;
-  gap: 4px 18px;
-  align-items: baseline;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--line);
+.gloss-grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 28px; }
+.gloss-item {
+  background: var(--bone);
+  border-radius: 14px;
+  padding: 16px 18px;
+  box-shadow: inset 0 0 0 1px rgba(248, 250, 252, 0.07);
 }
-.gloss-row .n { grid-column: 1; grid-row: 1; font-family: var(--mono); font-size: 12.5px; color: var(--coral); letter-spacing: 0.06em; }
-.gloss-row h4 {
-  grid-column: 2; grid-row: 1;
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 500;
-  font-size: 21px;
-  letter-spacing: -0.01em;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.gloss-row h4 .arrow-r { color: var(--ink-faint); font-family: var(--sans); font-style: normal; font-size: 15px; line-height: 1; }
-.gloss-row p { grid-column: 2; grid-row: 2; font-family: var(--body); font-size: 13px; line-height: 1.55; color: rgba(247, 241, 222, 0.72); max-width: 58ch; }
-@media (min-width: 1081px) {
-  .gloss-list { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: repeat(5, auto); grid-auto-flow: column; column-gap: 60px; }
-  .gloss-row { grid-template-columns: 52px 250px 1fr; gap: 4px 22px; padding: 22px 0; }
-  .gloss-row p { grid-column: 3; grid-row: 1; }
-}
+.gloss-item strong { font-family: var(--sans); font-size: 13.5px; display: block; margin-bottom: 6px; }
+.gloss-item p { font-family: var(--body); font-size: 13px; line-height: 1.55; color: rgba(247, 241, 222, 0.72); }
 .faq-list { margin-top: 28px; border-top: 1px solid var(--line); }
 .faq-list details { border-bottom: 1px solid var(--line); }
 .faq-list summary {
@@ -2848,6 +2814,7 @@ section { padding: 80px 0; }
   .hero h1 { font-size: clamp(36px, 4.6vw, 54px); }
   .labs-grid { grid-template-columns: repeat(2, 1fr); }
   .cards { grid-template-columns: 1fr 1fr; }
+  .gloss-grid { grid-template-columns: 1fr 1fr; }
   .cards.three { grid-template-columns: 1fr 1fr; }
   .pills { justify-content: flex-end; }  section { padding: 130px 0; }
   .topbar-inner { font-size: 10.5px; }
@@ -2897,6 +2864,7 @@ section { padding: 80px 0; }
   .hero h1 { font-size: clamp(44px, 5vw, 78px); }
   .section-header h2 { font-size: clamp(40px, 4.6vw, 66px); }
   .labs-grid { gap: 22px; }
+  .gloss-grid { grid-template-columns: repeat(3, 1fr); }
   .partners { grid-template-columns: repeat(6, 1fr); gap: 22px; }
   .foot-grid { grid-template-columns: 2fr 1fr 1fr 1fr 1fr; }
   .foot-grid .foot-col:nth-child(4),
@@ -2924,12 +2892,26 @@ section { padding: 80px 0; }
   .work { margin: 0 64px; padding: 110px 64px; }
   .side-rail { display: flex; }
 }
-/* ---------- blog teaser (portada → blog.html) ---------- */
-.teaser-dangle {
-  -webkit-mask-image: linear-gradient(180deg, #000 30%, transparent 88%);
-  mask-image: linear-gradient(180deg, #000 30%, transparent 88%);
+/* ---------- blog page: índice TOC ---------- */
+.blog-intro { padding-top: 84px; }
+.blog-intro .lead { max-width: 56ch; }
+.blog-toc { margin-top: 44px; border-top: 1px solid var(--line); }
+.toc-row {
+  display: flex; align-items: baseline; gap: 22px;
+  padding: 16px 4px; border-bottom: 1px solid var(--line);
+  text-decoration: none; color: var(--ink-soft);
+  transition: color 200ms ease, padding-left 200ms ease;
 }
-.teaser-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 36px; }
+.toc-row .toc-n { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); letter-spacing: 0.06em; }
+.toc-row .toc-t { flex: 1; font-family: var(--sans); font-size: 16px; letter-spacing: 0.01em; }
+.toc-row .toc-c { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); }
+.toc-row .toc-arrow { font-family: var(--mono); color: transparent; transition: color 200ms ease; }
+.toc-row:hover { color: var(--ink); padding-left: 16px; }
+.toc-row:hover .toc-n, .toc-row:hover .toc-c { color: var(--ink); }
+.toc-row:hover .toc-arrow { color: var(--coral); }
+.nav-links a[aria-current='page'] { color: var(--ink); }
+.nav-links a[aria-current='page'] .num { color: var(--coral); }
+@media (max-width: 640px) { .toc-row { gap: 14px; } .toc-row .toc-t { font-size: 14px; } }
 
 </style>
 </head>
@@ -2978,7 +2960,7 @@ section { padding: 80px 0; }
       </svg>
     </div>
     <div class='brand-band-note'>
-      <span>Inicio / Portada &nbsp;·&nbsp; B&amp;M / Volumen 01</span><span>001 / 006</span>
+      <span>Blog / Recursos &nbsp;·&nbsp; B&amp;M / Volumen 01</span><span>005 / 006</span>
     </div>
   </div>
 </section>
@@ -2991,7 +2973,7 @@ section { padding: 80px 0; }
       <span>Datos que orientan · Estrategias que venden</span>
     </span>
     <span class='right'>
-      <a class='topbar-link' href='#contacto'><span class='pulse'></span>Recibiendo proyectos</a>
+      <a class='topbar-link' href='index.html#contacto'><span class='pulse'></span>Recibiendo proyectos</a>
       <span><b>ES</b> · CDMX, México</span>
     </span>
   </div>
@@ -2999,38 +2981,38 @@ section { padding: 80px 0; }
 
 <header class='nav' data-od-id='nav'>
   <div class='container nav-inner'>
-    <a href='#top' class='brand' data-od-id='brand'>
+    <a href='index.html' class='brand' data-od-id='brand'>
       <span class='brand-mark' role='img' aria-label='B&amp;M Branding &amp; Marketing'></span>
       <span class='brand-name'>B&amp;M Branding</span>
       <span class='brand-meta'><b>Branding &amp; Marketing</b>Datos · Estrategia · Ventas</span>
     </a>
     <nav aria-label='Navegación principal'>
       <ul class='nav-links'>
-        <li><a href='#top'><span class='num'>01</span><span class='lbl'><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M4 11.5 12 5l8 6.5M6.5 10.2V19h11v-8.8'/></svg>Inicio</span></a></li>
+        <li><a href='index.html'><span class='num'>01</span><span class='lbl'><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M4 11.5 12 5l8 6.5M6.5 10.2V19h11v-8.8'/></svg>Inicio</span></a></li>
         <li>
-          <a class='dd' href='#quienes-somos'><span class='num'>02</span><span class='lbl'><svg viewBox='0 0 24 24' aria-hidden='true'><circle cx='9' cy='8.5' r='3'/><path d='M3.5 19c0-3 2.5-4.7 5.5-4.7s5.5 1.7 5.5 4.7M15.5 6.2a3 3 0 0 1 0 5.6M17 14.6c2.3.5 3.8 2 3.8 4.4'/></svg>¿Quiénes Somos?</span></a>
+          <a class='dd' href='index.html#quienes-somos'><span class='num'>02</span><span class='lbl'><svg viewBox='0 0 24 24' aria-hidden='true'><circle cx='9' cy='8.5' r='3'/><path d='M3.5 19c0-3 2.5-4.7 5.5-4.7s5.5 1.7 5.5 4.7M15.5 6.2a3 3 0 0 1 0 5.6M17 14.6c2.3.5 3.8 2 3.8 4.4'/></svg>¿Quiénes Somos?</span></a>
           <div class='drop'>
-            <a href='#historia'>Historia<small>De dónde venimos y qué nos mueve</small></a>
-            <a href='#fundadores'>Fundadores<small>La integración de Braulio &amp; Miranda</small></a>
-            <a href='#filosofia'>Filosofía Institucional<small>Misión · Visión · Valores</small></a>
+            <a href='index.html#historia'>Historia<small>De dónde venimos y qué nos mueve</small></a>
+            <a href='index.html#fundadores'>Fundadores<small>La integración de Braulio &amp; Miranda</small></a>
+            <a href='index.html#filosofia'>Filosofía Institucional<small>Misión · Visión · Valores</small></a>
           </div>
         </li>
         <li>
-          <a class='dd' href='#servicios'><span class='num'>03</span><span class='lbl'><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M12 4l8 4.5-8 4.5-8-4.5L12 4zM4 13l8 4.5 8-4.5'/></svg>Servicios</span></a>
+          <a class='dd' href='index.html#servicios'><span class='num'>03</span><span class='lbl'><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M12 4l8 4.5-8 4.5-8-4.5L12 4zM4 13l8 4.5 8-4.5'/></svg>Servicios</span></a>
           <div class='drop'>
-            <a href='#srv-investigacion'>Investigación de Mercados &amp; BI<small>Estudios · NPS · Buyer persona</small></a>
-            <a href='#srv-web'>Creación, Desarrollo y Optimización Web<small>Sitios · SEO/SEM · E-commerce</small></a>
-            <a href='#srv-marketing'>Marketing Digital &amp; RRSS<small>Contenido · Parrillas · Reputación</small></a>
-            <a href='#srv-tradicional'>Publicidad Tradicional, POP &amp; BTL<small>Impresos · Punto de venta</small></a>
+            <a href='index.html#srv-investigacion'>Investigación de Mercados &amp; BI<small>Estudios · NPS · Buyer persona</small></a>
+            <a href='index.html#srv-web'>Creación, Desarrollo y Optimización Web<small>Sitios · SEO/SEM · E-commerce</small></a>
+            <a href='index.html#srv-marketing'>Marketing Digital &amp; RRSS<small>Contenido · Parrillas · Reputación</small></a>
+            <a href='index.html#srv-tradicional'>Publicidad Tradicional, POP &amp; BTL<small>Impresos · Punto de venta</small></a>
           </div>
         </li>
         <li><a href='blog.html'><span class='num'>04</span><span class='lbl'><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M6 4h10a2 2 0 0 1 2 2v14H8a2 2 0 0 1-2-2V4z'/><path d='M6 16h12'/></svg>Blog / Recursos</span></a></li>
-        <li><a href='#contacto'><span class='num'>05</span><span class='lbl'><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M4 6h16v12H4zM4 7l8 6 8-6'/></svg>Contacto</span></a></li>
+        <li><a href='index.html#contacto'><span class='num'>05</span><span class='lbl'><svg viewBox='0 0 24 24' aria-hidden='true'><path d='M4 6h16v12H4zM4 7l8 6 8-6'/></svg>Contacto</span></a></li>
       </ul>
     </nav>
     <span class='nav-blob' aria-hidden='true'></span>
     <div class='nav-side'>
-      <a class='nav-cta' href='#contacto'>Cotizar tu proyecto</a>
+      <a class='nav-cta' href='index.html#contacto'>Cotizar tu proyecto</a>
       <button class='nav-burger' type='button' aria-label='Abrir menú' aria-expanded='false' data-od-id='nav-burger'>
         <span></span><span></span><span></span>
       </button>
@@ -3040,925 +3022,35 @@ section { padding: 80px 0; }
 </header>
 
 <div class='mobile-menu' data-od-id='mobile-menu'>
-  <a href='#top'>Inicio</a>
-  <a href='#quienes-somos'>¿Quiénes Somos?</a>
-  <a href='#historia' class='sub'>Historia</a>
-  <a href='#fundadores' class='sub'>Fundadores - Braulio &amp; Miranda</a>
-  <a href='#filosofia' class='sub'>Filosofía Institucional</a>
-  <a href='#servicios'>Servicios</a>
-  <a href='#srv-investigacion' class='sub'>Investigación de Mercados &amp; BI</a>
-  <a href='#srv-web' class='sub'>Creación, Desarrollo y Optimización Web</a>
-  <a href='#srv-marketing' class='sub'>Marketing Digital &amp; RRSS</a>
-  <a href='#srv-tradicional' class='sub'>Publicidad Tradicional, POP &amp; BTL</a>
-  <a href='#metodo' class='sub'>Nuestro Método</a>
+  <a href='index.html'>Inicio</a>
+  <a href='index.html#quienes-somos'>¿Quiénes Somos?</a>
+  <a href='index.html#historia' class='sub'>Historia</a>
+  <a href='index.html#fundadores' class='sub'>Fundadores - Braulio &amp; Miranda</a>
+  <a href='index.html#filosofia' class='sub'>Filosofía Institucional</a>
+  <a href='index.html#servicios'>Servicios</a>
+  <a href='index.html#srv-investigacion' class='sub'>Investigación de Mercados &amp; BI</a>
+  <a href='index.html#srv-web' class='sub'>Creación, Desarrollo y Optimización Web</a>
+  <a href='index.html#srv-marketing' class='sub'>Marketing Digital &amp; RRSS</a>
+  <a href='index.html#srv-tradicional' class='sub'>Publicidad Tradicional, POP &amp; BTL</a>
+  <a href='index.html#metodo' class='sub'>Nuestro Método</a>
   <a href='blog.html'>Blog / Recursos</a>
-  <a href='#contacto'>Contacto</a>
+  <a href='index.html#contacto'>Contacto</a>
 </div>
 
-<section class='hero' id='top' data-od-id='hero'>
+<section class='tight' id='aviso' data-od-id='aviso'>
   <div class='container'>
     <div class='sec-rule'>
       <span class='roman'>I.</span>
       <span class='meta-grp'>
-        <span>Inicio / Portada</span>
+        <span>Aviso de Privacidad · Legal</span>
         <span class='dot-mark'>•</span>
-        <span>B&amp;M / Volumen 01</span>
+        <span>Datos personales</span>
       </span>
-      <span>001 / 006</span>
+      <span>001 / 001</span>
     </div>
-  </div>
-  <div class='container hero-grid'>
-    <div class='hero-copy'>
-      <span class='label' data-reveal>Agencia de branding &amp; marketing <span class='ix'>· Nº 01</span></span>
-      <h1 class='display' data-reveal>Datos que <em>orientan,</em> estrategias que <em>venden</em><span class='dot'>.</span></h1>
-      <p class='lead' data-reveal>B&amp;M Branding &amp; Marketing integra investigación de mercados, desarrollo web y redes sociales en un solo sistema: entendemos a tu cliente con datos, construimos tu plataforma digital y cuidamos la conversación que convierte cada contacto en una oportunidad de venta.</p>
-      <p class='hero-note' data-reveal><span class='warn'>↳</span> Cada mes sin datos es presupuesto decidido a ciegas: mide primero, luego invierte.</p>
-      <div class='hero-actions' data-reveal>
-        <a class='btn btn-primary' href='#contacto'>
-          Solicitar cotización
-          <span class='arrow'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
-        </a>
-        <a class='btn btn-ghost' href='https://wa.me/5215500000000?text=Hola%20B%26M%2C%20quiero%20cotizar%20un%20proyecto' target='_blank' rel='noreferrer noopener'>
-          WhatsApp directo
-          <span class='arrow'><svg viewBox='0 0 24 24'><path d='M12 3a9 9 0 0 0-7.6 13.8L3 21l4.4-1.3A9 9 0 1 0 12 3z'/></svg></span>
-        </a>
-        <a class='btn btn-ghost' href='#servicios'>
-          Ver servicios
-          <span class='arrow'><svg viewBox='0 0 24 24'><circle cx='12' cy='12' r='9'/><path d='M9 12h6M12 9v6'/></svg></span>
-        </a>
-      </div>
-      <ul class='hero-proof' data-reveal>
-        <li>Diagnóstico con datos antes de proponer</li>
-        <li>KPIs medibles desde el arranque</li>
-        <li>Un solo equipo: investigación, web y redes</li>
-      </ul>
-      <div class='hero-stats' data-reveal>
-          <div class='stat'>
-    <span class='ring solid'>01</span>
-    <span class='stat-label'><b>investigación</b>de mercados</span>
-  </div>
-          <div class='stat'>
-    <span class='ring'>02</span>
-    <span class='stat-label'><b>desarrollo</b>web &amp; SEO</span>
-  </div>
-          <div class='stat'>
-    <span class='ring coral'>03</span>
-    <span class='stat-label'><b>marketing</b>digital &amp; RRSS</span>
-  </div>
-      </div>
-      <div class='hero-foot' data-reveal>
-        <span class='meta'>↳ &nbsp; 3 pilares &nbsp; · &nbsp; 15 servicios &nbsp; · &nbsp; 1 objetivo: vender</span>
-        <span class='coord'>19.4326° N · 99.1332° W</span>
-      </div>
-    </div>
-    <div class='hero-art' data-reveal='scale'>
-      <span class='corner tl'></span>
-      <span class='corner tr'></span>
-      <span class='corner bl'></span>
-      <span class='corner br'></span>
-      <span class='annot annot-tl coord'>FIG. 01 / BM-26</span>
-      <span class='annot annot-tr'>Placa Nº 01</span>
-      <span class='annot annot-bl coord'>CDMX · MX</span>
-      <span class='annot annot-br'>Compuesto por&nbsp;<span style='color:var(--coral);'>B&amp;M</span></span>
-      <svg class='hero-viz' viewBox='0 0 640 720' preserveAspectRatio='xMaxYMid meet' role='img' aria-label='Gráfica de crecimiento: con marketing, branding y SEO las ventas suben mes a mes'>
-        <g stroke='var(--line-faint)' stroke-width='1'>
-          <line x1='70' y1='140' x2='600' y2='140'/>
-          <line x1='70' y1='252' x2='600' y2='252'/>
-          <line x1='70' y1='364' x2='600' y2='364'/>
-          <line x1='70' y1='476' x2='600' y2='476'/>
-        </g>
-        <line x1='70' y1='96' x2='70' y2='588' stroke='var(--ink-faint)' stroke-width='1'/>
-        <line x1='70' y1='588' x2='600' y2='588' stroke='var(--ink-faint)' stroke-width='1'/>
-        <path d='M70,548 C220,540 420,554 600,544' fill='none' stroke='var(--ink-faint)' stroke-width='1.5' stroke-dasharray='5 6'/>
-        <text x='600' y='530' text-anchor='end' font-family='var(--sans)' font-size='10' letter-spacing='2' fill='var(--ink-faint)'>SIN ESTRATEGIA</text>
-        <path d='M70,572 C210,562 320,492 400,396 C480,300 540,196 600,150 L600,588 L70,588 Z' fill='rgba(9,57,80,0.55)'/>
-        <path d='M70,572 C210,562 320,492 400,396 C480,300 540,196 600,150' fill='none' stroke='#FFFFFF' stroke-width='3'/>
-        <circle cx='600' cy='150' r='5' fill='#FFFFFF'/>
-        <circle cx='70' cy='572' r='3' fill='#FFFFFF'/>
-        <text x='96' y='118' font-family='var(--sans)' font-size='10' letter-spacing='2' fill='var(--ink-mute)'>GOOGLE · SEO → TRÁFICO → CONVERSIÓN</text>
-        <text x='600' y='126' text-anchor='end' font-family='var(--sans)' font-size='11' font-weight='700' letter-spacing='2' fill='#FFFFFF'>+ VENTAS</text>
-        <g font-family='var(--sans)' font-size='9.5' letter-spacing='1.5' fill='var(--ink-mute)'>
-          <text x='70' y='616'>M1</text><text x='176' y='616'>M2</text><text x='282' y='616'>M3</text><text x='388' y='616'>M4</text><text x='494' y='616'>M5</text><text x='600' y='616' text-anchor='end'>M6</text>
-        </g>
-        <text x='70' y='652' font-family='var(--sans)' font-size='10' letter-spacing='2' fill='var(--ink-faint)'>DATOS → DECISIONES → ESTRATEGIA → VENTA</text>
-      </svg>
-      <div class='index'>
-      <span class='on'><span class='n'>01</span>Escuchar</span>
-      <span><span class='n'>02</span>Analizar</span>
-      <span><span class='n'>03</span>Diseñar</span>
-      <span><span class='n'>04</span>Medir</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class='wire' data-od-id='wire' aria-label='Global wire - cities and contributors'>
-  <div class='container wire-inner'>
-    <div class='wire-left'>
-      <span class='wire-mark' aria-hidden='true'><span class='wire-pulse'></span></span>
-      <span class='wire-title'>
-        <b>Lo que hacemos</b>
-        <span>3 pilares · 15 servicios · 1 sistema</span>
-      </span>
-    </div>
-    <div class='wire-rows'>
-      <div class='wire-row'>
-        <div class='marquee-track' aria-hidden='true'>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Investigación de Mercados</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Estudios Cualitativos y Cuantitativos</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Benchmarking de Mercado</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Estudio de Precios y NPS</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Market Share y Buyer Persona</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Storytelling de Empresa</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Páginas Web y Landing Pages</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Formularios y Conversión de Leads</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>SEO y SEM</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>E-commerce y Catálogos Digitales</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Gestión de Redes Sociales</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Reels y Videos</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Parrillas Semanales</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Reputación Online</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Investigación de Mercados</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Estudios Cualitativos y Cuantitativos</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Benchmarking de Mercado</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Estudio de Precios y NPS</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Market Share y Buyer Persona</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Storytelling de Empresa</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Páginas Web y Landing Pages</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Formularios y Conversión de Leads</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>SEO y SEM</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>E-commerce y Catálogos Digitales</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Gestión de Redes Sociales</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Reels y Videos</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Parrillas Semanales</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-name'>Reputación Online</span></span>
-        </div>
-      </div>
-      <div class='wire-row reverse'>
-        <div class='marquee-track'>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Inteligencia de Mercado</span><span class='wire-role'>categoría</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Desarrollo Web</span><span class='wire-role'>categoría</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Estrategia Digital</span><span class='wire-role'>categoría</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Casos de Éxito</span><span class='wire-role'>categoría</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Datos</span><span class='wire-role'>orientan</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Estrategias</span><span class='wire-role'>venden</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Leads</span><span class='wire-role'>convierten</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Marcas</span><span class='wire-role'>posicionan</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Inteligencia de Mercado</span><span class='wire-role'>categoría</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Desarrollo Web</span><span class='wire-role'>categoría</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Estrategia Digital</span><span class='wire-role'>categoría</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Casos de Éxito</span><span class='wire-role'>categoría</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Datos</span><span class='wire-role'>orientan</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Estrategias</span><span class='wire-role'>venden</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Leads</span><span class='wire-role'>convierten</span></span>
-          <span class='wire-item'><span class='wire-dot'>·</span><span class='wire-handle'>Marcas</span><span class='wire-role'>posicionan</span></span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class='about' id='quienes-somos' data-od-id='quienes-somos'>
-  <div class='container'>
-    <div class='sec-rule'>
-    <span class='roman'>II.</span>
-    <span class='meta-grp'>
-      <span>¿Quiénes Somos? / Historia</span>
-      <span class='dot-mark'>•</span>
-      <span>B&amp;M / Volumen 01</span>
-    </span>
-    <span>002 / 006</span>
-  </div>
-    <div class='about-grid'>
-      <div class='about-copy' id='historia' data-reveal>
-        <span class='label'>Nuestra historia <span class='ix'>· Nº 02</span></span>
-        <h2 class='display'>De la experiencia corporativa al <em>impulso de las</em> PyMEs<span class='dot'>.</span></h2>
-        <p class='lead'>B&amp;M Branding &amp; Marketing nació de un punto de inflexión y de una visión compartida entre sus fundadores, Braulio y Miranda. Tras años de colaborar en entornos corporativos de alta exigencia, nos dimos cuenta de una constante en el mercado: las herramientas más avanzadas de inteligencia de negocios, investigación de mercado y estrategia digital solían estar reservadas únicamente para las grandes empresas.</p>
-        <p>Por otro lado, observamos que las micro, pequeñas y medianas empresas (PyMEs) frecuentemente veían el marketing no como una inversión rentabilizable, sino como un gasto innecesario. ¿La razón? Solían recibir soluciones genéricas, publicaciones sin estrategia y sitios web que no generaban ventas.</p>
-        <p>Decidimos cambiar esa realidad. Decidimos cerrar ciclos pasados y unir nuestras fortalezas para construir una agencia diferente.</p>
-        <p>Así nació B&amp;M: una firma creada por dos profesionales apasionados que decidieron democratizar la inteligencia de negocios. Unimos el rigor analítico del marketing corporativo con la agilidad digital para diseñar trajes a la medida que ayudan a cada negocio a saber exactamente dónde está parado, hacia dónde ir y cómo lograr un crecimiento real y medible.</p>
-        <a class='btn btn-ghost' href='#fundadores'>
-          Conoce a los fundadores
-          <span class='arrow'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
-        </a>
-        <div class='footer-row'>
-          <span class='mark'>B</span>
-          <span>Investigación · Diseño · Contenido · Medición</span>
-          <span class='stamp'>
-            <span>Filosofía B&amp;M</span>
-            <span style='color: var(--ink);'>Datos + Estrategia</span>
-          </span>
-        </div>
-      </div>
-      <div class='about-art' data-reveal='right'>
-        <svg class='about-viz' viewBox='0 0 620 620' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Esquema: dos disciplinas que se integran en un solo sistema para que tu marca venda'>
-          <text x='30' y='46' fill='#F8FAFC' font-family='Inter Tight, sans-serif' font-size='14' font-weight='800' letter-spacing='3'>DOS DISCIPLINAS</text>
-          <line x1='30' y1='58' x2='66' y2='58' stroke='rgba(248, 250, 252, 0.85)' stroke-width='2'/>
-          <text x='30' y='80' fill='rgba(248, 250, 252, 0.55)' font-family='Inter, sans-serif' font-size='10'>Un mismo propósito:</text>
-          <text x='30' y='94' fill='rgba(248, 250, 252, 0.55)' font-family='Inter, sans-serif' font-size='10'>que tu marca venda.</text>
-          <!-- arco superior -->
-          <path d='M180 118 Q262 78 342 118' fill='none' stroke='rgba(248, 250, 252, 0.4)' stroke-dasharray='4 6'/>
-          <text x='261' y='70' text-anchor='middle' fill='rgba(248, 250, 252, 0.55)' font-family='Inter Tight, sans-serif' font-size='9' letter-spacing='2'>DATOS + ESTRATEGIA</text>
-          <!-- disciplina izquierda: Braulio -->
-          <circle cx='150' cy='210' r='76' fill='rgba(9, 57, 80, 0.55)' stroke='rgba(248, 250, 252, 0.35)'/>
-          <g stroke='rgba(248, 250, 252, 0.85)' stroke-width='3'>
-            <line x1='122' y1='234' x2='122' y2='206'/>
-            <line x1='140' y1='234' x2='140' y2='186'/>
-            <line x1='158' y1='234' x2='158' y2='214'/>
-            <line x1='176' y1='234' x2='176' y2='196'/>
-            <line x1='112' y1='234' x2='186' y2='234'/>
-          </g>
-          <text x='150' y='316' text-anchor='middle' fill='rgba(248, 250, 252, 0.9)' font-family='Inter Tight, sans-serif' font-size='12' font-weight='700' letter-spacing='2'>BRAULIO</text>
-          <text x='150' y='333' text-anchor='middle' fill='rgba(248, 250, 252, 0.5)' font-family='Inter Tight, sans-serif' font-size='9' letter-spacing='1.5'>INVESTIGACIÓN DE MERCADOS</text>
-          <!-- disciplina derecha: Miranda -->
-          <circle cx='372' cy='210' r='76' fill='rgba(9, 57, 80, 0.55)' stroke='rgba(248, 250, 252, 0.35)'/>
-          <g stroke='rgba(248, 250, 252, 0.85)' stroke-width='3' fill='none'>
-            <rect x='340' y='180' width='64' height='46' rx='5'/>
-            <line x1='340' y1='192' x2='404' y2='192'/>
-            <path d='M356 202 l-8 8 l8 8'/>
-            <path d='M388 202 l8 8 l-8 8'/>
-          </g>
-          <text x='372' y='316' text-anchor='middle' fill='rgba(248, 250, 252, 0.9)' font-family='Inter Tight, sans-serif' font-size='12' font-weight='700' letter-spacing='2'>MIRANDA</text>
-          <text x='372' y='333' text-anchor='middle' fill='rgba(248, 250, 252, 0.5)' font-family='Inter Tight, sans-serif' font-size='9' letter-spacing='1.5'>WEB · SEO · REDES</text>
-          <!-- convergencia -->
-          <path d='M150 288 Q180 350 235 378' fill='none' stroke='rgba(248, 250, 252, 0.7)' stroke-width='2'/>
-          <path d='M372 288 Q342 350 287 378' fill='none' stroke='rgba(248, 250, 252, 0.7)' stroke-width='2'/>
-          <text x='105' y='345' fill='rgba(248, 250, 252, 0.45)' font-family='Inter Tight, sans-serif' font-size='8.5' letter-spacing='1.5' transform='rotate(55 105 345)'>ESTUDIAMOS</text>
-          <text x='418' y='345' fill='rgba(248, 250, 252, 0.45)' font-family='Inter Tight, sans-serif' font-size='8.5' letter-spacing='1.5' transform='rotate(-55 418 345)'>CONSTRUIMOS</text>
-          <circle cx='261' cy='420' r='52' fill='rgba(9, 57, 80, 0.75)' stroke='rgba(248, 250, 252, 0.85)' stroke-width='2'/>
-          <circle cx='261' cy='420' r='43' fill='none' stroke='rgba(248, 250, 252, 0.3)'/>
-          <text x='261' y='427' text-anchor='middle' fill='#F8FAFC' font-family='Inter Tight, sans-serif' font-size='21' font-weight='800' letter-spacing='1'>B&amp;M</text>
-          <text x='261' y='489' text-anchor='middle' fill='rgba(248, 250, 252, 0.5)' font-family='Inter Tight, sans-serif' font-size='9' letter-spacing='2'>UN SOLO SISTEMA</text>
-          <!-- resultado -->
-          <line x1='261' y1='498' x2='261' y2='522' stroke='rgba(248, 250, 252, 0.7)' stroke-width='2'/>
-          <path d='M255 516 l6 9 l6 -9' fill='none' stroke='rgba(248, 250, 252, 0.7)' stroke-width='2'/>
-          <rect x='176' y='530' width='170' height='40' rx='20' fill='#F8FAFC'/>
-          <text x='261' y='555' text-anchor='middle' fill='#093950' font-family='Inter Tight, sans-serif' font-size='12' font-weight='800' letter-spacing='1.5'>TU MARCA VENDE</text>
-          <!-- conversación continua -->
-          <path d='M346 550 Q430 545 430 420 Q430 260 392 236' fill='none' stroke='rgba(248, 250, 252, 0.3)' stroke-dasharray='4 6'/>
-          <text x='443' y='400' text-anchor='middle' fill='rgba(248, 250, 252, 0.45)' font-family='Inter Tight, sans-serif' font-size='8.5' letter-spacing='1.5' transform='rotate(90 443 400)'>CUIDAMOS LA CONVERSACIÓN</text>
-        </svg>
-        <div class='about-side-note'>
-          <b></b>
-          Del estudio de mercado<br/>a la conversión digital:<br/>acompañamos toda<br/>la cadena de valor<br/>de tu marca.
-        </div>
-        <div class='about-caption'>
-          <b>Estudios en datos · estrategia · percepción de marca.</b>
-          (B&amp;M Branding &amp; Marketing, MMXXVI)
-        </div>
-      </div>
-    </div>
-
-    <div id='fundadores' data-od-id='fundadores' style='margin-top:100px;'>
-      <div class='pillar-rule'>
-        <span class='roman'>II.a</span>
-        <span>Fundadores · La integración de Braulio &amp; Miranda</span>
-        <span>02.a / 02.c</span>
-      </div>
-      <p class='lead'>Conoce un poco de sus fundadores</p>
-      <div class='founders-grid'>
-        <div class='founder' data-reveal>
-          <img class='avatar' src='assets/braulio.jpeg' alt='Braulio Islas Cruz' loading='lazy'>
-          <h3>Braulio</h3>
-          <p class='role'>Dirección Estratégica &amp; Marketing Digital</p>
-          <p>Cuenta con Licenciatura en Mercadotecnia, MBA en Administración de Empresas y Maestría en Marketing Digital. Su trayectoria inició en 2007 desde las bases de la investigación de mercados, evolucionando hasta dirigir las Gerencias de Mercadotecnia y Business Intelligence (BI) en marcas e industrias líderes como Helvex, Proteak, Masisa y el sector salud (Hospital ABC). Combina el rigor del marketing tradicional con el dominio del entorno digital, ejecutando campañas pagadas y orgánicas respaldadas por estrategias avanzadas de SEO, SEM, implementación de píxeles y Google Tag Manager. Su enfoque integral garantiza que cada decisión comercial esté fundamentada en datos reales y orientada al retorno de inversión.</p>
-          <div class='founder-badges'>
-            <span class='badge-ico'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'><path d='M12 4L2 9l10 5 10-5-10-5z'/><path d='M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5'/></svg>Lic. Mercadotecnia</span>
-            <span class='badge-ico'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'><rect x='3' y='7' width='18' height='13' rx='2'/><path d='M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2'/></svg>MBA</span>
-            <span class='badge-ico'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'><path d='M5 20v-6'/><path d='M12 20V8'/><path d='M19 20v-10'/></svg>Business Intelligence</span>
-            <span class='badge-ico'><svg viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'><circle cx='10' cy='10' r='6'/><path d='M14.5 14.5L21 21'/></svg>SEO · SEM · GTM</span>
-          </div>
-        </div>
-        <div class='founder' data-reveal>
-          <img class='avatar' src='assets/miranda.jpeg' alt='Miranda Nolasco' loading='lazy'>
-          <h3>Miranda</h3>
-          <p class='role'>Arquitectura Digital &amp; Contenido</p>
-          <p>Con más de 10 años de especialización en administración y entornos web, me encargo de liderar la creación y optimización de tus plataformas digitales. Mi enfoque abarca desde la estructura de tu sitio web hasta la gestión estratégica de redes sociales y la creación de contenidos visuales de alto impacto (artes, reels y videos). Me aseguro de que la presencia de tu marca no solo sea visible, sino relevante y atractiva para tus clientes.</p>
-          <div class='trail'><span>Administración web</span><span>Redes sociales</span><span>Contenido visual</span><span>Reels &amp; video</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div id='filosofia' data-od-id='filosofia' style='margin-top:80px;'>
-      <div class='pillar-rule'>
-        <span class='roman'>II.b</span>
-        <span>Filosofía institucional · Misión · Visión · Valores</span>
-        <span>02.b / 02.c</span>
-      </div>
-      <div class='cards philo'>
-        <div class='card' data-reveal>
-          <div class='num'>01<span class='tag'>Misión</span></div>
-          <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
-            <circle cx='12' cy='12' r='8'/><circle cx='12' cy='12' r='3'/>
-          </svg>
-          <h3>Crecimiento PyME<br/>con datos</h3>
-          <p>Impulsar el crecimiento sostenible de las micro, pequeñas y medianas empresas transformando datos e investigación de mercado en soluciones digitales efectivas. Diseñamos estrategias a la medida —desde la inteligencia de negocios hasta el desarrollo web y la gestión de redes sociales— para garantizar que cada inversión publicitaria de nuestros clientes se traduzca en claridad, posicionamiento y ventas reales.</p>
-        </div>
-        <div class='card' data-reveal>
-          <div class='num'>02<span class='tag'>Visión</span></div>
-          <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
-            <path d='M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z'/><circle cx='12' cy='12' r='3'/>
-          </svg>
-          <h3>La agencia consultora<br/>de referencia</h3>
-          <p>Ser la agencia consultora de referencia para las PyMEs en México, reconocida por revolucionar la forma en que los negocios ven la investigación de mercado: no como un gasto innecesario, sino como el motor estratégico indispensable para construir una presencia digital rentable, sólida y escalable.</p>
-        </div>
-        <div class='card tmux' data-reveal>
-          <div class='tmux-top'><span><b>[b&amp;m]</b> 0:filosofia*</span><span>"@bym · 5 ventanas"</span></div>
-          <div class='tmux-body'>
-            <div class='tmux-win'>
-              <div class='num'>01<span class='tag'>Valor</span></div>
-              <h3>Decisiones Basadas en Datos</h3>
-              <p>No adivinamos; fundamentamos cada propuesta, diseño y campaña en información real del mercado para maximizar el retorno de inversión.</p>
-            </div>
-            <div class='tmux-win'>
-              <div class='num'>02<span class='tag'>Valor</span></div>
-              <h3>Transparencia y Honestidad</h3>
-              <p>Explicamos con claridad el porqué de cada estrategia, asegurando que entiendas exactamente cómo trabaja tu dinero.</p>
-            </div>
-            <div class='tmux-win'>
-              <div class='num'>03<span class='tag'>Valor</span></div>
-              <h3>Enfoque "A la Medida"</h3>
-              <p>Rechazamos las soluciones genéricas. Estudiamos a fondo tu empresa para crear trajes estratégicos personalizados.</p>
-            </div>
-            <div class='tmux-win'>
-              <div class='num'>04<span class='tag'>Valor</span></div>
-              <h3>Compromiso con el Crecimiento</h3>
-              <p>Tu éxito comercial es nuestro único indicador de rendimiento. Nos involucramos como socios estratégicos.</p>
-            </div>
-            <div class='tmux-win'>
-              <div class='num'>05<span class='tag'>Valor</span></div>
-              <h3>Sinergia Estratégica y Operativa</h3>
-              <p>Combinamos la alta dirección corporativa con la agilidad y precisión técnica necesaria para ejecutar resultados de primer nivel.</p>
-            </div>
-          </div>
-          <div class='tmux-status'><span>[0] 1:misión 2:visión <b>3:valores*</b></span><span>agosto 2026 · CDMX</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class='capabilities' id='servicios' data-od-id='servicios'>
-  <div class='container'>
-    <div class='sec-rule'>
-    <span class='roman'>III.</span>
-    <span class='meta-grp'>
-      <span>Servicios · 3 Pilares · 15 Servicios</span>
-      <span class='dot-mark'>•</span>
-      <span>Del dato a la venta</span>
-    </span>
-    <span>003 / 006</span>
-  </div>
-    <div class='capabilities-grid'>
-      <div class='capabilities-art' data-reveal='left'>
-        <span class='corner tl'></span>
-        <span class='corner br'></span>
-        <svg class='matrix-viz' viewBox='0 0 600 600' role='img' aria-label='Matriz de servicios: tres pilares convergen en el sistema B&amp;M que aumenta las ventas'>
-          <g font-family='var(--sans)'>
-            <rect x='40' y='60' width='150' height='96' rx='14' fill='rgba(9,57,80,0.5)' stroke='var(--line)'/>
-            <text x='115' y='98' text-anchor='middle' font-size='11' font-weight='700' letter-spacing='1.5' fill='#FFFFFF'>01 INVESTIGACIÓN</text>
-            <text x='115' y='120' text-anchor='middle' font-size='9' letter-spacing='1.5' fill='var(--ink-mute)'>CUANTI · CUALI</text>
-            <text x='115' y='136' text-anchor='middle' font-size='9' letter-spacing='1.5' fill='var(--ink-mute)'>BENCHMARK · NPS</text>
-            <rect x='225' y='60' width='150' height='96' rx='14' fill='rgba(9,57,80,0.5)' stroke='var(--line)'/>
-            <text x='300' y='98' text-anchor='middle' font-size='11' font-weight='700' letter-spacing='1.5' fill='#FFFFFF'>02 WEB &amp; SEO</text>
-            <text x='300' y='120' text-anchor='middle' font-size='9' letter-spacing='1.5' fill='var(--ink-mute)'>SITIOS · E-COMMERCE</text>
-            <text x='300' y='136' text-anchor='middle' font-size='9' letter-spacing='1.5' fill='var(--ink-mute)'>SEO · SEM · CRO</text>
-            <rect x='410' y='60' width='150' height='96' rx='14' fill='rgba(9,57,80,0.5)' stroke='var(--line)'/>
-            <text x='485' y='98' text-anchor='middle' font-size='11' font-weight='700' letter-spacing='1.5' fill='#FFFFFF'>03 MARKETING</text>
-            <text x='485' y='120' text-anchor='middle' font-size='9' letter-spacing='1.5' fill='var(--ink-mute)'>CONTENIDO · REDES</text>
-            <text x='485' y='136' text-anchor='middle' font-size='9' letter-spacing='1.5' fill='var(--ink-mute)'>CAMPAÑAS · MARCA</text>
-            <g stroke='var(--ink-faint)' stroke-width='1'>
-              <line x1='115' y1='156' x2='245' y2='286'/>
-              <line x1='300' y1='156' x2='300' y2='250'/>
-              <line x1='485' y1='156' x2='355' y2='286'/>
-              <line x1='300' y1='406' x2='300' y2='452'/>
-            </g>
-            <g fill='var(--ink-faint)'>
-              <circle cx='115' cy='156' r='3'/><circle cx='245' cy='286' r='3'/>
-              <circle cx='300' cy='156' r='3'/><circle cx='300' cy='250' r='3'/>
-              <circle cx='485' cy='156' r='3'/><circle cx='355' cy='286' r='3'/>
-            </g>
-            <polygon points='292,450 308,450 300,466' fill='#FFFFFF'/>
-            <circle cx='300' cy='330' r='86' fill='none' stroke='var(--line-soft)'/>
-            <circle cx='300' cy='330' r='74' fill='none' stroke='#FFFFFF' stroke-width='2'/>
-            <text x='300' y='326' text-anchor='middle' font-size='17' font-weight='800' fill='#FFFFFF'>B&amp;M</text>
-            <text x='300' y='348' text-anchor='middle' font-size='8.5' letter-spacing='2.5' fill='var(--ink-mute)'>SISTEMA</text>
-            <rect x='190' y='470' width='220' height='66' rx='33' fill='#FFFFFF'/>
-            <text x='300' y='512' text-anchor='middle' font-size='15' font-weight='800' letter-spacing='3' fill='#093950'>↑ VENTAS</text>
-            <path d='M404,503 C520,500 545,320 489,170' fill='none' stroke='var(--ink-faint)' stroke-width='1' stroke-dasharray='4 6'/>
-            <text x='556' y='345' transform='rotate(90 556 345)' text-anchor='middle' font-size='8.5' letter-spacing='2' fill='var(--ink-faint)'>MEDIR · OPTIMIZAR</text>
-          </g>
-        </svg>
-        <div class='ribbon'><b>B&amp;M</b> &nbsp;·&nbsp; MATRIZ DE SERVICIOS &nbsp;·&nbsp; 4 LÍNEAS</div>
-      </div>
-      <div class='capabilities-copy' data-reveal>
-        <span class='label'>Servicios <span class='ix'>· Nº 03</span></span>
-        <h2 class='display'>Cuatro líneas que convierten <em>datos</em> en <em>ventas</em><span class='dot'>.</span></h2>
-        <p class='lead'>Cada línea funciona por separado; juntas forman un sistema completo: entender el mercado, construir la plataforma digital, sostener la conversación que vende y conquistar el punto de venta.</p>
-        <div class='cards'>
-          <div class='card' data-reveal>
-    <div class='num'>01<span class='tag'>Investigación</span></div>
-    <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
-      <circle cx='9' cy='9' r='5'/><path d='M14 14l5 5'/>
-    </svg>
-    <h3>Investigación<br/>de Mercados</h3>
-    <p>Estudios cuanti y cuali, benchmarking, precios y NPS, market share, buyer persona y storytelling de empresa.</p>
-    <a class='arrow-mark' href='#investigacion' aria-label='Ver Investigación de Mercados'>
-      <svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg>
-    </a>
-  </div>
-          <div class='card' data-reveal>
-    <div class='num'>02<span class='tag'>Web</span></div>
-    <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
-      <rect x='3.5' y='3.5' width='8' height='8'/><rect x='12.5' y='3.5' width='8' height='8'/><rect x='3.5' y='12.5' width='8' height='8'/><rect x='12.5' y='12.5' width='8' height='8'/>
-    </svg>
-    <h3>Desarrollo &amp;<br/>Optimización Web</h3>
-    <p>Sitios y landing pages, formularios que convierten leads, banners, SEO/SEM, e-commerce y catálogos digitales.</p>
-    <a class='arrow-mark' href='#desarrollo-web' aria-label='Ver Desarrollo y Optimización Web'>
-      <svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg>
-    </a>
-  </div>
-          <div class='card' data-reveal>
-    <div class='num'>03<span class='tag'>RRSS</span></div>
-    <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
-      <circle cx='8' cy='12' r='4.5'/><circle cx='16' cy='12' r='4.5'/>
-    </svg>
-    <h3>Marketing Digital<br/>&amp; Redes Sociales</h3>
-    <p>Gestión de redes, contenido (posteos, reels, videos), parrillas semanales, comentarios y estrategias de conversión.</p>
-    <a class='arrow-mark' href='#marketing-digital' aria-label='Ver Marketing Digital y Redes Sociales'>
-      <svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg>
-    </a>
-  </div>
-          <div class='card' data-reveal>
-    <div class='num'>04<span class='tag'>Método</span></div>
-    <svg class='icon' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.5'>
-      <path d='M5 8h14v8H5z'/><path d='M9 12h6M12 9v6'/>
-    </svg>
-    <h3>Un sistema,<br/>no piezas sueltas</h3>
-    <p>Las cuatro líneas comparten un método: escuchar, analizar, diseñar y medir. Empieza por la línea que necesites hoy.</p>
-    <a class='arrow-mark' href='#metodo' aria-label='Ver el método B&amp;M'>
-      <svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg>
-    </a>
-  </div>
-        </div>
-      </div>
-    </div>
-
-    <div class='pillar' id='srv-investigacion' data-od-id='srv-investigacion'>
-      <span id='investigacion' aria-hidden='true'></span>
-      <div class='pillar-rule'>
-        <span class='roman'>III.a</span>
-        <span>3.1 Investigación de Mercados &amp; Business Intelligence · 5 servicios</span>
-        <span>03.a / 03.c</span>
-      </div>
-      <div class='pillar-head'>
-        <div>
-          <span class='label'>Línea 01 <span class='ix'>· Investigación</span></span>
-          <h3>Conoce a tu <em>mercado</em> antes de invertir un peso</h3>
-        </div>
-        <p>Transformamos la incertidumbre en decisiones rentables. Antes de invertir en pauta o diseño, analizamos la posición real de tu empresa para fundamentar tu estrategia comercial.</p>
-      </div>
-      <div class='svc-list'>
-        <div class='svc-row'><span class='n'>a.1</span><b>Estudios Cualitativos y Cuantitativos</b><p>Investigaciones a fondo para entender percepciones, conductas y datos duros de tu mercado objetivo.</p></div>
-        <div class='svc-row'><span class='n'>a.2</span><b>Benchmarking y Análisis de Mercado</b><p>Evaluación de tu competencia directa para identificar oportunidades y ventajas competitivas.</p></div>
-        <div class='svc-row'><span class='n'>a.3</span><b>Estudio de Precios y NPS (Net Promoter Score)</b><p>Análisis de viabilidad comercial y medición del nivel de satisfacción y lealtad de tus clientes.</p></div>
-        <div class='svc-row'><span class='n'>a.4</span><b>Market Share y Buyer Persona</b><p>Cálculo de tu participación en el mercado y diseño detallado del perfil de tu cliente ideal.</p></div>
-        <div class='svc-row'><span class='n'>a.5</span><b>Storytelling de Empresa</b><p>Definición de la narrativa comercial y la voz de tu marca para conectar emocionalmente con tu audiencia.</p></div>
-      </div>
-    </div>
-
-    <div class='pillar' id='srv-web' data-od-id='srv-web'>
-      <span id='desarrollo-web' aria-hidden='true'></span>
-      <div class='pillar-rule'>
-        <span class='roman'>III.b</span>
-        <span>3.2 Creación, Desarrollo y Optimización Web · 5 servicios</span>
-        <span>03.b / 03.c</span>
-      </div>
-      <div class='pillar-head'>
-        <div>
-          <span class='label'>Línea 02 <span class='ix'>· Web</span></span>
-          <h3>Tu web, pensada para <em>convertir</em> visitas en clientes</h3>
-        </div>
-        <p>Diseñamos y optimizamos plataformas digitales orientadas 100% a la conversión de clientes, alimentadas por la data estratégica de tu negocio.</p>
-      </div>
-      <div class='svc-list'>
-        <div class='svc-row'><span class='n'>b.1</span><b>Páginas Web y Landing Pages</b><p>Sitios funcionales, adaptables a móviles y enfocados en captar la atención de tu audiencia.</p></div>
-        <div class='svc-row'><span class='n'>b.2</span><b>Formularios y Captura de Leads</b><p>Integración de herramientas estratégicas para convertir visitantes en prospectos calificados.</p></div>
-        <div class='svc-row'><span class='n'>b.3</span><b>Diseño de Banners Promocionales</b><p>Gráficos visuales de alto impacto alineados a tus campañas de ventas.</p></div>
-        <div class='svc-row'><span class='n'>b.4</span><b>Optimización SEO y SEM</b><p>Posicionamiento en buscadores (Google) de forma orgánica y mediante anuncios pagados para atraer tráfico de calidad.</p></div>
-        <div class='svc-row'><span class='n'>b.5</span><b>E-commerce y Catálogos Digitales</b><p>Implementación de tiendas en línea para exhibir y vender tus productos de manera automatizada.</p></div>
-      </div>
-    </div>
-
-    <div class='pillar' id='srv-marketing' data-od-id='srv-marketing'>
-      <span id='marketing-digital' aria-hidden='true'></span>
-      <div class='pillar-rule'>
-        <span class='roman'>III.c</span>
-        <span>3.3 Marketing Digital &amp; Redes Sociales · 4 servicios</span>
-        <span>03.c / 03.c</span>
-      </div>
-      <div class='pillar-head'>
-        <div>
-          <span class='label'>Línea 03 <span class='ix'>· RRSS</span></span>
-          <h3>Redes que <em>conversan,</em> posicionan y venden</h3>
-        </div>
-        <p>Gestionamos tu presencia en canales digitales con una estrategia enfocada en cumplir objetivos de negocio reales, no solo en acumular "likes".</p>
-      </div>
-      <div class='svc-list'>
-        <div class='svc-row'><span class='n'>c.1</span><b>Gestión y Optimización de RRSS</b><p>Creación y administración profesional de tus perfiles en redes sociales.</p></div>
-        <div class='svc-row'><span class='n'>c.2</span><b>Creación de Contenido Multiformato</b><p>Producción de posteos, reels, videos y artes gráficos diseñados para destacar.</p></div>
-        <div class='svc-row'><span class='n'>c.3</span><b>Parrillas Semanales y Moderación</b><p>Planificación de contenidos y respuesta oportuna a comentarios para mantener activa a tu comunidad.</p></div>
-        <div class='svc-row'><span class='n'>c.4</span><b>Estrategia Orientada a Resultados</b><p>Campañas diseñadas para incrementar el tráfico a tu punto de venta, elevar el reconocimiento de marca y proteger/gestionar la reputación online de tu empresa.</p></div>
-      </div>
-    </div>
-
-    <div class='pillar' id='srv-tradicional' data-od-id='srv-tradicional'>
-      <div class='pillar-rule'>
-        <span class='roman'>III.d</span>
-        <span>3.4 Publicidad Tradicional, POP &amp; BTL · 4 servicios</span>
-        <span>03.d / 03.d</span>
-      </div>
-      <div class='pillar-head'>
-        <div>
-          <span class='label'>Línea 04 <span class='ix'>· POP &amp; BTL</span></span>
-          <h3>Tu marca, presente en el <em>mundo físico</em></h3>
-        </div>
-        <p>Conectamos tu marca con tus clientes en el mundo físico. Diseñamos e implementamos herramientas publicitarias de alto impacto directo para atraer tráfico y acelerar la venta en tu establecimiento.</p>
-      </div>
-      <div class='svc-list'>
-        <div class='svc-row'><span class='n'>d.1</span><b>Impresión Publicitaria &amp; Material POP</b><p>Diseño y producción de impresos de alta calidad, desde flyers, volantes y folletos, hasta banners, stoppers y material de exhibición para punto de venta.</p></div>
-        <div class='svc-row'><span class='n'>d.2</span><b>Activaciones en Punto de Venta (BTL)</b><p>Planeación y ejecución de dinámicas en tienda para generar experiencias memorables, captar prospectos e incentivar la compra inmediata.</p></div>
-        <div class='svc-row'><span class='n'>d.3</span><b>Estrategias de Volanteo y Perifoneo</b><p>Distribución geográfica enfocada y perifoneo estratégico para dar a conocer tu negocio, ofertas o aperturas en zonas clave de influencia.</p></div>
-        <div class='svc-row'><span class='n'>d.4</span><b>Material de Marca &amp; Branding Físico</b><p>Adaptación de tu identidad visual en empaques, papelería corporativa y señalética para proyectar una imagen sólida y profesional.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class='method' id='metodo' data-od-id='metodo'>
-  <div class='container'>
-    <div class='sec-rule'>
-    <span class='roman'>IV.</span>
-    <span class='meta-grp'>
-      <span>Método · De los datos a la venta</span>
-      <span class='dot-mark'>•</span>
-      <span>4 etapas, iterativas</span>
-    </span>
-    <span>004 / 006</span>
-  </div>
-    <div class='method-head'>
-      <div data-reveal>
-        <span class='label'>Nuestro método <span class='ix'>· Nº 04</span></span>
-        <h2 class='display' style='margin-top:30px;'>De la <em>señal</em> a la venta<span class='dot'>.</span></h2>
-      </div>
-      <div class='right' data-reveal='right'>
-        <span class='plus'>+</span>
-        <p>Cada etapa es iterativa y medible: los datos orientan cada decisión y la estrategia se ajusta con lo que el mercado responde.</p>
-      </div>
-    </div>
-    <div class='method-grid'>
-        <div class='method-step' data-reveal>
-    <div class='num'>01</div>
-    <h4>Escuchar <span class='arrow-r'>→</span></h4>
-    <p>Diagnóstico y briefing: entendemos tu negocio, tu cliente y tu competencia antes de proponer cualquier cosa.</p>
-  </div>
-        <div class='method-step' data-reveal>
-    <div class='num'>02</div>
-    <h4>Analizar <span class='arrow-r'>→</span></h4>
-    <p>Estudios de mercado, benchmarking, precios y buyer persona: la base factual sobre la que se decide todo lo demás.</p>
-  </div>
-        <div class='method-step' data-reveal>
-    <div class='num'>03</div>
-    <h4>Diseñar <span class='arrow-r'>→</span></h4>
-    <p>Estrategia y ejecución: web, campañas, contenido y parrillas alineados al perfil de tu comprador ideal.</p>
-  </div>
-        <div class='method-step' data-reveal>
-    <div class='num'>04</div>
-    <h4>Medir</h4>
-    <p>NPS, market share, leads y tráfico al punto de venta: medimos lo que importa, aprendemos y ajustamos.</p>
-  </div>
-    </div>
-    <div class='method-art'>
-      <div class='method-esquema' data-reveal='scale'>
-        <svg viewBox='0 0 560 560' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Esquema: los datos del mercado se analizan y se convierten en decisiones'>
-          <text x='30' y='46' fill='#F8FAFC' font-family='Inter Tight, sans-serif' font-size='14' font-weight='800' letter-spacing='3'>DEL DATO A LA DECISIÓN</text>
-          <line x1='30' y1='58' x2='66' y2='58' stroke='rgba(248, 250, 252, 0.85)' stroke-width='2'/>
-          <text x='30' y='80' fill='rgba(248, 250, 252, 0.55)' font-family='Inter, sans-serif' font-size='10'>Las señales del mercado se convierten</text>
-          <text x='30' y='94' fill='rgba(248, 250, 252, 0.55)' font-family='Inter, sans-serif' font-size='10'>en decisiones con evidencia.</text>
-          <!-- fuentes de datos -->
-          <g fill='rgba(9, 57, 80, 0.55)' stroke='rgba(248, 250, 252, 0.5)'>
-            <rect x='30' y='120' width='170' height='54' rx='27'/>
-            <rect x='30' y='220' width='170' height='54' rx='27'/>
-            <rect x='30' y='320' width='170' height='54' rx='27'/>
-            <rect x='30' y='420' width='170' height='54' rx='27'/>
-          </g>
-          <g fill='#F8FAFC' font-family='Inter Tight, sans-serif' font-size='11' font-weight='700' letter-spacing='1.5' text-anchor='middle'>
-            <text x='115' y='152'>ENCUESTAS · NPS</text>
-            <text x='115' y='252'>WEB · ANALYTICS</text>
-            <text x='115' y='352'>VENTAS · POS</text>
-            <text x='115' y='452'>REDES SOCIALES</text>
-          </g>
-          <!-- flujos hacia el análisis -->
-          <g fill='none' stroke='rgba(248, 250, 252, 0.7)' stroke-width='2'>
-            <path class='flow' d='M200 147 Q282 147 283 248'/>
-            <path class='flow' d='M200 247 Q268 247 280 274'/>
-            <path class='flow' d='M200 347 Q268 347 280 321'/>
-            <path class='flow' d='M200 447 Q282 447 283 347'/>
-          </g>
-          <!-- nodo de análisis -->
-          <circle class='pulse-ring' cx='355' cy='297' r='86' fill='none' stroke='rgba(248, 250, 252, 0.35)' stroke-dasharray='4 7'/>
-          <circle cx='355' cy='297' r='74' fill='rgba(9, 57, 80, 0.55)' stroke='rgba(248, 250, 252, 0.5)' stroke-width='2'/>
-          <text x='355' y='294' text-anchor='middle' fill='#F8FAFC' font-family='Inter Tight, sans-serif' font-size='15' font-weight='800' letter-spacing='2'>ANALIZAR</text>
-          <text x='355' y='312' text-anchor='middle' fill='rgba(248, 250, 252, 0.55)' font-family='Inter, sans-serif' font-size='9.5'>señal → evidencia</text>
-          <!-- decisión -->
-          <line x1='355' y1='383' x2='355' y2='424' stroke='rgba(248, 250, 252, 0.7)' stroke-width='2'/>
-          <path d='M349 418 l6 10 l6 -10' fill='none' stroke='rgba(248, 250, 252, 0.7)' stroke-width='2'/>
-          <rect x='245' y='436' width='220' height='58' rx='29' fill='#F8FAFC'/>
-          <text x='355' y='462' text-anchor='middle' fill='#093950' font-family='Inter Tight, sans-serif' font-size='14' font-weight='800' letter-spacing='2'>DECISIÓN ✓</text>
-          <text x='355' y='479' text-anchor='middle' fill='rgba(9, 57, 80, 0.6)' font-family='Inter, sans-serif' font-size='9'>con la mejor evidencia disponible</text>
-          <text x='355' y='528' text-anchor='middle' fill='rgba(248, 250, 252, 0.45)' font-family='Inter Tight, sans-serif' font-size='9.5' letter-spacing='2'>MENOS INTUICIÓN · MÁS EVIDENCIA</text>
-        </svg>
-      </div>
-      <div class='method-viz' data-reveal='scale'>
-      <svg class='about-viz' viewBox='0 0 620 620' preserveAspectRatio='xMidYMid meet' role='img' aria-label='Esquema: de la señal a la venta — escuchar, analizar, diseñar, medir'>
-          <text x='30' y='46' fill='#F8FAFC' font-family='Inter Tight, sans-serif' font-size='14' font-weight='800' letter-spacing='3'>DE LA SEÑAL A LA VENTA</text>
-          <line x1='30' y1='58' x2='66' y2='58' stroke='rgba(248, 250, 252, 0.85)' stroke-width='2'/>
-          <text x='30' y='80' fill='rgba(248, 250, 252, 0.55)' font-family='Inter, sans-serif' font-size='10'>Cada etapa es iterativa y medible: los datos</text>
-          <text x='30' y='94' fill='rgba(248, 250, 252, 0.55)' font-family='Inter, sans-serif' font-size='10'>orientan cada decisión.</text>
-          <!-- cadena de etapas -->
-          <g fill='rgba(9, 57, 80, 0.55)' stroke='rgba(248, 250, 252, 0.5)'>
-            <circle cx='95' cy='170' r='30'/>
-            <circle cx='95' cy='285' r='30'/>
-            <circle cx='95' cy='400' r='30'/>
-            <circle cx='95' cy='515' r='30'/>
-          </g>
-          <g fill='#F8FAFC' font-family='Inter Tight, sans-serif' font-size='15' font-weight='800' text-anchor='middle'>
-            <text x='95' y='176'>01</text>
-            <text x='95' y='291'>02</text>
-            <text x='95' y='406'>03</text>
-            <text x='95' y='521'>04</text>
-          </g>
-          <g stroke='rgba(248, 250, 252, 0.7)' stroke-width='2' fill='none'>
-            <line x1='95' y1='200' x2='95' y2='248'/>
-            <path d='M89 240 l6 10 l6 -10'/>
-            <line x1='95' y1='315' x2='95' y2='363'/>
-            <path d='M89 355 l6 10 l6 -10'/>
-            <line x1='95' y1='430' x2='95' y2='478'/>
-            <path d='M89 470 l6 10 l6 -10'/>
-          </g>
-          <g font-family='Inter Tight, sans-serif'>
-            <text x='145' y='166' fill='rgba(248, 250, 252, 0.9)' font-size='13' font-weight='700' letter-spacing='2'>ESCUCHAR</text>
-            <text x='145' y='184' fill='rgba(248, 250, 252, 0.5)' font-size='9.5'>Diagnóstico y briefing: negocio, cliente y competencia.</text>
-            <text x='145' y='281' fill='rgba(248, 250, 252, 0.9)' font-size='13' font-weight='700' letter-spacing='2'>ANALIZAR</text>
-            <text x='145' y='299' fill='rgba(248, 250, 252, 0.5)' font-size='9.5'>Estudios, benchmarking, precios y buyer persona.</text>
-            <text x='145' y='396' fill='rgba(248, 250, 252, 0.9)' font-size='13' font-weight='700' letter-spacing='2'>DISEÑAR</text>
-            <text x='145' y='414' fill='rgba(248, 250, 252, 0.5)' font-size='9.5'>Web, campañas, contenido y parrillas.</text>
-            <text x='145' y='511' fill='rgba(248, 250, 252, 0.9)' font-size='13' font-weight='700' letter-spacing='2'>MEDIR</text>
-            <text x='145' y='529' fill='rgba(248, 250, 252, 0.5)' font-size='9.5'>NPS, market share, leads y tráfico.</text>
-          </g>
-          <!-- resultado -->
-          <line x1='125' y1='515' x2='248' y2='515' stroke='rgba(248, 250, 252, 0.7)' stroke-width='2'/>
-          <path d='M240 509 l10 6 l-10 6' fill='none' stroke='rgba(248, 250, 252, 0.7)' stroke-width='2'/>
-          <rect x='255' y='492' width='150' height='46' rx='23' fill='#F8FAFC'/>
-          <text x='330' y='521' text-anchor='middle' fill='#093950' font-family='Inter Tight, sans-serif' font-size='14' font-weight='800' letter-spacing='2'>↑ VENTAS</text>
-          <!-- loop iterativo -->
-          <path d='M65 515 Q28 515 28 342 Q28 170 65 170' fill='none' stroke='rgba(248, 250, 252, 0.35)' stroke-dasharray='4 6'/>
-          <path d='M57 176 l8 -6 l0 12' fill='none' stroke='rgba(248, 250, 252, 0.35)'/>
-          <text x='16' y='342' text-anchor='middle' fill='rgba(248, 250, 252, 0.45)' font-family='Inter Tight, sans-serif' font-size='9' letter-spacing='2' transform='rotate(-90 16 342)'>EL MERCADO RESPONDE</text>
-        </svg>
-      </div>
-    </div>
-    <div class='method-foot'>
-      <div class='left'>
-        <svg class='foot-decides' viewBox='0 0 88 24' aria-hidden='true'>
-          <circle class='fd' cx='7' cy='12' r='3'/>
-          <circle class='fd fd2' cx='22' cy='12' r='3'/>
-          <circle class='fd fd3' cx='37' cy='12' r='3'/>
-          <line x1='46' y1='12' x2='60' y2='12' stroke='currentColor' stroke-width='1.5'/>
-          <path d='M56 7l6 5-6 5' fill='none' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/>
-          <circle cx='76' cy='12' r='9' fill='none' stroke='currentColor' stroke-width='1.5'/>
-          <path class='fd-check' d='M71.5 12l3 3 5.5-6' fill='none' stroke-linecap='round' stroke-linejoin='round'/>
-        </svg>
-        <span>Los datos informan cada decisión.</span>
-      </div>
-      <a class='foot-cta' href='https://wa.me/5215500000000?text=Hola%20B%26M%2C%20quiero%20cotizar%20un%20proyecto' target='_blank' rel='noreferrer noopener'>¿Listo para decidir con datos? Platicanos tu proyecto <span aria-hidden='true'>→</span></a>
-    </div>
-  </div>
-</section>
-
-<section class='labs' id='blog' data-od-id='blog'>
-  <div class='container'>
-    <div class='sec-rule'>
-    <span class='roman'>V.</span>
-    <span class='meta-grp'>
-      <span>Blog / Recursos · Espacio educativo</span>
-      <span class='dot-mark'>•</span>
-      <span>Artículo destacado</span>
-    </span>
-    <span>005 / 006</span>
-  </div>
-    <div class='labs-head'>
-      <div data-reveal>
-        <span class='label'>Blog &amp; Recursos <span class='ix'>· Nº 05</span></span>
-        <h2 class='display' style='margin-top:30px;'>Artículos de valor para decidir con <em>datos</em> y vender con <em>estrategia</em><span class='dot'>.</span></h2>
-      </div>
-    </div>
-    <article class='feature' data-reveal>
-      <span class='label'>Artículo destacado · Inteligencia de Mercado &amp; Datos</span>
-      <h3>¿Por qué hacer un estudio de mercado antes de crear tu sitio web y redes sociales?</h3>
-      <div class='feature-body'>
-        <p>Muchos dueños de pequeñas y medianas empresas cometen el mismo error al lanzarse al mundo digital: contratan el diseño de un sitio web o empiezan a publicar contenidos en redes sociales sin haber analizado previamente a su mercado.</p>
-        <p>El resultado suele ser frustrante: páginas web estéticamente bonitas pero que nadie visita, campañas de publicidad que no generan ventas y una sensación constante de que "el marketing digital no funciona para mi negocio".</p>
-        <p class='teaser-dangle'>La realidad es que el marketing no falla; falla…</p>
-      </div>
-      <div class='teaser-actions'>
-        <a class='btn-primary' href='blog.html#articulo-estudio-mercado'>Leer el artículo completo en el Blog →</a>
-        <a class='btn-ghost' href='blog.html'>Ver todos los artículos</a>
-      </div>
-    </article>
-  </div>
-</section>
-
-<section class='tight' id='contacto' data-od-id='contacto'>
-  <div class='work'>
-    <div class='work-rule'>
-      <span class='roman'>VI.</span>
-      <span style='display:inline-flex;gap:24px;'>
-        <span>Contacto · Cotización</span>
-        <span style='color:var(--coral);'>•</span>
-        <span>Respuesta de B&amp;M</span>
-      </span>
-      <span>006 / 006</span>
-    </div>
-    <div class='work-grid contact'>
-      <div class='work-copy' data-reveal>
-        <span class='label'>Contacto <span class='ix'>· Nº 06</span></span>
-        <h2>Cuéntanos tu objetivo y armemos la <em>estrategia</em> que lo <em>vende</em><span class='dot'>.</span></h2>
-        <p style='font-family:var(--body); font-size:15px; color:rgba(247,241,222,0.75); line-height:1.6; max-width:40ch; margin-top:-8px;'>Cuéntanos qué quieres lograr: entender tu mercado, lanzar tu web, ordenar tus redes - o montar el sistema completo. Completa el formulario o escríbenos directo.</p>
-        <div class='contact-channels' data-od-id='contact-channels'>
-          <a class='channel' href='https://wa.me/5215500000000?text=Hola%20B%26M%2C%20quiero%20cotizar%20un%20proyecto' target='_blank' rel='noreferrer noopener'>
-            <span class='ch-ico'><svg viewBox='0 0 24 24'><path d='M21 12a9 9 0 0 1-13.4 7.9L3 21l1.2-4.5A9 9 0 1 1 21 12z'/></svg></span>
-            <span><small>WhatsApp</small><b>+52 55 0000 0000</b></span>
-          </a>
-          <!-- TODO cliente: dato real -->
-          <a class='channel' href='mailto:hola@bym.mx'>
-            <span class='ch-ico'><svg viewBox='0 0 24 24'><path d='M3 6h18v12H3z'/><path d='M3 7l9 6 9-6'/></svg></span>
-            <span><small>Correo</small><b>hola@bym.mx</b></span>
-          </a>
-          <!-- TODO cliente: dato real -->
-          <div class='channel' style='cursor:default;'>
-            <span class='ch-ico'><svg viewBox='0 0 24 24'><path d='M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z'/><circle cx='12' cy='10' r='2.5'/></svg></span>
-            <span><small>Ubicación</small><b>Ciudad de México</b></span>
-          </div>
-          <!-- TODO cliente: dato real -->
-          <a class='channel' href='tel:5500000000'>
-            <span class='ch-ico'><svg viewBox='0 0 24 24'><path d='M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z'/></svg></span>
-            <span><small>Teléfono</small><b>55 0000 0000</b></span>
-          </a>
-        </div>
-      </div>
-      <div class='quote-card' data-reveal='scale' data-od-id='quote-form'>
-        <h3>Solicita tu cotización</h3>
-        <p class='qsub'>Cada propuesta incluye alcance, tiempos e inversión estimados, respaldada por diagnóstico.</p>
-        <form id='quoteForm' novalidate>
-          <div class='row2'>
-            <div class='field'>
-              <label for='q-nombre'>Nombre *</label>
-              <input id='q-nombre' name='nombre' type='text' autocomplete='name' required />
-              <span class='err'>Escribe tu nombre.</span>
-            </div>
-            <div class='field'>
-              <label for='q-tel'>WhatsApp *</label>
-              <input id='q-tel' name='tel' type='tel' autocomplete='tel' required />
-              <span class='err'>Escribe tu WhatsApp.</span>
-            </div>
-          </div>
-          <div class='field'>
-            <label for='q-msg'>¿Qué quieres lograr? *</label>
-            <textarea id='q-msg' name='mensaje' required></textarea>
-            <span class='err'>Cuéntanos brevemente tu objetivo.</span>
-          </div>
-          <button class='btn btn-primary send' type='submit'>
-            Enviar solicitud
-            <span class='arrow'><svg viewBox='0 0 24 24'><path d='M5 19L19 5M19 5H8M19 5v11'/></svg></span>
-          </button>
-        </form>
-        <div class='quote-ok' role='status'>
-          <span class='ok-ring'><svg width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='1.8'><path d='M4 12l6 6L20 6'/></svg></span>
-          <h4>Solicitud recibida</h4>
-          <p>Gracias por escribirnos. Te contactaremos para agendar una conversación sobre tu proyecto.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class='tight' id='glosario' data-od-id='glosario'>
-  <div class='container'>
-    <div class='sec-rule'>
-      <span class='roman'>VII.</span>
-      <span class='meta-grp'>
-        <span>Glosario · Del dato a la decisión</span>
-        <span class='dot-mark'>•</span>
-        <span>10 términos</span>
-      </span>
-      <span>ANEXO I</span>
-    </div>
-    <div data-reveal style='margin-top:44px;'>
-      <span class='label'>Glosario <span class='ix'>· Nº 07</span></span>
-      <h2 class='display' style='margin-top:26px; font-size:clamp(30px, 3.6vw, 52px);'>El lenguaje del <em>mercado</em>, en claro<span class='dot'>.</span></h2>
-    </div>
-    <div class='gloss-list' data-od-id='glosario-grid'>
-      <div class='gloss-row' data-reveal>
-        <span class='n'>01</span>
-        <h4>NPS (Net Promoter Score) <span class='arrow-r'>→</span></h4>
-        <p>métrica que mide la lealtad y satisfacción de tus clientes con una sola pregunta: ¿qué tan probable es que nos recomiendes?</p>
-      </div>
-      <div class='gloss-row' data-reveal>
-        <span class='n'>02</span>
-        <h4>Buyer Persona <span class='arrow-r'>→</span></h4>
-        <p>perfil semi-ficticio de tu cliente ideal, construido con datos reales de mercado.</p>
-      </div>
-      <div class='gloss-row' data-reveal>
-        <span class='n'>03</span>
-        <h4>Market Share <span class='arrow-r'>→</span></h4>
-        <p>porcentaje de las ventas totales de un sector que controla tu empresa.</p>
-      </div>
-      <div class='gloss-row' data-reveal>
-        <span class='n'>04</span>
-        <h4>Benchmarking <span class='arrow-r'>→</span></h4>
-        <p>análisis comparativo de tu competencia para identificar mejores prácticas y oportunidades.</p>
-      </div>
-      <div class='gloss-row' data-reveal>
-        <span class='n'>05</span>
-        <h4>BTL (Below The Line) <span class='arrow-r'>→</span></h4>
-        <p>publicidad de impacto directo y medible fuera de medios masivos: activaciones, volanteo y dinámicas en punto de venta.</p>
-      </div>
-      <div class='gloss-row' data-reveal>
-        <span class='n'>06</span>
-        <h4>POP (Punto de Venta) <span class='arrow-r'>→</span></h4>
-        <p>material publicitario colocado donde ocurre la compra: stoppers, exhibidores y banners.</p>
-      </div>
-      <div class='gloss-row' data-reveal>
-        <span class='n'>07</span>
-        <h4>SEO <span class='arrow-r'>→</span></h4>
-        <p>optimización para aparecer de forma orgánica en los resultados de buscadores como Google.</p>
-      </div>
-      <div class='gloss-row' data-reveal>
-        <span class='n'>08</span>
-        <h4>SEM <span class='arrow-r'>→</span></h4>
-        <p>publicidad pagada en buscadores para atraer tráfico calificado de inmediato.</p>
-      </div>
-      <div class='gloss-row' data-reveal>
-        <span class='n'>09</span>
-        <h4>Storytelling <span class='arrow-r'>→</span></h4>
-        <p>narrativa comercial que conecta emocionalmente a tu marca con su audiencia.</p>
-      </div>
-      <div class='gloss-row' data-reveal>
-        <span class='n'>10</span>
-        <h4>Landing Page <span class='arrow-r'>→</span></h4>
-        <p>página independiente enfocada en una sola oferta, diseñada para convertir visitantes en prospectos o clientes.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class='tight' id='faq' data-od-id='faq'>
-  <div class='container'>
-    <div class='sec-rule'>
-      <span class='roman'>VIII.</span>
-      <span class='meta-grp'>
-        <span>Preguntas frecuentes · Antes de cotizar</span>
-        <span class='dot-mark'>•</span>
-        <span>5 respuestas</span>
-      </span>
-      <span>ANEXO II</span>
-    </div>
-    <div data-reveal style='margin-top:44px;'>
-      <span class='label'>Preguntas frecuentes <span class='ix'>· Nº 08</span></span>
-      <h2 class='display' style='margin-top:26px; font-size:clamp(30px, 3.6vw, 52px);'>Lo que nos preguntan antes de <em>empezar</em><span class='dot'>.</span></h2>
-    </div>
-    <div class='faq-list' data-od-id='faq-list'>
-      <details>
-        <summary><strong>¿Trabajan solo con empresas grandes?</strong></summary>
-        <p>No. Nuestra especialidad son las micro, pequeñas y medianas empresas. Democratizamos las herramientas de inteligencia de mercado que antes solo usaban las grandes corporaciones.</p>
-      </details>
-      <details>
-        <summary><strong>¿Por qué empezar con un estudio de mercado?</strong></summary>
-        <p>Porque fundamenta cada decisión posterior: a quién hablarle, qué ofrecer y dónde invertir. Sin datos, el marketing es adivinanza; con datos, es inversión rentable.</p>
-      </details>
-      <details>
-        <summary><strong>¿Cuánto tarda un proyecto?</strong></summary>
-        <p>Depende del alcance: un estudio de mercado típico toma de 2 a 4 semanas; un sitio web, de 3 a 6 semanas. Al cotizar recibes un cronograma exacto.</p>
-      </details>
-      <details>
-        <summary><strong>¿Qué necesito para cotizar?</strong></summary>
-        <p>Solo tu nombre, tu WhatsApp y una descripción breve de tu proyecto. Nosotros hacemos el resto del diagnóstico.</p>
-      </details>
-      <details>
-        <summary><strong>¿Cómo protegen mis datos?</strong></summary>
-        <p>Usamos tu información únicamente para atender tu solicitud de cotización. Los detalles están en nuestro Aviso de Privacidad.</p>
-      </details>
+    <div class='card' data-reveal style='margin-top:44px;'>
+      <span class='label'>Aviso de Privacidad <span class='ix'>· Legal</span></span>
+      <p class='aviso-legal' style='margin-top:18px;'>B&amp;M Branding &amp; Marketing es responsable del tratamiento de tus datos personales. Recabamos únicamente tu nombre, tu número de WhatsApp y el mensaje que decidas compartirnos, con la finalidad exclusiva de atender tu solicitud de cotización y dar seguimiento comercial. No compartimos tu información con terceros. Puedes ejercer tus derechos de acceso, rectificación, cancelación u oposición (ARCO) escribiendo a hola@bym.mx. <!-- TODO cliente: correo/fecha/datos reales del aviso --> Cualquier cambio a este aviso se publicará en esta misma página. Última actualización: agosto de 2026.</p>
     </div>
   </div>
 </section>
@@ -3967,7 +3059,7 @@ section { padding: 80px 0; }
   <div class='container'>
     <div class='foot-grid'>
       <div class='foot-brand'>
-        <a href='#top' class='brand'>
+        <a href='index.html' class='brand'>
           <span class='brand-mark' role='img' aria-label='B&amp;M Branding &amp; Marketing'></span>
           <span>B&amp;M Branding &amp; Marketing</span>
         </a>
@@ -3977,31 +3069,31 @@ section { padding: 80px 0; }
       <div class='foot-col'>
     <h5>Nosotros</h5>
     <ul>
-        <li><a href='#historia'>Historia</a></li>
-        <li><a href='#fundadores'>Fundadores</a></li>
-        <li><a href='#filosofia'>Filosofía Institucional</a></li>
-        <li><a href='#metodo'>Nuestro Método</a></li>
+        <li><a href='index.html#historia'>Historia</a></li>
+        <li><a href='index.html#fundadores'>Fundadores</a></li>
+        <li><a href='index.html#filosofia'>Filosofía Institucional</a></li>
+        <li><a href='index.html#metodo'>Nuestro Método</a></li>
     </ul>
   </div>
       <div class='foot-col'>
     <h5>Servicios</h5>
     <ul>
-        <li><a href='#investigacion'>Investigación de Mercados</a></li>
-        <li><a href='#desarrollo-web'>Desarrollo &amp; Optimización Web</a></li>
-        <li><a href='#marketing-digital'>Marketing Digital &amp; RRSS</a></li>
-        <li><a href='#contacto'>Cotización</a></li>
+        <li><a href='index.html#investigacion'>Investigación de Mercados</a></li>
+        <li><a href='index.html#desarrollo-web'>Desarrollo &amp; Optimización Web</a></li>
+        <li><a href='index.html#marketing-digital'>Marketing Digital &amp; RRSS</a></li>
+        <li><a href='index.html#contacto'>Cotización</a></li>
     </ul>
   </div>
       <div class='foot-col'>
     <h5>Recursos</h5>
     <ul>
-        <li><a href='#blog'>Inteligencia de Mercado</a></li>
-        <li><a href='#blog'>Desarrollo Web</a></li>
-        <li><a href='#blog'>Estrategia Digital</a></li>
-        <li><a href='#blog'>Casos de Éxito</a></li>
-        <li><a href='#glosario'>Glosario</a></li>
-        <li><a href='#faq'>Preguntas frecuentes</a></li>
-        <li><a href='aviso-privacidad.html'>Aviso de Privacidad</a></li>
+        <li><a href='blog.html#cat-1'>Inteligencia de Mercado</a></li>
+        <li><a href='blog.html#cat-2'>Desarrollo Web</a></li>
+        <li><a href='blog.html#cat-3'>Estrategia Digital</a></li>
+        <li><a href='blog.html#cat-4'>Casos de Éxito</a></li>
+        <li><a href='index.html#glosario'>Glosario</a></li>
+        <li><a href='index.html#faq'>Preguntas frecuentes</a></li>
+        <li><a href='#aviso' aria-current='page'>Aviso de Privacidad</a></li>
     </ul>
   </div>
       <div class='foot-col'>
@@ -4009,8 +3101,8 @@ section { padding: 80px 0; }
     <ul>
         <li><a href='https://wa.me/5215500000000' target='_blank' rel='noreferrer noopener'>WhatsApp</a></li>
         <li><a href='mailto:hola@bymarketing.mx'>Correo</a></li>
-        <li><a href='#contacto'>Formulario de cotización</a></li>
-        <li><a href='#contacto'>CDMX, México</a></li>
+        <li><a href='index.html#contacto'>Formulario de cotización</a></li>
+        <li><a href='index.html#contacto'>CDMX, México</a></li>
     </ul>
   </div>
     </div>
@@ -4064,7 +3156,7 @@ section { padding: 80px 0; }
       <a class='qr-chip' href='https://wa.me/5215500000000?text=Hola%20B%26M%2C%20necesito%20un%20estudio%20de%20mercado%20para%20mi%20negocio.' target='_blank' rel='noreferrer noopener'>Estudio de mercado</a>
       <a class='qr-chip' href='https://wa.me/5215500000000?text=Hola%20B%26M%2C%20necesito%20ayuda%20con%20mis%20redes%20sociales%20y%20mi%20sitio%20web.' target='_blank' rel='noreferrer noopener'>Redes y web</a>
     </div>
-    <a class='chat-foot' href='#contacto'>o escríbenos en el formulario →</a>
+    <a class='chat-foot' href='index.html#contacto'>o escríbenos en el formulario →</a>
   </div>
 </div>
 
