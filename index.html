@@ -618,15 +618,15 @@ body::before {
 .hero-viz .viz-line {
   stroke-dasharray: 1200;
   stroke-dashoffset: 1200;
-  animation: viz-draw 1.7s cubic-bezier(0.25, 1, 0.5, 1) 0.3s forwards;
+  animation: viz-draw 2.6s cubic-bezier(0.25, 1, 0.5, 1) 0.2s forwards;
 }
-.hero-viz .viz-area { opacity: 0; animation: viz-fade 1s ease-out 0.7s forwards; }
+.hero-viz .viz-area { opacity: 0; animation: viz-fade 1s ease-out 1.6s forwards; }
 .hero-viz .viz-dot { opacity: 0; animation: viz-fade 0.45s ease-out forwards; }
-.hero-viz .viz-dot-start { animation-delay: 1.5s; }
-.hero-viz .viz-dot-end {
-  animation: viz-fade 0.45s ease-out 1.75s forwards, viz-pulse 2.6s ease-in-out 2.4s infinite;
+.hero-viz .viz-dot-start { animation-delay: 0.2s; }
+.hero-viz .viz-dot-head {
   transform-box: fill-box;
   transform-origin: center;
+  animation: viz-pulse 2.6s ease-in-out 2.8s infinite;
 }
 @keyframes viz-draw { to { stroke-dashoffset: 0; } }
 @keyframes viz-fade { to { opacity: 1; } }
@@ -636,6 +636,7 @@ body::before {
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-viz .viz-line, .hero-viz .viz-area, .hero-viz .viz-dot { animation: none; opacity: 1; stroke-dashoffset: 0; }
+  .hero-viz .viz-travel { display: none; }
 }
 /* image annotations */
 .annot {
@@ -2839,13 +2840,16 @@ section { padding: 80px 0; }
 /* ponytail: the 70px nowrap word overflows narrow screens and
  * overflow-x: hidden clipped it mid-word ("Datos que ven..."). */
 .foot-mega .word { white-space: normal; font-size: clamp(48px, 12vw, 70px); }
-.foot-grid { grid-template-columns: 2fr 1fr 1fr; }
+.foot-grid { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr); }
 .foot-grid .foot-col:nth-child(4),
 .foot-grid .foot-col:nth-child(5) { display: none; }
 .hero-grid, .about-grid, .capabilities-grid, .testimonial-grid, .cta-grid {
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 50px;
 }
+.hero-stats { flex-wrap: wrap; }
+.about-side-note { right: 0; }
+.about, .capabilities, .method, .labs { overflow-x: clip; }
 .labs-head, .method-head { grid-template-columns: 1fr; }
 .method-grid { grid-template-columns: repeat(2, 1fr); gap: 36px; }
 .method-grid::before { display: none; }
@@ -2853,6 +2857,8 @@ section { padding: 80px 0; }
 .work-grid { grid-template-columns: 1fr; }
 .partners { grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .nav-inner { gap: 18px; }
+.brand-mark { width: 76px; height: 30px; }
+.brand { gap: 10px; font-size: 16px; }
 .nav-links { display: none; gap: 28px; }
 .brand-meta { display: none; }
 .nav-cta { display: none; }
@@ -3167,7 +3173,10 @@ section { padding: 80px 0; }
         <text x='600' y='530' text-anchor='end' font-family='var(--sans)' font-size='10' letter-spacing='2' fill='var(--ink-faint)'>SIN ESTRATEGIA</text>
         <path class='viz-area' d='M70,572 C210,562 320,492 400,396 C480,300 540,196 600,150 L600,588 L70,588 Z' fill='rgba(9,57,80,0.55)'/>
         <path class='viz-line' d='M70,572 C210,562 320,492 400,396 C480,300 540,196 600,150' fill='none' stroke='#FFFFFF' stroke-width='3'/>
-        <circle class='viz-dot viz-dot-end' cx='600' cy='150' r='5' fill='#FFFFFF'/>
+        <g class='viz-travel'>
+          <circle class='viz-dot-head' r='5' fill='#FFFFFF'/>
+          <animateMotion dur='2.6s' begin='0.2s' fill='freeze' calcMode='spline' keyTimes='0;1' keySplines='0.25 1 0.5 1' path='M70,572 C210,562 320,492 400,396 C480,300 540,196 600,150'/>
+        </g>
         <circle class='viz-dot viz-dot-start' cx='70' cy='572' r='3' fill='#FFFFFF'/>
         <text x='96' y='118' font-family='var(--sans)' font-size='10' letter-spacing='2' fill='var(--ink-mute)'>GOOGLE · SEO → TRÁFICO → CONVERSIÓN</text>
         <text x='600' y='126' text-anchor='end' font-family='var(--sans)' font-size='11' font-weight='700' letter-spacing='2' fill='#FFFFFF'>+ VENTAS</text>

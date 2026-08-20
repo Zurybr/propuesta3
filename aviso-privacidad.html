@@ -2770,13 +2770,16 @@ section { padding: 80px 0; }
 /* ponytail: the 70px nowrap word overflows narrow screens and
  * overflow-x: hidden clipped it mid-word ("Datos que ven..."). */
 .foot-mega .word { white-space: normal; font-size: clamp(48px, 12vw, 70px); }
-.foot-grid { grid-template-columns: 2fr 1fr 1fr; }
+.foot-grid { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr); }
 .foot-grid .foot-col:nth-child(4),
 .foot-grid .foot-col:nth-child(5) { display: none; }
 .hero-grid, .about-grid, .capabilities-grid, .testimonial-grid, .cta-grid {
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 50px;
 }
+.hero-stats { flex-wrap: wrap; }
+.about-side-note { right: 0; }
+.about, .capabilities, .method, .labs { overflow-x: clip; }
 .labs-head, .method-head { grid-template-columns: 1fr; }
 .method-grid { grid-template-columns: repeat(2, 1fr); gap: 36px; }
 .method-grid::before { display: none; }
@@ -2784,6 +2787,8 @@ section { padding: 80px 0; }
 .work-grid { grid-template-columns: 1fr; }
 .partners { grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .nav-inner { gap: 18px; }
+.brand-mark { width: 76px; height: 30px; }
+.brand { gap: 10px; font-size: 16px; }
 .nav-links { display: none; gap: 28px; }
 .brand-meta { display: none; }
 .nav-cta { display: none; }
